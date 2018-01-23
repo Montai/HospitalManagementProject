@@ -1,0 +1,39 @@
+// Place all the styles related to the appointments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+  .body {
+    position: relative;
+  }
+  .div {
+    /*border: 1px solid black; */
+  }
+  .text-left {
+    style="font-size: 30px;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+  }
+  .div-table {
+    display: table;
+    width: 100%;
+    background-color: #eee;
+    border: 2px solid black;
+    border-spacing: 5px;
+    margin: 20px;
+  }
+  .tr {
+    display: table-row;
+  }
+  .tc {
+    display: table-cell;
+    vertical-align: top;
+    background-color: #ccc;
+    padding: 5px 10px;
+  }
+
+  .field {
+    margin: 2px;
+  }
+  .image-container {
+    position: relative;
+    left: 40%;
+  }

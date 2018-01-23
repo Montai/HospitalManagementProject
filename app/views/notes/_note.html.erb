@@ -1,0 +1,13 @@
+<div class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          Note: <%= note.description %><br>
+          <%= link_to 'Delete', [note.appointment, note],
+                   method: :delete, class: "button is-danger", data: { confirm: 'Are you sure to delete?' } %>
+        </p>
+      </div>
+    </div>
+  </article>
+</div>

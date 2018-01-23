@@ -1,0 +1,33 @@
+
+<div class="button">
+    <%= link_to "Back To Home", appointments_path %>
+</div><br>
+
+<div class="field">
+  <div><h3>Appointment Date: </h3>
+    <%= @appointment.date.to_formatted_s(:long) %>
+  </div>
+</div>
+
+<div class="field">
+  <div><h3>Appointment Status: </h3>
+    <%= @appointment.status %>
+  </div>
+</div>
+
+<% if @appointment.date > Time.now && @appointment.status != 'cancelled' %>
+  <div class="field">
+    <%= link_to 'Cancel Appointment', {:action => :update_status, :controller => :appointments}, :method => :post %>
+  </div>
+<% end %>
+
+
+<h3>My Notes</h3>
+
+<div class="field">
+  <%= render @appointment.notes if @appointment.notes.present? %>
+</div>
+
+<div class="field">
+  <%= render 'notes/form' %>
+</div>
