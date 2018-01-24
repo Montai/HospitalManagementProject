@@ -17,17 +17,27 @@
 
   <div class="form-group">
     <%= f.label :Appointment_With %><br/>
-    <% if current_user.patient? %>
-      <%= f.collection_select(:doctor_id, @all_users, :id, :first_name) %>
-    <% else %>
-      <%= f.collection_select(:patient_id, @all_users, :id, :first_name) %>
-    <% end %>
+    <%= f.collection_select(:doctor_id, @all_users, :id, :first_name) %>
   </div>
 
   <div class="field">
     <%= f.label :Date %><br />
-    <%= f.datetime_select :date, start_year: 2017 %>
+    <%= f.datetime_select :date, start_year: 2018 %>
   </div>
+
+  <div class="field">
+    <h4>Cause:</h4>
+    <ul>
+      <%= f.fields_for :notes do |note_field| %>
+        <li>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= note_field.label :Description %><br>
+          <%= note_field.text_area :description %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
 
   <div class = "button">
     <%= f.submit %>

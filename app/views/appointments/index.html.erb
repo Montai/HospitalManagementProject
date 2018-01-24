@@ -7,7 +7,7 @@
     <h1>Listing Appointments</h1>
 
     <div class="field">
-      <h4>Hi, <%= current_user.first_name %> <%= current_user.last_name %></h4>
+      <h4>Hi, <%= current_user.first_name %></h4>
     </div>
 
     <div class="div-table">
@@ -16,8 +16,12 @@
           <div class="tc"><u><b>Name</b></u></div>
           <div class="tc"><u><b>Status</b></u></div>
           <div class="tc"><u><b>Show</b></u></div>
-          <div class="tc"><u><b>Edit</b></u></div>
-          <div class="tc"><u><b>Delete</b></u></div>
+          <% if current_user.patient? %>
+            <div class="tc"><u><b>Edit</b></u></div>
+            <div class="tc"><u><b>Delete</b></u></div>
+          <% else %>
+            <div class="tc"><u><b>Schedule Time</b></u></div>
+          <% end %>
         </div>
         <% @appointments.each do |apps| %>
         <div class="tr">
@@ -33,12 +37,16 @@
             <% end %>
             <div class="tc"> <%= apps.status %></div>
             <div class="tc"> <%= link_to "Show", appointment_path(apps) %></div>
-            <div class="tc"> <%= link_to "Edit", edit_appointment_path(apps) %></div>
-            <div class="tc">
-              <%= link_to appointment_path(apps) , method: :delete, data: {confirm: "Hey, Are you sure?"} do %>
-                Delete
-              <% end %>
-            </div>
+            <% if current_user.patient? %>
+              <div class="tc"> <%= link_to "Edit", edit_appointment_path(apps) %></div>
+              <div class="tc">
+                <%= link_to appointment_path(apps) , method: :delete, data: {confirm: "Hey, Are you sure?"} do %>
+                  Delete
+                <% end %>
+              </div>
+            <% else %>
+              <div class="tc"> <%= link_to "Schedule Time", edit_appointment_path(apps) %></div>
+            <% end %>
         </div>
         <% end %>
       </div>

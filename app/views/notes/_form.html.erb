@@ -1,9 +1,23 @@
 <%= form_for([@appointment, @appointment.notes.build]) do |f| %>
+
+  <div>
+    <% if @note && @note.errors.any? %>
+      <% @note.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+      <% end %>
+    <% end %>
+  </div>
+
+  <!-- <div class="field">
+    <%= @appointment.patient.first_name if current_user.patient? %>
+    <%= @appointment.doctor.first_name if current_user.doctor? %>
+  </div> -->
+
   <div class="field">
     <%= f.label :Description %><br>
     <%= f.text_area :description %>
   </div>
-  
+
   <div>
     <%= f.submit %>
   </div>

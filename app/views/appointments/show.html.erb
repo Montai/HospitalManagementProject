@@ -15,12 +15,12 @@
   </div>
 </div>
 
+
 <% if @appointment.date > Time.now && @appointment.status != 'cancelled' %>
   <div class="field">
     <%= link_to 'Cancel Appointment', {:action => :update_status, :controller => :appointments}, :method => :post %>
   </div>
 <% end %>
-
 
 <h3>My Notes</h3>
 
@@ -28,6 +28,8 @@
   <%= render @appointment.notes if @appointment.notes.present? %>
 </div>
 
-<div class="field">
-  <%= render 'notes/form' %>
-</div>
+<% if @appointment.status != 'closed' %>
+  <div class="field">
+    <%= render 'notes/form' %>
+  </div>
+<% end %>

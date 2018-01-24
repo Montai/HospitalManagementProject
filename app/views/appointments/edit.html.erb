@@ -1,2 +1,39 @@
-<h1>Edit Form</h1>
-<%= render 'form' %>
+
+  <% if current_user.patient? %>
+
+    <h1>Edit Form</h1>
+    <%= render 'form' %>
+
+ <% else %>
+
+  <h1>Schedule Time</h1>
+
+  <%= form_for (@appointment) do |f| %>
+    <% if @appointment.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= "#{ pluralize(@appointment.errors.count, "error") } prohibited this post from being saved:" %>
+        </h2>
+        <ul>
+          <% @appointment.errors.full_messages.each do |msg| %>
+            <li>
+              <%= msg %>
+            </li>
+            <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :Time %><br />
+      <%= f.datetime_select :date, start_year: 2018 %>
+    </div>
+
+
+    <div class = "button">
+      <%= f.submit %>
+    </div>
+
+  <% end %>
+
+<% end %>
