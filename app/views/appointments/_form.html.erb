@@ -22,7 +22,7 @@
 
   <div class="field">
     <%= f.label :Date %><br />
-    <%= f.datetime_select :date, start_year: 2018 %>
+    <%= f.datetime_select :date, start_year: 2018, default: 1.days.from_now %>
   </div>
 
   <div class="field">

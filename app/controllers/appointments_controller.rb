@@ -1,7 +1,8 @@
 class AppointmentsController < ApplicationController
 
-  # before_action :is_patient?, :only[:new, :create]
+  before_action :is_patient?, only:[:new, :create]
   # before_action :set_time_zone
+  before_action :check_status, only:[:index]
 
   def index
     @appointments = show_my_upcoming_appointments
@@ -74,6 +75,17 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = Appointment.find(params[:id])
+  end
+
+  def check_status
+    @appointments = show_my_upcoming_appointments
+    @appointments.each do |appointment|
+      if appointment.date > Time.now
+        appointment.status = 0
+      else
+        appointment.status = 1
+      end
+    end
   end
 
   private
