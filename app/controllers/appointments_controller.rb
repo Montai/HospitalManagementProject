@@ -6,15 +6,8 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = show_my_upcoming_appointments
-    # @appointments.each do |appointment|
-    #   if appointment.status == 2
-    #     next
-    #   elsif  appointment.date > Time.now
-    #     appointment.update_attribute(:status, :pending)
-    #   else appointment.date
-    #     appointment.update_attribute(:status, :completed)
-    #   end
-    # end
+    appointments = @appointments
+    update_appointment_date(appointments)
   end
 
   def new
@@ -28,7 +21,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointments_params)
 
     @appointment.patient_id = current_user.id
-    @appointment.status = get_current_status(@appointment.date)
+    @appointment.status = 'pending'
 
     if @appointment.save
       flash[:notice] = "Appointment saved!"
@@ -118,5 +111,16 @@ class AppointmentsController < ApplicationController
       end
     end
 
+    def update_appointment_date(appointments)
+      appointments.each do |appointment|
+        if appointment.cancelled?
+          next
+        elsif  appointment.date > Time.now
+          appointment.update_attribute(:status, :pending)
+        else appointment.date
+          appointment.update_attribute(:status, :completed)
+        end
+      end
+    end
 
 end
