@@ -14,11 +14,11 @@ class User < ActiveRecord::Base
   has_many :patient_appointments, class_name: "Appointment", foreign_key: :doctor_id, dependent: :destroy do
 
     def future
-      where("status = ?", 0).order('created_at DESC')
+      where("status = ? OR status = ?", 0, 2).order('created_at DESC')
     end
 
     def past
-      where("status = ? OR status = ?", 1, 2).order('created_at DESC')
+      where("status = ?", 1).order('created_at DESC')
     end
 
   end
@@ -27,11 +27,11 @@ class User < ActiveRecord::Base
   has_many :doctor_appointments, class_name: "Appointment", foreign_key: :patient_id, dependent: :destroy do
 
     def future
-      where("status = ?", 0).order('created_at DESC')
+      where("status = ? OR status = ?", 0, 2).order('created_at DESC')
     end
 
     def past
-      where("status = ? OR status = ?", 1, 2).order('created_at DESC')
+      where("status = ?", 1).order('created_at DESC')
     end
 
   end

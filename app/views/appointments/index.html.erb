@@ -15,10 +15,10 @@
           <div class="tc"><u><b>Date</b></u></div>
           <div class="tc"><u><b>Name</b></u></div>
           <div class="tc"><u><b>Status</b></u></div>
-          <div class="tc"><u><b>Show</b></u></div>
+          <!-- <div class="tc"><u><b>Show</b></u></div> -->
           <% if current_user.patient? %>
-            <div class="tc"><u><b>Edit</b></u></div>
-            <div class="tc"><u><b>Delete</b></u></div>
+            <div class="tc"><u><b>Actions</b></u></div>
+
           <% else %>
             <div class="tc"><u><b>Schedule Time</b></u></div>
           <% end %>
@@ -38,7 +38,9 @@
             <div class="tc"> <%= apps.status %></div>
             <div class="tc"> <%= link_to "Show", appointment_path(apps) %></div>
             <% if current_user.patient? %>
-              <div class="tc"> <%= link_to "Edit", edit_appointment_path(apps) %></div>
+              <% if apps.status != 'cancelled' %>
+                <div class="tc"> <%= link_to "Edit", edit_appointment_path(apps) %></div>
+              <% end %>
               <div class="tc">
                 <%= link_to appointment_path(apps) , method: :delete, data: {confirm: "Hey, Are you sure?"} do %>
                   Delete

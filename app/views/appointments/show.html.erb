@@ -28,7 +28,7 @@
   <%= render @appointment.notes if @appointment.notes.present? %>
 </div>
 
-<% if @appointment.status != 'closed' %>
+<% if @appointment.status != 'completed' && @appointment.status != 'cancelled' %>
   <div class="field">
     <%= render 'notes/form' %>
   </div>
