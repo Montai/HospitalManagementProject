@@ -16,3 +16,15 @@
 .main-container {
   width: 95%;
 }
+nav {
+  position: relative;
+  border: 2px solid black;
+  height: 40px;
+}
+li {
+  float: left;
+  padding-right: 40px;
+  list-style: none;
+  position: relative;
+  bottom: 4px;
+}

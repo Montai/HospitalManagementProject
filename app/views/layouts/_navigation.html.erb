@@ -1,25 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-    nav {
-      position: relative;
-      border: 2px solid black;
-      height: 40px;
-    }
-    li {
-      float: left;
-      padding-right: 40px;
-      list-style: none;
-      position: relative;
-      bottom: 4px;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="application.css">
 </head>
 <body>
-  <nav class="navbar navbar-default">
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
+  <nav class="navbar">
+    <div class="inner-navbar">
+      <ul class="nav-top">
         <% if user_signed_in? && current_user.patient? %>
           <li><%= link_to 'Home', authenticated_root_path %></li>
           <li><%= link_to 'New Appointment', new_appointment_path %></li>
