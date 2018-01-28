@@ -1,44 +1,61 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+<body>
+  <div class="div-table">
+    <div class="tr">
+      <div class="tc">
+        <div class="field">
+          <div><h3><u>Appointment Date: </u></h3>
+            <%= @appointment.date.strftime("%B %d, %Y") %>
+          </div>
+        </div>
+      </div>
 
-<div class="button">
-    <%= link_to "Back To Home", appointments_path %>
-</div><br>
+      <div class="tc">
+        <div class="field">
+          <div><h3><u>Appointment Status: </u></h3>
+            <%= @appointment.status %>
+          </div>
+        </div>
+      </div>
 
-<div class="field">
-  <div><h3>Appointment Date: </h3>
-    <%= @appointment.date.strftime("%B %d, %Y") %>
+      <div class="tc">
+        <div class="field">
+          <div><h3><u>Appointment Starting Time:</u></h3>
+            <%= @appointment.starting_time.to_s(:time) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="tc">
+        <div class="field">
+          <div><h3><u>Appointment Ending Time:</u></h3>
+            <%= @appointment.ending_time.to_s(:time) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="tc">
+        <% if @appointment.date > Time.now && @appointment.status != 'cancelled' %>
+          <div class="cancel-button-field">
+            <%= link_to 'Cancel Appointment', {:action => :update_status, :controller => :appointments}, :method => :post %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="field">
-  <div><h3>Appointment Status: </h3>
-    <%= @appointment.status %>
-  </div>
-</div>
+  <h3 class="text">My Notes</h3>
 
-<div class="field">
-  <div><h3>Appointment Starting Time:</h3>
-    <%= @appointment.starting_time.to_s(:time) %>
-  </div>
-  <div><h3>Appointment Ending Time:</h3>
-    <%= @appointment.ending_time.to_s(:time) %>
-  </div>
-</div>
-
-
-<% if @appointment.date > Time.now && @appointment.status != 'cancelled' %>
   <div class="field">
-    <%= link_to 'Cancel Appointment', {:action => :update_status, :controller => :appointments}, :method => :post %>
+    <%= render @appointment.notes if @appointment.notes.present? %><br>
   </div>
-<% end %>
 
-<h3>My Notes</h3>
-
-<div class="field">
-  <%= render @appointment.notes if @appointment.notes.present? %><br>
-</div>
-
-<% if @appointment.status != 'completed' && @appointment.status != 'cancelled' %>
-  <div class="field">
-    <%= render 'notes/form' %>
-  </div>
-<% end %>
+  <% if @appointment.status != 'completed' && @appointment.status != 'cancelled' %>
+    <div class="field">
+      <%= render 'notes/form' %>
+    </div>
+  <% end %>
+</body>

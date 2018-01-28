@@ -43,7 +43,7 @@ class AppointmentsController < ApplicationController
     end
 
     if @appointment.save
-      flash[:notice] = 'status changed!'
+      flash[:notice] = 'appointment cancelled!'
       redirect_to appointment_path(@appointment)
     else
       render authenticated_root_path

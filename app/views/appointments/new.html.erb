@@ -4,78 +4,78 @@
 </head>
 <body>
   <h1>Book Appointment</h1>
-<%= form_for (@appointment) do |f| %>
+  <%= form_for (@appointment) do |f| %>
 
-  <% if @appointment.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= "#{ pluralize(@appointment.errors.count, "error") } prohibited this post from being saved:" %>
-      </h2>
-      <ul>
-        <% @appointment.errors.full_messages.each do |msg| %>
-          <li>
-            <%= msg %>
-          </li>
-          <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="div-table">
-    <div class="tr">
-      <div class="tc">
-        <div class="form-group">
-          <%= f.label :Choose_Doctor %><br/>
-          <%= f.collection_select(:doctor_id, @all_users, :id, :first_name) %>
-        </div>
-      </div>
-    </div>
-
-    <div class="tr">
-      <div class="tc">
-        <div class="field">
-          <%= f.label :Date %><br />
-          <%= f.datetime_select :date, start_year: 2018, default: 1.days.from_now %>
-          <% if @appointment.errors.any? %>
-          <%= appointment.errors.messages[:date].first if @appointment.errors.messages[:date].present? %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-    <div class="tr">
-      <div class="tc">
-        <div class="field">
-          <%= f.label :Starting_Time %><br>
-          <%= f.time_select :starting_time %>
-        </div>
-      </div>
-    </div>
-
-    <div class="tr">
-      <div class="tc">
-        <div class="field">
-          <h4>Cause:</h4>
-
-            <%= f.fields_for :notes do |note_field| %>
-
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= note_field.label :Note %><br>
-                <%= note_field.text_area :description %><br>
-
+    <% if @appointment.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= "#{ pluralize(@appointment.errors.count, "error") } prohibited this post from being saved:" %>
+        </h2>
+        <ul>
+          <% @appointment.errors.full_messages.each do |msg| %>
+            <li>
+              <%= msg %>
+            </li>
             <% end %>
+        </ul>
+      </div>
+    <% end %>
 
+    <div class="div-table">
+      <div class="tr">
+        <div class="tc">
+          <div class="form-group">
+            <%= f.label :Choose_Doctor %><br/>
+            <%= f.collection_select(:doctor_id, @all_users, :id, :first_name, { class: "my-select-box" } ) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="tr">
+        <div class="tc">
+          <div class="field">
+            <%= f.label :Date %><br />
+            <%= f.datetime_select :date, start_year: 2018, default: 1.days.from_now %>
+            <% if @appointment.errors.any? %>
+            <%= appointment.errors.messages[:date].first if @appointment.errors.messages[:date].present? %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="tr">
+        <div class="tc">
+          <div class="field">
+            <%= f.label :Starting_Time %><br>
+            <%= f.time_select :starting_time %>
+          </div>
+        </div>
+      </div>
+
+      <div class="tr">
+        <div class="tc">
+          <div class="field">
+            <h4>Cause:</h4>
+
+              <%= f.fields_for :notes do |note_field| %>
+
+                  <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%= note_field.label :Note %><br>
+                  <%= note_field.text_area :description %><br>
+
+              <% end %>
+
+          </div>
+        </div>
+      </div>
+
+      <div class = "tr">
+        <div class="tc">
+          <%= f.submit :Book%>
         </div>
       </div>
     </div>
 
-    <div class = "tr">
-      <div class="tc">
-        <%= f.submit %>
-      </div>
-    </div>
-  </div>
-
-<% end %>
+  <% end %>
 
 </body>

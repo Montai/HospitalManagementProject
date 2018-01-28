@@ -1,17 +1,19 @@
-<div class="box">
-  <article class="media">
-    <div class="media-content">
-      <div class="content">
-        <p>
-          By:<%= "#{ note.user.first_name }" %><br>
-          Note: <%= note.description %><br>
-          <% if @appointment.status == 'pending' %>
-          <%= link_to 'Delete', [note.appointment, note],
-                   method: :delete, class: "button is-danger", data: { confirm: 'Are you sure to delete?' } %> |
-          <%= link_to 'Edit', edit_appointment_note_path(note.appointment, note) %>
-          <% end %>
-        </p>
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+<body>
+  <div class="div-table">
+    <div class="tr">
+      <div class="tc">
+        By:<%= "#{ note.user.first_name } on #{note.user.created_at}" %><br>
+        Note: <%= note.description %><br>
+        <% if @appointment.status == 'pending' %>
+        <%= link_to 'Delete', [note.appointment, note],
+                 method: :delete, class: "button is-danger", data: { confirm: 'Are you sure to delete?' } %> |
+        <%= link_to 'Edit', edit_appointment_note_path(note.appointment, note) %>
+        <% end %>
       </div>
     </div>
-  </article>
-</div>
+  </div>
+</body>
