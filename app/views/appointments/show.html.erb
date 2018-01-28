@@ -5,13 +5,22 @@
 
 <div class="field">
   <div><h3>Appointment Date: </h3>
-    <%= @appointment.date.to_formatted_s(:long) %>
+    <%= @appointment.date.strftime("%B %d, %Y") %>
   </div>
 </div>
 
 <div class="field">
   <div><h3>Appointment Status: </h3>
     <%= @appointment.status %>
+  </div>
+</div>
+
+<div class="field">
+  <div><h3>Appointment Starting Time:</h3>
+    <%= @appointment.starting_time.to_s(:time) %>
+  </div>
+  <div><h3>Appointment Ending Time:</h3>
+    <%= @appointment.ending_time.to_s(:time) %>
   </div>
 </div>
 

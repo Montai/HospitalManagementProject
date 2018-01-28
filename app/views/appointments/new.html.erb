@@ -46,6 +46,15 @@
     <div class="tr">
       <div class="tc">
         <div class="field">
+          <%= f.label :Starting_Time %><br>
+          <%= f.time_select :starting_time %>
+        </div>
+      </div>
+    </div>
+
+    <div class="tr">
+      <div class="tc">
+        <div class="field">
           <h4>Cause:</h4>
 
             <%= f.fields_for :notes do |note_field| %>

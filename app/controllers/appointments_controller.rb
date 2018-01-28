@@ -20,6 +20,12 @@ class AppointmentsController < ApplicationController
 
     @appointment.patient_id = current_user.id
     @appointment.status = 'pending'
+    @appointment.ending_time = @appointment.starting_time + 1.hour
+
+    # if check_appointment_collision(@appointment) == false
+    #   flash[:notice] = "Already appointed/ Time slot taken, please choose different time"
+    #   render 'new'
+    # end
 
     if @appointment.save
       flash[:notice] = "Appointment saved!"
@@ -80,7 +86,7 @@ class AppointmentsController < ApplicationController
   private
 
     def appointments_params
-      params.require(:appointment).permit(:date, :doctor_id, :patient_id,
+      params.require(:appointment).permit(:date, :doctor_id, :patient_id, :starting_time,
         # images_attributes: [:id, :imagable_id, :imagable_type, :image, :_destroy],
         notes_attributes: [:id, :description, :user_id, :_destroy])
     end
@@ -103,6 +109,28 @@ class AppointmentsController < ApplicationController
       else
         return 1
       end
+    end
+
+    def check_appointment_collision(current_appointment)
+      @appointments = Appointment.all.where('status = ?', 'pending')
+      @appointments.each do |appointment|
+        if current_appointment.doctor.first_name == appointment.doctor.first_name &&
+          current_appointment.patient.first_name == appointment.patient.first_name &&
+          current_appointment.date.strftime("%B %d, %Y") == appointment.date.strftime("%B %d, %Y")
+
+          return false
+
+        elsif current_appointment.doctor.first_name == appointment.doctor.first_name &&
+           current_appointment.patient.first_name != appointment.patient.first_name &&
+           current_appointment.date.strftime("%B %d, %Y") == appointment.date.strftime("%B %d, %Y") &&
+           (current_appointment.starting_time.to_s(:time) >= appointment.starting_time.to_s(:time) && current_appointment.starting_time.to_s(:time) >= appointment.ending_time.to_s(:time))
+
+           return false
+
+         end
+      end
+
+        return true
     end
 
 end

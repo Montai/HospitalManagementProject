@@ -25,7 +25,7 @@
           </div>
           <% @appointments.each do |apps| %>
           <div class="tr">
-              <div class="tc"> <%= apps.date.to_formatted_s(:long) %></div>
+              <div class="tc"> <%= apps.date.strftime("%B %d, %Y") %></div>
               <% if current_user.doctor? %>
                 <div class="tc"> <%= apps.patient.first_name  %>
                                  <%= apps.patient.last_name %> ( Patient )
