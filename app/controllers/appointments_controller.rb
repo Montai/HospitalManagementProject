@@ -1,13 +1,11 @@
 class AppointmentsController < ApplicationController
 
   before_action :is_patient?, only:[:new, :create]
-  # before_action :set_time_zone
 
 
   def index
-    @appointments = show_my_upcoming_appointments
-    appointments = @appointments
-    update_appointment_date(appointments)
+    @appointments = current_user.future_appointments
+    update_appointment_date
   end
 
   def new
@@ -47,7 +45,7 @@ class AppointmentsController < ApplicationController
   end
 
   def archive
-    @archives = show_my_previous_appointments
+    @archives = current_user.past_appointments
   end
 
   def edit
@@ -87,32 +85,8 @@ class AppointmentsController < ApplicationController
         notes_attributes: [:id, :description, :user_id, :_destroy])
     end
 
-    def get_current_status(date)
-      if date > Time.now
-        return 0
-      else
-        return 1
-      end
-    end
-
-    def show_my_upcoming_appointments
-      if current_user.doctor?
-        current_user.patient_appointments.future
-      else
-        current_user.doctor_appointments.future
-      end
-    end
-
-    def show_my_previous_appointments
-      if current_user.doctor?
-        current_user.patient_appointments.past
-      else
-        current_user.doctor_appointments.past
-      end
-    end
-
-    def update_appointment_date(appointments)
-      appointments.each do |appointment|
+    def update_appointment_date
+      @appointments.each do |appointment|
         if appointment.cancelled?
           next
         elsif  appointment.date > Time.now
@@ -120,6 +94,14 @@ class AppointmentsController < ApplicationController
         else appointment.date
           appointment.update_attribute(:status, :completed)
         end
+      end
+    end
+
+    def get_current_status(date)
+      if date > Time.now
+        return 0
+      else
+        return 1
       end
     end
 

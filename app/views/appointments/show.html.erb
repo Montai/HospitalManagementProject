@@ -25,7 +25,7 @@
 <h3>My Notes</h3>
 
 <div class="field">
-  <%= render @appointment.notes if @appointment.notes.present? %>
+  <%= render @appointment.notes if @appointment.notes.present? %><br>
 </div>
 
 <% if @appointment.status != 'completed' && @appointment.status != 'cancelled' %>

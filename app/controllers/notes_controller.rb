@@ -9,11 +9,6 @@ class NotesController < ApplicationController
     @appointment = Appointment.find(params[:appointment_id])
     @note = @appointment.notes.new(notes_params)
     @note.user_id = current_user.id
-    # if current_user.patient?
-    #   creator = @appointment.patient.first_name
-    # else
-    #   creator = @appointment.doctor.first_name
-    # end
     if @note.save
       flash[:notice] = "Saved successfully!"
       redirect_to appointment_path(@appointment)
@@ -23,12 +18,7 @@ class NotesController < ApplicationController
   end
 
   def show
-      @appointment = Appointment.find(params[:appointment_id])
-      # if current_user.patient?
-      #   creator = @appointment.patient.first_name
-      # else
-      #   creator = @appointment.doctor.first_name
-      # end
+    @appointment = Appointment.find(params[:appointment_id])
   end
 
   def destroy

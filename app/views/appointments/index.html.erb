@@ -4,52 +4,53 @@
 </head>
 
 <body>
-    <h1>Listing Appointments</h1>
+    <h1>My Appointments</h1>
+    <% if @appointments.blank? %>
+      <p>No appointments found.</p>
+    <% else %>
+      <div class="field">
+        <h4>Hi, <%= current_user.first_name %></h4>
+      </div>
 
-    <div class="field">
-      <h4>Hi, <%= current_user.first_name %></h4>
-    </div>
-
-    <div class="div-table">
-        <div class="tr">
-          <div class="tc"><u><b>Date</b></u></div>
-          <div class="tc"><u><b>Name</b></u></div>
-          <div class="tc"><u><b>Status</b></u></div>
-          <!-- <div class="tc"><u><b>Show</b></u></div> -->
-          <% if current_user.patient? %>
-            <div class="tc"><u><b>Actions</b></u></div>
-
-          <% else %>
-            <div class="tc"><u><b>Schedule Time</b></u></div>
+      <div class="div-table">
+          <div class="tr">
+            <div class="tc"><u><b>Date</b></u></div>
+            <div class="tc"><u><b>Name</b></u></div>
+            <div class="tc"><u><b>Status</b></u></div>
+            <% if current_user.patient? %>
+              <div class="tc"><u><b>Actions</b></u></div>
+            <% else %>
+              <div class="tc"><u><b>Schedule Time</b></u></div>
+            <% end %>
+          </div>
+          <% @appointments.each do |apps| %>
+          <div class="tr">
+              <div class="tc"> <%= apps.date.to_formatted_s(:long) %></div>
+              <% if current_user.doctor? %>
+                <div class="tc"> <%= apps.patient.first_name  %>
+                                 <%= apps.patient.last_name %> ( Patient )
+                </div>
+              <% else %>
+                <div class="tc"> <%= apps.doctor.first_name  %>
+                                 <%= apps.doctor.last_name %> ( Doctor )
+                </div>
+              <% end %>
+              <div class="tc"> <%= apps.status %></div>
+              <div class="tc"> <%= link_to "Show", appointment_path(apps) %></div>
+              <% if current_user.patient? %>
+                <% if apps.status != 'cancelled' %>
+                  <div class="tc"> <%= link_to "Edit", edit_appointment_path(apps) %></div>
+                <% end %>
+                <div class="tc">
+                  <%= link_to appointment_path(apps) , method: :delete, data: {confirm: "Hey, Are you sure?"} do %>
+                    Delete
+                  <% end %>
+                </div>
+              <% else %>
+                <div class="tc"> <%= link_to "Schedule Time", edit_appointment_path(apps) %></div>
+              <% end %>
+          </div>
           <% end %>
         </div>
-        <% @appointments.each do |apps| %>
-        <div class="tr">
-            <div class="tc"> <%= apps.date.to_formatted_s(:long) %></div>
-            <% if current_user.doctor? %>
-              <div class="tc"> <%= apps.patient.first_name  %>
-                               <%= apps.patient.last_name %> ( Patient )
-              </div>
-            <% else %>
-              <div class="tc"> <%= apps.doctor.first_name  %>
-                               <%= apps.doctor.last_name %> ( Doctor )
-              </div>
-            <% end %>
-            <div class="tc"> <%= apps.status %></div>
-            <div class="tc"> <%= link_to "Show", appointment_path(apps) %></div>
-            <% if current_user.patient? %>
-              <% if apps.status != 'cancelled' %>
-                <div class="tc"> <%= link_to "Edit", edit_appointment_path(apps) %></div>
-              <% end %>
-              <div class="tc">
-                <%= link_to appointment_path(apps) , method: :delete, data: {confirm: "Hey, Are you sure?"} do %>
-                  Delete
-                <% end %>
-              </div>
-            <% else %>
-              <div class="tc"> <%= link_to "Schedule Time", edit_appointment_path(apps) %></div>
-            <% end %>
-        </div>
-        <% end %>
-      </div>
+      <% end %>
 </body>

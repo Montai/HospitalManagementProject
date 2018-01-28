@@ -1,10 +1,13 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  validates :first_name, presence: true, length: { maximum: 15 }, format: { with: /\A[a-zA-Z]+\z/,
+  validates :first_name, presence: true, length: { minimun: 2, maximum: 15 }, format: { with: /\A[a-zA-Z]+\z/,
       message: "only allows letters" }
-  validates :last_name, presence: true, length: { maximum: 15 }, format: { with: /\A[a-zA-Z]+\z/,
+  validates :last_name, presence: true, length: { minimum: 2, maximum: 15 }, format: { with: /\A[a-zA-Z]+\z/,
       message: "only allows letters" }
+  validates :email, presence: true, uniqueness: true, format: { with: /\A(\S+)@(.+)\.(\S+)\z/, message: "Check e-mail format" }
+  validates :password, presence: true, length: { minimum: 6, maximum: 20 }
+  validates_confirmation_of :password
 
   enum role: [:patient, :doctor]
 
@@ -41,16 +44,25 @@ class User < ActiveRecord::Base
   has_many :images, as: :imageable
   has_many :notes
 
-  def appointments
-    res = self.patient_appointments if self.doctor?
-    res = self.doctor_appointments if self.patient?
-    res
+
+  def future_appointments
+    result = self.patient_appointments.future if self.doctor?
+    result = self.doctor_appointments.future.includes(:doctor) if self.patient?
+    result
   end
 
-  def self.getalldoctors
-    self.all.select('id, first_name').doctor
+  def past_appointments
+    result = self.patient_appointments.past if self.doctor?
+    result = self.doctor_appointments.past.includes(:doctor) if self.patient?
+    result
   end
 
+  class << self
 
+    def getalldoctors
+      self.all.select('id, first_name').doctor
+    end
+
+  end
 
 end

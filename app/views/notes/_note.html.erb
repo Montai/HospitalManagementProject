@@ -3,6 +3,7 @@
     <div class="media-content">
       <div class="content">
         <p>
+          By:<%= "#{ note.user.first_name }" %><br>
           Note: <%= note.description %><br>
           <% if @appointment.status == 'pending' %>
           <%= link_to 'Delete', [note.appointment, note],
