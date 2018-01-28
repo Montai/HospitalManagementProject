@@ -11,7 +11,7 @@
         <% if @appointment.status == 'pending' %>
         <%= link_to 'Delete', [note.appointment, note],
                  method: :delete, class: "button is-danger", data: { confirm: 'Are you sure to delete?' } %> |
-        <%= link_to 'Edit', edit_appointment_note_path(note.appointment, note) %>
+        <!-- <%= link_to 'Edit', edit_appointment_note_path(note.appointment, note) %> -->
         <% end %>
       </div>
     </div>
