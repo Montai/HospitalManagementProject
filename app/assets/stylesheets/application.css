@@ -20,11 +20,13 @@ nav {
   position: relative;
   border: 2px solid black;
   height: 40px;
+  background-color: lightblue;
 }
 li {
   float: left;
   padding-right: 40px;
   list-style: none;
+  text-decoration: none;
   position: relative;
   bottom: 4px;
 }

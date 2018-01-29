@@ -4,7 +4,7 @@ class AppointmentsController < ApplicationController
 
 
   def index
-    @appointments = current_user.future_appointments
+    @appointments = current_user.future_appointments.paginate(:page => params[:page], :per_page => 10)
     update_appointment_date
   end
 
@@ -51,7 +51,7 @@ class AppointmentsController < ApplicationController
   end
 
   def archive
-    @archives = current_user.past_appointments
+    @archives = current_user.past_appointments.paginate(:page => params[:page], :per_page => 10)
   end
 
   def edit

@@ -9,6 +9,7 @@ gem 'devise', '~> 4.4'
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'mini_magick', '~> 4.8'
 gem 'haml'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
