@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <head>
   <link rel="stylesheet" type="text/css" href="mystyle.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 <body>
-  <h1>Book Appointment</h1>
+  <h1 class="text">Book Appointment</h1>
   <%= form_for (@appointment) do |f| %>
 
     <% if @appointment.errors.any? %>

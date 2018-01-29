@@ -1,0 +1,33 @@
+h1 {
+  font-family: 'Raleway', sans-serif;
+  position: relative;
+  left: 70px;
+  font-size: 10px;
+}
+h3 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+}
+.content-div {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+}
+.post-title {
+  border: 1px solid blue;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+}
+.created_at, .read-more {
+  padding: 10px;
+  margin: 5px;
+}
+.container {
+  width: 1000px;
+  position: relative;
+  left: 2px;
+}
+.post-container {
+  border: 5px solid lightblue;
+  padding: 10px;
+}

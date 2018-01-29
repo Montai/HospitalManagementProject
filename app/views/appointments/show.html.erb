@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <head>
   <link rel="stylesheet" type="text/css" href="mystyle.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 <body>
+  <h3 class="text"><u>Appointment Details</u></h3>
   <div class="div-table">
     <div class="tr">
       <div class="tc">
         <div class="field">
-          <div><h3><u>Appointment Date: </u></h3>
+          <div><h5><u>Appointment Date: </u></h5>
             <%= @appointment.date.strftime("%B %d, %Y") %>
           </div>
         </div>
@@ -15,7 +17,7 @@
 
       <div class="tc">
         <div class="field">
-          <div><h3><u>Appointment Status: </u></h3>
+          <div><h5><u>Appointment Status: </u></h5>
             <%= @appointment.status %>
           </div>
         </div>
@@ -23,7 +25,7 @@
 
       <div class="tc">
         <div class="field">
-          <div><h3><u>Appointment Starting Time:</u></h3>
+          <div><h5><u>Appointment Starting Time:</u></h5>
             <%= @appointment.starting_time.to_s(:time) %>
           </div>
         </div>
@@ -31,23 +33,25 @@
 
       <div class="tc">
         <div class="field">
-          <div><h3><u>Appointment Ending Time:</u></h3>
+          <div><h5><u>Appointment Ending Time:</u></h5>
             <%= @appointment.ending_time.to_s(:time) %>
           </div>
         </div>
       </div>
 
       <div class="tc">
+        <div class="field">
         <% if @appointment.date > Time.now && @appointment.status != 'cancelled' %>
           <div class="cancel-button-field">
             <%= link_to 'Cancel Appointment', {:action => :update_status, :controller => :appointments}, :method => :post %>
           </div>
         <% end %>
       </div>
+      </div>
     </div>
   </div>
 
-  <h3 class="text">My Notes</h3>
+  <h3 class="text"><u>My Notes</u></h3>
 
   <div class="field">
     <%= render @appointment.notes if @appointment.notes.present? %><br>

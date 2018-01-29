@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <head>
   <link rel="stylesheet" type="text/css" href="mystyle.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 <body>
  <% if current_user.patient? %>
 
-    <h1>Update Appointment</h1>
+    <h1 class="text">Update My Appointment</h1>
     <%= render 'form' %>
 
  <% else %>
 
-  <h1>Schedule Time</h1>
+  <h1 class="text">Schedule Time</h1>
 
   <%= form_for (@appointment) do |f| %>
 

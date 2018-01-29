@@ -24,25 +24,8 @@ class Appointment < ActiveRecord::Base
       self.where('status = ?', 'completed' ).order('created_at DESC')
     end
 
-    def check_appointment_collision(appointments, current_appointment)
-      appointments.each do |appointment|
-        if current_appointment.doctor.first_name == appointment.doctor.first_name &&
-          current_appointment.patient.first_name == appointment.patient.first_name &&
-          current_appointment.date.strftime("%B %d, %Y") == appointment.date.strftime("%B %d, %Y")
-
-          return false
-
-        elsif current_appointment.doctor.first_name == appointment.doctor.first_name &&
-           current_appointment.patient.first_name != appointment.patient.first_name &&
-           current_appointment.date.strftime("%B %d, %Y") == appointment.date.strftime("%B %d, %Y") &&
-           (current_appointment.starting_time.to_s(:time) >= appointment.starting_time.to_s(:time) && current_appointment.starting_time.to_s(:time) >= appointment.ending_time.to_s(:time))
-
-           return false
-
-         end
-      end
-
-        return true
+    def all_pending_appointments
+      self.where('status = ?', 'pending')
     end
 
   end

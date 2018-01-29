@@ -16,22 +16,22 @@ class AppointmentsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @appointment = Appointment.new(appointments_params)
 
     @appointment.patient_id = current_user.id
     @appointment.status = 'pending'
     @appointment.ending_time = @appointment.starting_time + 1.hour
 
-    # if check_appointment_collision(@appointment) == false
+    # if check_appointment_collision(@appointment) == true
     #   flash[:notice] = "Already appointed/ Time slot taken, please choose different time"
-    #   render 'new'
     # end
 
     if @appointment.save
       flash[:notice] = "Appointment saved!"
       redirect_to authenticated_root_path
     else
-      flash[:alert] = "Opps!"
+      flash[:notice] = "Opps!"
       render 'new'
     end
   end
@@ -56,14 +56,13 @@ class AppointmentsController < ApplicationController
 
   def edit
     @appointment = Appointment.find(params[:id])
-    if current_user.patient?
-      @all_users = User.getalldoctors
-    end
+    @all_users = User.getalldoctors
   end
 
   def update
     @appointment = Appointment.find(params[:id])
     @appointment.status = get_current_status(@appointment.date)
+    @appointment.ending_time = @appointment.starting_time + 1.hour
     if @appointment.update(appointments_params)
       flash[:notice] = "Updated successfully!"
       redirect_to authenticated_root_path
@@ -95,7 +94,7 @@ class AppointmentsController < ApplicationController
       @appointments.each do |appointment|
         if appointment.cancelled?
           next
-        elsif  appointment.date > Time.now
+        elsif appointment.date > Time.now
           appointment.update_attribute(:status, :pending)
         else appointment.date
           appointment.update_attribute(:status, :completed)
@@ -112,25 +111,26 @@ class AppointmentsController < ApplicationController
     end
 
     def check_appointment_collision(current_appointment)
-      @appointments = Appointment.all.where('status = ?', 'pending')
+      @appointments = Appointment.all_pending_appointments
       @appointments.each do |appointment|
         if current_appointment.doctor.first_name == appointment.doctor.first_name &&
           current_appointment.patient.first_name == appointment.patient.first_name &&
           current_appointment.date.strftime("%B %d, %Y") == appointment.date.strftime("%B %d, %Y")
 
-          return false
+          return true
+        end
 
-        elsif current_appointment.doctor.first_name == appointment.doctor.first_name &&
+        if current_appointment.doctor.first_name == appointment.doctor.first_name &&
            current_appointment.patient.first_name != appointment.patient.first_name &&
            current_appointment.date.strftime("%B %d, %Y") == appointment.date.strftime("%B %d, %Y") &&
            (current_appointment.starting_time.to_s(:time) >= appointment.starting_time.to_s(:time) && current_appointment.starting_time.to_s(:time) >= appointment.ending_time.to_s(:time))
 
-           return false
+           return true
 
-         end
+        end
       end
 
-        return true
+        return false
     end
 
 end

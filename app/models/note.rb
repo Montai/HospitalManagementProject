@@ -5,7 +5,6 @@ class Note < ActiveRecord::Base
 
   before_create  do
     self.user_id = appointment.patient_id
-    self.user_id = appointment.doctor_id 
   end
 
 end

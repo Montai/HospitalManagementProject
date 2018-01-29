@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
       message: "only allows letters" }
   validates :last_name, presence: true, length: { minimum: 2, maximum: 15 }, format: { with: /\A[a-zA-Z]+\z/,
       message: "only allows letters" }
-  validates :email, presence: true, uniqueness: true, format: { with: /\A(\S+)@(.+)\.(\S+)\z/, message: "Check e-mail format" }
+  validates :email, presence: true, uniqueness: true, format: { with: /\A(\S+)@(.+)\.(\S+)\z/, message: "Check e-mail format(abc123@example.com)" }
   validates :password, presence: true, length: { minimum: 6, maximum: 20 }
   validates_confirmation_of :password
 
