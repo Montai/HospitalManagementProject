@@ -3,6 +3,7 @@
   <link rel="stylesheet" type="text/css" href="note_style.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
+
 <body>
   <div class="section-container">
     <div class="container">
@@ -14,10 +15,13 @@
         <h5>By:<%= "#{ note.user.first_name } on #{note.user.created_at.strftime("%B %d, %Y")}" %></h5>
         <% if @appointment.status == 'pending' %>
         <%= link_to 'Delete', [note.appointment, note],
-                 method: :delete, class: "button is-danger", data: { confirm: 'Are you sure to delete?' } %> |
+                 method: :delete, class: "button is-danger", data: { confirm: 'Are you sure to delete?' } %>
         <!-- <%= link_to 'Edit', edit_appointment_note_path(note.appointment, note) %> -->
         <% end %>
       </div>
     </div>
+  </div>
+  <div id="note_field">
+    
   </div>
 </body>

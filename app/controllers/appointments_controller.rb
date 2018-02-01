@@ -4,7 +4,7 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = current_user.future_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)
-    update_appointment_date
+    UpdateWorker.perform_async(@appointments)
   end
 
   def new
@@ -24,11 +24,6 @@ class AppointmentsController < ApplicationController
       format.js
     end
   end
-
-  # def set_date
-  #   @appointment = Appointment.find(params[:id])
-  #   @appointment.date = params[:my_date]
-  # end 
 
   def create
     @appointment = Appointment.new(appointments_params)
@@ -130,7 +125,7 @@ class AppointmentsController < ApplicationController
   end
 
   def formatted_appointment_slots(slots)
-    slots.map{|k| k.strftime("%H:%M") if k.present?}
+    slots.map{ |k| k.strftime("%H:%M") if k.present? }
   end
 
   private
@@ -139,18 +134,6 @@ class AppointmentsController < ApplicationController
       params.require(:appointment).permit(:date, :doctor_id, :patient_id, :starting_time,
         # images_attributes: [:id, :imagable_id, :imagable_type, :image, :_destroy],
         notes_attributes: [:id, :description, :user_id, :_destroy])
-    end
-
-    def update_appointment_date
-      @appointments.each do |appointment|
-        if appointment.cancelled?
-          next
-        elsif appointment.date > Time.now
-          appointment.update_attribute(:status, :pending)
-        else
-          appointment.update_attribute(:status, :completed)
-        end
-      end
     end
 
     def get_current_status(date)

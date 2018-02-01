@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+  
   devise_for :users,
               controllers: {
                 registrations: "registrations",
@@ -23,9 +26,8 @@ Rails.application.routes.draw do
 
   #patch 'appointments/:id' => "appointments#update_status", as: :update_status
   match 'appointments/:id/update_status' => "appointments#update_status", :via => :post
-  match 'appointments/:id/set_date' => "appointments#set_date", :via => :post
   get 'archive' => "appointments#archive"
-
+  
 
 
 end
