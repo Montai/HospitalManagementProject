@@ -1,82 +1,70 @@
-<!DOCTYPE html>
-<head>
-  <link rel="stylesheet" type="text/css" href="mystyle.css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-</head>
-<body>
-  <h1 class="text">Book Appointment</h1>
-  <%= form_for (@appointment) do |f| %>
 
-    <% if @appointment.errors.any? %>
-      <div id="error_explanation">
-        <h2>
-          <%= "#{ pluralize(@appointment.errors.count, "error") } prohibited this post from being saved:" %>
-        </h2>
-        <ul>
-          <% @appointment.errors.full_messages.each do |msg| %>
-            <li>
-              <%= msg %>
-            </li>
-            <% end %>
-        </ul>
-      </div>
-    <% end %>
 
-    <div class="div-table">
-      <div class="tr">
-        <div class="tc">
-          <div class="form-group">
-            <%= f.label :Choose_Doctor %><br/>
-            <%= f.collection_select(:doctor_id, @all_users, :id, :first_name, { class: "my-select-box" } ) %>
-          </div>
-        </div>
-      </div>
+<h1 class="text">Book Appointment</h1>
 
-      <div class="tr">
-        <div class="tc">
-          <div class="field">
-            <%= f.label :Date %><br />
-            <%= f.datetime_select :date, start_year: 2018, default: 1.days.from_now %>
-            <% if @appointment.errors.any? %>
-            <%= appointment.errors.messages[:date].first if @appointment.errors.messages[:date].present? %>
-            <% end %>
-          </div>
-        </div>
-      </div>
 
-      <div class="tr">
-        <div class="tc">
-          <div class="field">
-            <%= f.label :Choose_Time %><br>
-            <%= f.time_select :starting_time %>
-          </div>
-        </div>
-      </div>
+<%= form_for (@appointment) do |f| %>
 
-      <div class="tr">
-        <div class="tc">
-          <div class="field">
-            <h4>Cause:</h4>
+  <% if @appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= "#{ pluralize(@appointment.errors.count, "error") } prohibited this post from being saved:" %>
+      </h2>
+      <ul>
+        <% @appointment.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+          <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-              <%= f.fields_for :notes do |note_field| %>
-
-                  <%= f.hidden_field :user_id, value: current_user.id %>
-                  <%= note_field.label :Note %><br>
-                  <%= note_field.text_area :description %><br>
-
-              <% end %>
-
-          </div>
-        </div>
-      </div>
-
-      <div class = "tr">
-        <div class="tc">
-          <%= f.submit :Book%>
+  <div class="div-table">
+    <div class="tr">
+      <div class="tc">
+        <div class="form-group">
+          <%= f.label :Choose_Doctor %><br/>
+          <%= f.collection_select(:doctor_id, @all_users, :id, :first_name ) %>
         </div>
       </div>
     </div>
 
-  <% end %>
+    <div class="tr">
+      <div class="tc">
+        <div class="field">
+          <%= f.label :Date %><br />
+          <%= f.date_select :date, start_year: 2018, default: 1.days.from_now, id: 'selected_date' %>
+          <%= link_to "Check Availability", '#', id: "get_timeslots", remote: true %>
+        </div>
+      </div>
 
-</body>
+    <div id="available_slots">
+      
+    </div>
+
+    </div>
+
+    <div class="tr">
+      <div class="tc">
+        <div class="field">
+          <h4>Cause:</h4>
+
+            <%= f.fields_for :notes do |note_field| %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= note_field.label :Note %><br>
+                <%= note_field.text_area :description, placeholder: "Leave note here." %><br>
+            <% end %>
+
+        </div>
+      </div>
+    </div>
+
+    <div class = "tr">
+      <div class="tc">
+        <%= f.submit :book %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

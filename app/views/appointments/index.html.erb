@@ -20,8 +20,6 @@
             <div class="tc"><u><b>Status</b></u></div>
             <% if current_user.patient? %>
               <div class="tc"><u><b>Actions</b></u></div>
-            <% else %>
-              <div class="tc"><u><b>Schedule Time</b></u></div>
             <% end %>
           </div>
           <% @appointments.each do |apps| %>
@@ -47,8 +45,6 @@
                     Delete
                   <% end %>
                 </div>
-              <% else %>
-                <div class="tc"> <%= link_to "Schedule Time", edit_appointment_path(apps) %></div>
               <% end %>
           </div>
           <% end %>

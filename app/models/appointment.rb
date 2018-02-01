@@ -1,5 +1,7 @@
 class Appointment < ActiveRecord::Base
 
+  attr_accessor :time_slot
+
   enum status: [:pending, :completed, :cancelled]
 
   belongs_to :patient, class_name: "User", foreign_key: 'patient_id'
@@ -18,6 +20,8 @@ class Appointment < ActiveRecord::Base
     self.errors.add(:date, "please add appointment after 1 hour") and return if self.date < Time.now + 1.hour
   end
 
+  
+
   class << self
 
     def closed_status
@@ -27,6 +31,10 @@ class Appointment < ActiveRecord::Base
     def all_pending_appointments
       self.where('status = ?', 'pending')
     end
+
+    def available_appointment_slots(curr_app_date)
+      where('date = ?',curr_app_date).pluck('starting_time')
+    end    
 
   end
 

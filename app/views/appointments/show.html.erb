@@ -34,7 +34,7 @@
       <div class="tc">
         <div class="field">
           <div><h5><u>Appointment Ending Time:</u></h5>
-            <%= @appointment.ending_time.to_s(:time) %>
+            <%= (@appointment.starting_time + 1.hour).to_s(:time) %>
           </div>
         </div>
       </div>
