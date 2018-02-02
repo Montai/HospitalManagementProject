@@ -1,5 +1,7 @@
 class NotesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def new
     @appointment = Appointment.new
     @note = @appointment.notes.build

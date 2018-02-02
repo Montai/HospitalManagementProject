@@ -29,6 +29,7 @@
 // });
 $(document).ready(function(){
 	$('#get_timeslots').on('click', function(){
+		$("#get_timeslots").hide();
 		var date = $('#appointment_date_1i').val() + '-' + $('#appointment_date_2i').val() + '-' + $('#appointment_date_3i').val();
 		$.ajax({
 			url: '/appointments/available_slots',

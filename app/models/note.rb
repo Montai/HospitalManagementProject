@@ -3,7 +3,7 @@ class Note < ActiveRecord::Base
   belongs_to :appointment
   belongs_to :user
 
-  before_create  do
+  before_create do
     self.user_id = appointment.patient_id
   end
 
