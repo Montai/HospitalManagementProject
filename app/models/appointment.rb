@@ -25,15 +25,15 @@ class Appointment < ActiveRecord::Base
   class << self
 
     def closed_status
-      self.where('status = ?', 'completed' ).order('created_at DESC')
+      where('status = ?', 'completed' ).order('created_at DESC')
     end
 
     def all_pending_appointments
-      self.where('status = ?', 'pending')
+      where('status = ?', 'pending')
     end
 
     def available_appointment_slots(curr_app_date)
-      where('date = ?',curr_app_date).pluck('starting_time')
+      where('date = ? ',curr_app_date).pluck('starting_time')
     end    
 
   end

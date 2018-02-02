@@ -1,4 +1,4 @@
-<%= form_for([@appointment, @appointment.notes.build]) do |f| %>
+<%= form_for([@appointment, @appointment.notes.build], remote: true) do |f| %>
 
   <div>
     <% if @note && @note.errors.any? %>
@@ -8,11 +8,6 @@
     <% end %>
   </div>
 
-  <!-- <div class="field">
-    <%= @appointment.patient.first_name if current_user.patient? %>
-    <%= @appointment.doctor.first_name if current_user.doctor? %>
-  </div> -->
-
   <div class="field">
     <%= f.label :Description %><br>
     <%= f.text_area :description %>
@@ -21,4 +16,5 @@
   <div>
     <%= f.submit %>
   </div>
+
 <% end %>

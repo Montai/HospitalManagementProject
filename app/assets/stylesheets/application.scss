@@ -16,17 +16,29 @@
 .main-container {
   width: 95%;
 }
+select#appointment_doctor_id {
+  width: 16%;
+}
+a#get_timeslots {
+  text-docoration: none;
+}
 nav {
   position: relative;
-  border: 2px solid black;
+  border: 2px solid lightblue;
   height: 40px;
   background-color: lightblue;
+  top: -10px;
+  left: -8px;
+  width: 101%;
 }
 li {
   float: left;
   padding-right: 40px;
   list-style: none;
-  text-decoration: none;
+  a {
+    text-decoration: none;
+    color: midnightblue;
+  }
   position: relative;
   bottom: 4px;
 }

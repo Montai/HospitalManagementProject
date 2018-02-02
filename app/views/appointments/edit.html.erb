@@ -28,7 +28,7 @@
       <div class="tc">
         <div class="form-group">
           <%= f.label :Choose_Doctor %><br/>
-          <%= f.collection_select(:doctor_id, @all_users, :id, :first_name ) %>
+          <%= f.collection_select(:doctor_id, @all_doctors, :id, :first_name ) %>
         </div>
       </div>
     </div>

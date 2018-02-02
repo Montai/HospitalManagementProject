@@ -11,7 +11,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new
     # @image = @appointment.images.build
     @note = @appointment.notes.build({user_id: current_user.id})
-    @all_users = User.getalldoctors
+    @all_doctors = User.getalldoctors
   end
 
   def available_slots
@@ -28,8 +28,7 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointments_params)
     @appointment.patient_id = current_user.id
-    @appointment.status = 'pending'
-    @all_users = User.getalldoctors
+    @all_doctors = User.getalldoctors
     @appointment.starting_time = params[:time_slot]
 
     # @available_slots = []
@@ -69,18 +68,12 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  # def set
-  #   @appointment = Appointment.find(params[:id])
-  #   if params[:appointment] == "10:00"
-  #     flash[:notice] = "Setted Starting Time"
-  #     @appointment.starting_time = "10:00"
-  #   end 
-  # end 
-
   def update_status
     @appointment = Appointment.find(params[:id])
     if @appointment.date > Time.now
       @appointment.status = 2
+      time_slot = @appointment.starting_time
+      @available_slots << time_slot
     end
 
     if @appointment.save
@@ -97,7 +90,7 @@ class AppointmentsController < ApplicationController
 
   def edit
     @appointment = Appointment.find(params[:id])
-    @all_users = User.getalldoctors
+    @all_doctors = User.getalldoctors
   end
 
   def update

@@ -43,6 +43,7 @@
   }
   .text {
     text-align: center;
+    left: 2%;
     font-size: 60px;
     font-family: 'Nunito', sans-serif;
   }
