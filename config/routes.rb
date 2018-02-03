@@ -2,11 +2,10 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 
-  devise_for :users,
-              controllers: {
+  devise_for :users, controllers: {
                 registrations: "registrations",
                 sessions: "sessions"
-              }
+  }
 
 
   devise_scope :user do
@@ -29,6 +28,4 @@ Rails.application.routes.draw do
   get 'archive' => "appointments#archive"
   root to: "appointments#index"
   
-
-
 end

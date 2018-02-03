@@ -14,23 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-// function get_radio_value() {
-// 	var radioValue = $("#radio_buttons:checked").val();
-// 		$.ajax({
-// 			url: "/appointments",
-// 			type: "POST",
-// 			data: { start_time: radioValue },
-// 			cache: false,
-// 			success: function(data) {
-// 				alert(data + 'sent');
-// 			},
-// 			error: function(xhr, ajaxOptions, thrownError) {},
-// 			timeout: 15000
-// 		});
-// 	}
-	// $.(function() {
- //      $("#radio_buttons").click(function() {
- //        var radioValue = $("#radio_buttons:checked").val();
- //        return true;
- //      });
- //    });
