@@ -1,7 +1,8 @@
 class AppointmentsController < ApplicationController
 
   before_action :is_patient?, only:[:new, :create]
-  before_action :authenticate_user!
+  before_action :search_appointment, only:[:update_status, :edit, :update, :destroy, :show]
+  
 
   def index
     @appointments = current_user.future_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)
@@ -48,8 +49,6 @@ class AppointmentsController < ApplicationController
   end
 
   def update_status
-    @appointment = Appointment.find(params[:id])
-
     if @appointment.date > Time.now
       @appointment.status = 2
       time_slot = @appointment.starting_time
@@ -69,12 +68,10 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    @appointment = Appointment.find(params[:id])
     @all_doctors = User.getalldoctors
   end
 
   def update
-    @appointment = Appointment.find(params[:id])
     @appointment.status = get_current_status(@appointment.date)
     @appointment.starting_time = params[:time_slot]
     @appointment.ending_time = @appointment.starting_time + 1.hour
@@ -88,13 +85,11 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    @appointment = Appointment.find(params[:id])
     @appointment.destroy
     redirect_to authenticated_root_path
   end
 
   def show
-    @appointment = Appointment.find(params[:id])
   end
 
   def formatted_appointment_slots(slots)
@@ -103,6 +98,10 @@ class AppointmentsController < ApplicationController
 
   private
 
+    def search_appointment
+      @appointment = Appointment.find(params[:id])
+    end
+
     def appointments_params
       params.require(:appointment).permit(:date, :doctor_id, :patient_id, :starting_time,
         # images_attributes: [:id, :imagable_id, :imagable_type, :image, :_destroy],
@@ -110,10 +109,8 @@ class AppointmentsController < ApplicationController
     end
 
     def get_current_status(date)
-      if date > Time.now
-        return 0
-      else
-        return 1
-      end
+      return 0 if date > Time.now
+      return 1
     end
+
 end

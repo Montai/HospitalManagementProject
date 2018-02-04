@@ -13,7 +13,7 @@
       <ul>
         <% @appointment.errors.full_messages.each do |msg| %>
           <li>
-            <%= msg %>
+            <%= msg %><br>
           </li>
           <% end %>
       </ul>
@@ -52,7 +52,7 @@
           <h4>Cause:</h4>
 
             <%= f.fields_for :notes do |note_field| %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%#= f.hidden_field :user_id, value: current_user.id %>
                 <%= note_field.label :Note %><br>
                 <%= note_field.text_area :description, placeholder: "Leave note here." %><br>
             <% end %>

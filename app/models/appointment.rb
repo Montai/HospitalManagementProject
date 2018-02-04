@@ -20,7 +20,6 @@ class Appointment < ActiveRecord::Base
     self.errors.add(:date, "please add appointment after 1 hour") and return if self.date < Time.now + 1.hour
   end
 
-  
 
   class << self
 

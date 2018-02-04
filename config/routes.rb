@@ -26,6 +26,5 @@ Rails.application.routes.draw do
   #patch 'appointments/:id' => "appointments#update_status", as: :update_status
   match 'appointments/:id/update_status' => "appointments#update_status", :via => :post
   get 'archive' => "appointments#archive"
-  root to: "appointments#index"
   
 end

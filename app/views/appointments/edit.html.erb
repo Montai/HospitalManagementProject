@@ -48,21 +48,6 @@
 
     </div>
 
-    <div class="tr">
-      <div class="tc">
-        <div class="field">
-          <h4>Cause:</h4>
-
-            <%= f.fields_for :notes do |note_field| %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= note_field.label :Note %><br>
-                <%= note_field.text_area :description, placeholder: "Leave note here." %><br>
-            <% end %>
-
-        </div>
-      </div>
-    </div>
-
     <div class = "tr">
       <div class="tc">
         <%= f.submit :book %>

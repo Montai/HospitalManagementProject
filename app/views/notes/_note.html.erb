@@ -12,7 +12,7 @@
           <h3 class="content-div">Note:</h3>
         </div>
         <div style="width: 200px; word-wrap: break-word;"><%= note.description %><br></div>
-        <h5>By:<%= "#{ note.user.first_name } on #{note.user.created_at.strftime("%B %d, %Y")}" %></h5>
+        <h5>By:<%= "#{ note.user.first_name } on #{note.updated_at.strftime("%B %d, %Y")}" %></h5>
         <% if @appointment.status == 'pending' %>
         <%= link_to 'Delete', [note.appointment, note],
                  method: :delete, class: "button is-danger", data: { confirm: 'Are you sure to delete?' } %>
@@ -21,6 +21,7 @@
       </div>
     </div>
   </div>
+  
   <div id="note_field">
     
   </div>

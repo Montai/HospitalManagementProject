@@ -3,8 +3,10 @@ class Note < ActiveRecord::Base
   belongs_to :appointment
   belongs_to :user
 
+
   before_create do
-    self.user_id = appointment.patient_id
+    self.user_id = appointment.patient_id if user.role == "patient"
+    self.user_id = appointment.doctor_id if user.role == "doctor"
   end
 
 end
