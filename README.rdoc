@@ -1,1 +1,4 @@
-![Alt text](http://localhost:3000/erd)
+ER diagram of Hospital Management System
+
+
+https://user-images.githubusercontent.com/33694050/35873257-349b5e2a-0b8f-11e8-94e1-bdc4586b445b.png
