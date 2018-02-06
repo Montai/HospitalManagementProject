@@ -12,7 +12,7 @@ class Appointment < ActiveRecord::Base
   accepts_nested_attributes_for :notes, :allow_destroy => true
 
   validates :date, presence: true
-  validate :validate_appointment_date
+  validate :validate_appointment_date 
 
 
   def validate_appointment_date

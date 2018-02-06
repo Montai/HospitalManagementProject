@@ -5,9 +5,7 @@ class Note < ActiveRecord::Base
 
 
   before_create do
-  	# binding.pry
-    self.user_id = appointment.patient_id if user.role == "patient"
-    self.user_id = appointment.doctor_id if user.role == "doctor"
+    self.user_id = appointment.patient_id 
   end
 
 end

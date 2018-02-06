@@ -73,6 +73,7 @@ class AppointmentsController < ApplicationController
 
   def update
     @appointment.status = get_current_status(@appointment.date)
+    @all_doctors = User.getalldoctors
     @appointment.starting_time = params[:time_slot]
     @appointment.ending_time = @appointment.starting_time + 1.hour
     if @appointment.update(appointments_params)
