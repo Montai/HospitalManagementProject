@@ -26,7 +26,6 @@
         <div class="form-group">
           <%= f.label :Choose_Doctor %><br/>
           <%= f.collection_select(:doctor_id, @all_doctors, :id, :first_name ) %>
-          <%#= link_to "Set Doctor", '#', id: "doctor_drop_down", remote: true %>
         </div>
       </div>
     </div>

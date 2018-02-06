@@ -6,10 +6,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-    def after_sign_in_path_for(resource)
-      appointments_path
-    end
-
     def is_patient?
       return if current_user.blank?
       return if current_user.patient?

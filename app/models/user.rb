@@ -1,12 +1,25 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  validates :first_name, presence: true, length: { minimun: 2, maximum: 15 }, format: { with: /\A[a-zA-Z]+\z/,
-      message: "only allows letters" }
-  validates :last_name, presence: true, length: { minimum: 2, maximum: 15 }, format: { with: /\A[a-zA-Z]+\z/,
-      message: "only allows letters" }
-  validates :email, presence: true, uniqueness: true, format: { with: /\A(\S+)@(.+)\.(\S+)\z/, message: "Check e-mail format(abc123@example.com)" }
-  validates :password, presence: true, length: { minimum: 6, maximum: 20 }
+  validates :first_name, 
+            presence: true, 
+            length: { minimun: 2, maximum: 15 }, 
+            format: { with: /\A[a-zA-Z]+\z/, message: "only letters are allowed" }
+
+  validates :last_name, 
+            presence: true, 
+            length: { minimum: 2, maximum: 15 }, 
+            format: { with: /\A[a-zA-Z]+\z/, message: "only letters are allowed" }
+
+  validates :email, 
+            presence: true, 
+            uniqueness: true, 
+            format: { with: /\A(\S+)@(.+)\.(\S+)\z/, message: "Check e-mail format(abc123@example.com)" }
+
+  validates :password, 
+            presence: true, 
+            length: { minimum: 6, maximum: 20 }
+
   validates_confirmation_of :password
 
   enum role: [:patient, :doctor]
@@ -60,9 +73,15 @@ class User < ActiveRecord::Base
   class << self
 
     def getalldoctors
-      self.all.select('id, first_name').doctor
+      all.select('id, first_name').doctor
     end
 
   end
+
+  # after_create :welcome_send
+
+  # def welcome_send 
+  #   UserMailer.signup_confirmation(self).deliver
+  # end 
 
 end
