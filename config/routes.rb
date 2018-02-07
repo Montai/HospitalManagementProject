@@ -20,7 +20,8 @@ Rails.application.routes.draw do
 
   resources :appointments do
     get :available_slots, on: :collection
-    resources :notes, :images
+    resources :notes
+    resources :images, only: [:show]
   end
 
   #patch 'appointments/:id' => "appointments#update_status", as: :update_status
