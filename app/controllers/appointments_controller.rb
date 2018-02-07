@@ -12,6 +12,7 @@ class AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @note = @appointment.notes.build({user_id: current_user.id})
+    @image = @appointment.images.build
     @all_doctors = User.getalldoctors
   end
 
@@ -91,6 +92,7 @@ class AppointmentsController < ApplicationController
   end
 
   def show
+    @image = Image.where('imagable_id = ?', @appointment.id)
   end
 
   def formatted_appointment_slots(slots)
@@ -105,7 +107,7 @@ class AppointmentsController < ApplicationController
 
     def appointments_params
       params.require(:appointment).permit(:date, :doctor_id, :patient_id, :starting_time,
-        # images_attributes: [:id, :imagable_id, :imagable_type, :image, :_destroy],
+        images_attributes: [:id, :imagable_id, :imagable_type, :image, :_destroy],
         notes_attributes: [:id, :description, :user_id, :_destroy])
     end
 

@@ -60,6 +60,19 @@
       </div>
     </div>
 
+    <div class="tr">
+      <div class="tc">
+        <div class="field">
+          <h4>Upload Disease Image</h4>
+
+          <%= f.fields_for :images do |image_field| %>
+            <%= image_field.label :Image %></br>
+            <%= image_field.file_field :image %></br>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
     <div class = "tr">
       <div class="tc">
         <%= f.submit :book %>

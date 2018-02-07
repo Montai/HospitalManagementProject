@@ -8,7 +8,7 @@ class Appointment < ActiveRecord::Base
   belongs_to :doctor, class_name: "User", foreign_key: 'doctor_id'
   has_many :notes, dependent: :destroy
   has_many :images, as: :imagable, dependent: :destroy
-  # accepts_nested_attributes_for :images, :allow_destroy => true
+  accepts_nested_attributes_for :images, :allow_destroy => true
   accepts_nested_attributes_for :notes, :allow_destroy => true
 
   validates :date, presence: true

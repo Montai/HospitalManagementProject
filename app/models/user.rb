@@ -54,8 +54,8 @@ class User < ActiveRecord::Base
 
   has_many :visited_doctors, through: :doctor_appointments
   has_many :patients, through: :patient_appointments
-  has_many :images, as: :imageable
-  has_many :notes
+  has_many :images, as: :imageable, dependent: :destroy
+  has_many :notes, dependent: :destroy
 
 
   def future_appointments
