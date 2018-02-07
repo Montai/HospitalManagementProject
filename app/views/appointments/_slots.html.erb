@@ -1,6 +1,6 @@
 <div class="tr">
-  <div class="tc">
-    <div id="radio_buttons">
+  <div class="tc" id="tc">
+    <div class="radio_buttons">
       <%= label_tag :Available_Slots %><br />
       <% @available_slots.each do |slots| %>
         <%= radio_button_tag(:time_slot, "#{slots}") %>

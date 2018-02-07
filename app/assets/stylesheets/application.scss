@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ 
 .main-container {
   width: 95%;
 }
@@ -122,4 +123,8 @@ input#user_email, input#user_password, input#user_first_name, input#user_last_na
   width: 72%;
   height: 30px;
 }
-
+div#tc {
+  border: 2px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px green;
+}
