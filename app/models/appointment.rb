@@ -4,15 +4,26 @@ class Appointment < ActiveRecord::Base
 
   enum status: [:pending, :completed, :cancelled]
 
-  belongs_to :patient, class_name: "User", foreign_key: 'patient_id'
-  belongs_to :doctor, class_name: "User", foreign_key: 'doctor_id'
-  has_many :notes, dependent: :destroy
-  has_many :images, as: :imagable, dependent: :destroy
-  accepts_nested_attributes_for :images, :allow_destroy => true
-  accepts_nested_attributes_for :notes, :allow_destroy => true
-
   validates :date, presence: true
+  
   validate :validate_appointment_date 
+
+  belongs_to :patient, 
+              class_name: "User", 
+              foreign_key: 'patient_id'
+  belongs_to :doctor, 
+              class_name: "User", 
+              foreign_key: 'doctor_id'
+
+  has_many :notes, dependent: :destroy
+
+  has_many :images, as: :imagable, dependent: :destroy
+
+  accepts_nested_attributes_for :images, allow_destroy: true
+
+  accepts_nested_attributes_for :notes, allow_destroy: true
+
+
 
 
   def validate_appointment_date

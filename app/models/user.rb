@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  enum role: [:patient, :doctor]
+
   validates :first_name, 
             presence: true, 
             length: { minimun: 2, maximum: 15 }, 
@@ -21,13 +23,14 @@ class User < ActiveRecord::Base
             length: { minimum: 6, maximum: 20 }
 
   validates_confirmation_of :password
-
-  enum role: [:patient, :doctor]
+  
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :patient_appointments, class_name: "Appointment", foreign_key: :doctor_id, dependent: :destroy do
+  has_many :patient_appointments, 
+            class_name: "Appointment", 
+            foreign_key: :doctor_id, dependent: :destroy do
 
     def future
       where("status = ? OR status = ?", 0, 2).order('created_at DESC')
@@ -40,7 +43,9 @@ class User < ActiveRecord::Base
   end
 
 
-  has_many :doctor_appointments, class_name: "Appointment", foreign_key: :patient_id, dependent: :destroy do
+  has_many :doctor_appointments, 
+            class_name: "Appointment", 
+            foreign_key: :patient_id, dependent: :destroy do
 
     def future
       where("status = ? OR status = ?", 0, 2).order('created_at DESC')
