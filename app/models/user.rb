@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+
   enum role: [:patient, :doctor]
 
   validates :first_name, 
             presence: true, 
-            length: { minimun: 2, maximum: 15 }, 
+            length: { minimum: 2, maximum: 15 }, 
             format: { with: /\A[a-zA-Z]+\z/, message: "only letters are allowed" }
 
   validates :last_name, 
@@ -33,11 +34,12 @@ class User < ActiveRecord::Base
             foreign_key: :doctor_id, dependent: :destroy do
 
     def future
-      where("status = ? OR status = ?", 0, 2).order('created_at DESC')
+      where("status = ? OR status = ?", 0,2).order('date ASC')
     end
 
     def past
-      where("status = ?", 1).order('created_at DESC')
+      where.not(status: 0).order("field(status, 3,1,2)").order("date ASC")
+      #where("status = ? OR status = ? OR status = ?", 3, 1, 2).order('date ASC')
     end
 
   end
@@ -48,18 +50,19 @@ class User < ActiveRecord::Base
             foreign_key: :patient_id, dependent: :destroy do
 
     def future
-      where("status = ? OR status = ?", 0, 2).order('created_at DESC')
+      where("status = ? OR status = ?", 0,2).order('date ASC')
     end
 
     def past
-      where("status = ?", 1).order('created_at DESC')
+      where.not(status: 0).order("field(status, 3,1,2)").order("date ASC")
+      #where("status = ? OR status = ? OR status = ?", 3, 1, 2).order('date ASC')
     end
 
   end
 
   has_many :visited_doctors, through: :doctor_appointments
   has_many :patients, through: :patient_appointments
-  has_many :images, as: :imageable, dependent: :destroy
+  has_many :images, as: :imagable, dependent: :destroy
   has_many :notes, dependent: :destroy
 
 
@@ -73,7 +76,7 @@ class User < ActiveRecord::Base
     result = self.patient_appointments.past if self.doctor?
     result = self.doctor_appointments.past.includes(:doctor) if self.patient?
     result
-  end
+  end 
 
   class << self
 

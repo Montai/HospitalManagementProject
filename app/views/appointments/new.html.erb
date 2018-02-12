@@ -1,31 +1,17 @@
 
+<%= link_to image_tag("Back.png", :size => '80x50'), appointments_path %><br>
 
-<h1 class="text">Book Appointment</h1>
 
+<%= form_for(@appointment)  do |f| %>
 
-<%= form_for (@appointment) do |f| %>
-
-  <% if @appointment.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= "#{ pluralize(@appointment.errors.count, "error") } prohibited this post from being saved:" %>
-      </h2>
-      <ul>
-        <% @appointment.errors.full_messages.each do |msg| %>
-          <li>
-            <%= msg %><br>
-          </li>
-          <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="div-table">
+  <div class="div-table" id="edit_div">
+  <h2 class="edit-heading">Book Appointment</h2><hr>
     <div class="tr">
       <div class="tc">
         <div class="form-group">
-          <%= f.label :Choose_Doctor %><br/>
-          <%= f.collection_select(:doctor_id, @all_doctors, :id, :first_name ) %>
+          <%#= f.label :Choose_Doctor %>
+          <label style="margin-right: 20px;" for="doctor"><b>Choose Doctor</b></label>
+          <%= f.collection_select(:doctor_id, @all_doctors, :id, :first_name) %>
         </div>
       </div>
     </div>
@@ -33,49 +19,72 @@
     <div class="tr">
       <div class="tc">
         <div class="field">
-          <%= f.label :Date %><br />
-          <%= f.date_select :date, start_year: 2018, default: 1.days.from_now, id: 'selected_date' %><br>
-          <%= link_to "Check Availability", '#', id: "get_timeslots", remote: true %>
+          <%#= f.label :Date %>
+          <label style="margin-right: 40px;" for="date"><b>Select Date</b></label>
+          <%#= f.date_select :date, start_year: 2018, default: 1.days.from_now, id: 'selected_date' %>
+          <%= f.date_field :date, :value => (Date.today + 1).strftime('%Y-%m-%d'), min: Date.today + 1.day, max: Date.today + 5.months %>
+          <%#= link_to "Check Availability", available_slots_appointments_path, id: "get_timeslots", remote: true %>
         </div>
       </div>
+    </div><hr>
 
-    <div id="available_slots">
+
+    <!-- <div class="tr">
+      <div class="tc">
+        <div class="field">
+          <div id="available_slots">
       
-    </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    
 
-    </div>
+    
 
     <div class="tr">
       <div class="tc">
         <div class="field">
           <h4>Cause:</h4>
-
             <%= f.fields_for :notes do |note_field| %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%#= f.hidden_field :user_id, value: current_user.id %>
                 <%= note_field.label :Note %><br>
-                <%= note_field.text_area :description, placeholder: "Leave note here." %><br>
+                <%= note_field.text_area :description, placeholder: "Leave note here.", required: true %><br>
             <% end %>
-
         </div>
       </div>
-    </div>
+    </div><hr>
 
     <div class="tr">
       <div class="tc">
         <div class="field">
-          <h4>Upload Disease Image</h4>
-
-          <%= f.fields_for :images do |image_field| %>
-            <%= image_field.label :Image %></br>
-            <%= image_field.file_field :image %></br>
-          <% end %>
+        <%#= f.label :image %>
+        <label style="margin-right: 80px;" for="image"><b>Choose Image</b></label>
+        <%= f.file_field :image, required: true %>
+        <% if @appointment.errors.any? %>
+          <%= @appointment.errors.messages[:image].first if @appointment.errors.messages[:image].present? %>
+        <% end %>
         </div>
       </div>
     </div>
 
+    <!-- <div class="tr">
+      <div class="tc">
+        <div class="field">
+          <h4>Upload Disease Image</h4>
+
+          <%#= f.fields_for :images do |image_field| %>
+            <%#= image_field.label :Image %></br>
+            <%#= image_field.file_field :image %></br>
+          <%# end %>
+        </div>
+      </div>
+    </div> -->
+
+
     <div class = "tr">
       <div class="tc">
-        <%= f.submit :book %>
+        <%= f.submit :Book, :class => 'update-button' %>
       </div>
     </div>
   </div>

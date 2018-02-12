@@ -5,13 +5,12 @@
 </head>
 
 <body>
-    <h1 class="text">My Appointments</h1>
+
+    <h1 class="text">My Upcoming Appointments</h1>
     <% if @appointments.blank? %>
       <p>No appointments found.</p>
     <% else %>
-      <div class="field">
-        <h4>Hi, <%= current_user.first_name %></h4>
-      </div>
+      
 
       <div class="div-table">
           <div class="tr">
@@ -35,14 +34,14 @@
                 </div>
               <% end %>
               <div class="tc"> <%= apps.status %></div>
-              <div class="tc"> <%= link_to "Show", appointment_path(apps) %></div>
+              <div class="tc"> <%= link_to image_tag("Show.png", :size => '20x20'), appointment_path(apps) %></div>
               <% if current_user.patient? %>
                 <% if apps.status != 'cancelled' %>
-                  <div class="tc"> <%= link_to "Edit", edit_appointment_path(apps) %></div>
+                  <div class="tc"> <%= link_to image_tag("Edit.png", :size => '20x20'), edit_appointment_path(apps) %></div>
                 <% end %>
                 <div class="tc">
                   <%= link_to appointment_path(apps) , method: :delete, data: {confirm: "Hey, Are you sure?"} do %>
-                    Delete
+                    <%= image_tag("Delete.png", :size => '20x20') %>
                   <% end %>
                 </div>
               <% end %>

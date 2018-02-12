@@ -23,11 +23,16 @@ h3 {
   margin: 5px;
 }
 .container {
-  width: 1000px;
+  width: 500px;
   position: relative;
   left: 2px;
 }
 .post-container {
   border: 5px solid lightblue;
   padding: 10px;
+}
+.note-content {
+  width: 80%; 
+  word-wrap: break-word;
+  background-image: url("Note.jpg");
 }

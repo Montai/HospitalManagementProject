@@ -13,6 +13,7 @@ class NotesController < ApplicationController
       flash[:notice] = "Saved successfully!"
       redirect_to appointment_path(@appointment)
     else
+      flash[:alert] = "Unable to save!"
       render 'new'
     end
   end

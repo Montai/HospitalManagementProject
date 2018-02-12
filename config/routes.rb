@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   #patch 'appointments/:id' => "appointments#update_status", as: :update_status
   match 'appointments/:id/update_status' => "appointments#update_status", :via => :post
+  match 'appointments/:id/visited_patient_appointment' => "appointments#visited_patient_appointment", :via => :post
   get 'archive' => "appointments#archive"
+
   
 end

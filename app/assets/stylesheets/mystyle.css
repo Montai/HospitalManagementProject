@@ -8,18 +8,29 @@
     /*border: 1px solid black; */
   }
   .text-left {
-    style="font-size: 30px;
+    font-size: 30px;
     font-family: 'Nunito', sans-serif;
     text-align: center;
+  }
+  .div-form {
+    display: table;
+    position: relative;
+    left: 25%;
+    width: 40%;
+    border: 2px solid black;
+    border-spacing: 5px;
+    border-radius: 5px;
+    margin: 20px;
   }
   .div-table {
     display: table;
     width: 100%;
-    background-color: darkgrey;
-    border: 2px solid black;
+    border: 2px solid lightgrey;
     border-spacing: 5px;
     margin: 20px;
+    box-shadow: 0px 2px 20px 2px green;
   }
+
   .tr {
     display: table-row;
   }
@@ -28,6 +39,7 @@
     vertical-align: top;
     background-color: #fff;
     padding: 5px 10px;
+    text-align: center;
   }
 
   .field {
@@ -42,18 +54,20 @@
     top: 10px;
   }
   .text {
-    text-align: center;
+    text-align: left;
+    position: relative;
     left: 2%;
     font-size: 60px;
     font-family: 'Nunito', sans-serif;
   }
   .paginate-field {
-    margin-top: 10px;
-    position: fixed;
+    margin-top: 5px;
+    /*position: fixed;*/
     left: 40%;
+    text-align: center;
   }
 
-  .paginate-field { padding: 3px; margin: 3px; }
+  .paginate-field { padding: 2px; margin: 2px; }
   .paginate-field a { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #aaaadd; text-decoration: none; color: #000099; }
   .paginate-field a:hover,
   .paginate-field a:active { border: 1px solid #000099; color: #000; }

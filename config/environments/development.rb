@@ -49,7 +49,7 @@ Rails.application.configure do
     password: ENV["GMAIL_PASSWORD"]
   }
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  PAGINATION_PAGES = 10
+  PAGINATION_PAGES = 8
   TOTAL_SLOTS = ["10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00",
                   "18:00","19:00","20:00"]
 

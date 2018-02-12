@@ -4,29 +4,46 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 <body>
+
+  <%= link_to image_tag("Back.png", :size => '80x50'), appointments_path %><br>
+
   <h3 class="text"><u>Appointment Details</u></h3>
   <div class="div-table">
     <div class="tr">
+    <div class="tc">
+      <% if current_user.patient? %>
+        <h4><u>Doctor Name</u><h2><%= @appointment.doctor.first_name %> <%= @appointment.doctor.last_name %></h2></h4>
+        
+      <% else %>
+        <h4><u>Patient Name</u><h2><%= @appointment.patient.first_name %> <%= @appointment.patient.last_name %></h2></h4>
+      <% end %>
+    </div>
+    </div>
+
+    <div class="tr">
       <div class="tc">
         <div class="field">
-          <div><h5><u>Appointment Date: </u></h5>
-            <%= @appointment.date.strftime("%B %d, %Y") %>
+          <div><h4><u>Appointment Date </u> <h2><%= @appointment.date.strftime("%B %d, %Y") %></h2></h4>
           </div>
         </div>
       </div>
+    </div>
 
+
+    <div class="tr">
       <div class="tc">
         <div class="field">
-          <div><h5><u>Appointment Status: </u></h5>
-            <%= @appointment.status %>
+          <div><h4><u>Appointment Status </u> <h2><%= @appointment.status %></h2></h4>
+            
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="tc">
+      <!-- <div class="tc">
         <div class="field">
           <div><h5><u>Appointment Starting Time:</u></h5>
-            <%= @appointment.starting_time.to_s(:time) %>
+            <%#= @appointment.starting_time.to_s(:time) %>
           </div>
         </div>
       </div>
@@ -34,28 +51,50 @@
       <div class="tc">
         <div class="field">
           <div><h5><u>Appointment Ending Time:</u></h5>
-            <%= (@appointment.starting_time + 1.hour).to_s(:time) %>
+            <%#= (@appointment.starting_time + 1.hour).to_s(:time) %>
           </div>
         </div>
-      </div>
+      </div> -->
+    
 
+    <div class="tr">
       <div class="tc">
         <div class="field">
-        <% if @appointment.date > Time.now && @appointment.status != 'cancelled' %>
-          <div class="cancel-button-field">
-            <%= link_to 'Cancel Appointment', {:action => :update_status, :controller => :appointments}, :method => :post %>
-          </div>
-        <% end %>
-      </div>
-      </div>
-
-      <div class="tc">
-        <div class="field">
-          <%= link_to 'Show Image', appointment_image_path(@appointment, @image) %>
+          <%#= link_to 'Show Image', appointment_image_path(@appointment, @image) %>
+          <% if @appointment.image.present? %>
+          <%#= image_tag(@appointment.image.thumb) %>
+          <%= link_to @appointment.image.url, class: "fancybox" do %>
+            <%= image_tag(@appointment.image.thumb) %>
+          <% end %> 
+          <% else %>
+            <h6>No image</h6>
+          <% end %>
+          <%#= link_to image_tag(@image.first.image.thumb), appointment_image_path(@appointment, @image), class: 'dock-item' %>
         </div>
       </div>
     </div>
+
+
+    <div class="tr">
+      <div class="tc">
+        <div class="field">
+        <% if @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d") ||
+         @appointment.date > Time.now && (@appointment.status == "pending" ) %>
+          <div class="cancel-button-field">
+            <%= link_to image_tag("Cancel.png", :size => '60x60'), {:action => :update_status, :controller => :appointments}, :method => :post, data: { confirm: "Are you sure?" } %>
+            <% if current_user.doctor? and @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d") %>
+            <%= link_to image_tag("Approve.png", :size => '55x55'), {:action => :visited_patient_appointment , :controller => :appointments}, :method => :post, data: { confirm: "Are you sure?" } %>
+          <% end %>
+          </div>
+          
+        <% end %>
+       </div>
+      </div>
+    </div><br>
+
   </div>
+
+  
 
   <h3 class="text"><u>My Notes</u></h3>
 
@@ -63,9 +102,10 @@
     <%= render @appointment.notes if @appointment.notes.present? %><br>
   </div>
 
-  <% if @appointment.status != 'completed' && @appointment.status != 'cancelled' %>
+  <% if @appointment.status != 'unvisited' && @appointment.status != 'cancelled' %>
     <div class="field">
       <%= render 'notes/form' %>
     </div>
   <% end %>
 </body>
+
