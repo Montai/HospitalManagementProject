@@ -1,3 +1,0 @@
-ER diagram of Hospital Management System
-
-https://user-images.githubusercontent.com/33694050/35906307-060c92dc-0c10-11e8-96ca-c8bba6c8a68f.png
