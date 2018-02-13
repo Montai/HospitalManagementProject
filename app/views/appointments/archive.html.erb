@@ -1,0 +1,48 @@
+
+  <link rel="stylesheet" type="text/css" href="mystyle.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+
+
+
+<%= link_to image_tag("Back.png", :size => '80x50'), appointments_path %><br>
+
+<h1 class="text">Closed Appointments</h1>
+
+<% if @archives.blank? %>
+  <p>No appointments found.</p>
+<% else %>
+
+  <div class="div-table">
+    <div class="tr">
+      <div class="tc"><u><b>Date</b></u></div>
+      <div class="tc"><u><b>Name</b></u></div>
+      <div class="tc"><u><b>Status</b></u></div>
+      <div class="tc"><u><b>Show</b></u></div>
+    </div>
+    <% @archives.each do |apps| %>
+      <div class="tr">
+          <div class="tc"> <%= apps.date.to_formatted_s(:long) %></div>
+          <% if current_user.doctor? %>
+            <div class="tc"> <%= apps.patient.first_name  %>
+                             <%= apps.patient.last_name %> ( Patient )
+            </div>
+          <% else %>
+            <div class="tc"> <%= apps.doctor.first_name  %>
+                             <%= apps.doctor.last_name %> ( Doctor )
+            </div>
+          <% end %>
+          <div class="tc"> <%= apps.status %></div>
+          <div class="tc"> <%= link_to image_tag("Show.png", :size => '20x20'), appointment_path(apps) %></div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="paginate-field">
+    <%= will_paginate @archives %>
+  </div>
+  
+<% end %>
+      
+
+
