@@ -1,6 +1,6 @@
 class Appointment < ActiveRecord::Base
 
-  attr_accessor :time_slot
+  # attr_accessor :time_slot
   mount_uploader :image, ImageUploader
 
   enum status: [:pending, :unvisited, :cancelled, :visited]
