@@ -5,8 +5,8 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = current_user.future_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)
-    @check_status = Appointment.where(status: 0)
-    perform_update(@check_status)
+    @curr_appointments = Appointment.where(status: 0)
+    perform_update(@curr_appointments)
   end
 
   def new
