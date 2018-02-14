@@ -34,6 +34,7 @@ class NotesController < ApplicationController
   def check_user
     @appointment = Appointment.find(params[:appointment_id])
     @note = @appointment.notes.find(params[:id])
+    #Restrict user to edit other users notes
     redirect_to authenticated_root_path and return if current_user.id != @note.user_id
   end 
 
