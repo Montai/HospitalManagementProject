@@ -11,13 +11,22 @@ class NotesController < ApplicationController
     @appointment = Appointment.find(params[:appointment_id])
     @note = @appointment.notes.new(notes_params)
     @note.user_id = current_user.id
-    if @note.save
-      flash[:notice] = "Saved successfully!"
-      redirect_to appointment_path(@appointment)
-    else
-      flash[:alert] = "Unable to save!"
-      render 'new'
-    end
+    respond_to do |format|
+      if @note.save 
+        format.html { redirect_to appointment_path(@appointment), notice: "Saved successfully" }
+        format.js
+      else
+        format.html { render 'new', notice: "Try again" }
+        format.js
+      end 
+    end 
+    # if @note.save
+    #   flash[:notice] = "Saved successfully!"
+    #   redirect_to appointment_path(@appointment)
+    # else
+    #   flash[:alert] = "Unable to save!"
+    #   render 'new'
+    # end
   end
 
   def show
