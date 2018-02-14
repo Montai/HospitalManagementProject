@@ -1,5 +1,7 @@
 class NotesController < ApplicationController
 
+  before_action :check_user, only:[:edit, :destroy]
+
   def new
     @appointment = Appointment.new
     @note = @appointment.notes.build
@@ -28,6 +30,12 @@ class NotesController < ApplicationController
     @note.destroy
     redirect_to appointment_path(@appointment)
   end
+
+  def check_user
+    @appointment = Appointment.find(params[:appointment_id])
+    @note = @appointment.notes.find(params[:id])
+    redirect_to authenticated_root_path and return if current_user.id != @note.user_id
+  end 
 
   def edit
     @appointment = Appointment.find(params[:appointment_id])

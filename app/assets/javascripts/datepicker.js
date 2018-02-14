@@ -16,17 +16,17 @@ $(document).ready(function(){
 			$("#error-box").html('this is an error-box');
 		}
 
-		// else {
-		// 	$("#available_slots").show();
-		// 	$.ajax({
-		// 	url: '/appointments/available_slots',
-		// 	data: { selected_date: date },
-		// 	success: function(data){
-		// 		console.log('fetched!');
-		// 		console.log(date);
+		else {
+			$("#available_slots").show();
+			$.ajax({
+			url: '/appointments/available_slots',
+			data: { selected_date: date },
+			success: function(data){
+				console.log('fetched!');
+				console.log(date);
 
-		// 	}
-		//     })
-		// }
+			}
+		    })
+		}
 
 })

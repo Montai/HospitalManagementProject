@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
 
   before_action :is_patient?, only:[:new, :create]  
+  before_action :check_user, only:[:edit]
 
   def index
     @appointments = current_user.future_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)
@@ -38,6 +39,16 @@ class AppointmentsController < ApplicationController
       render 'new'
     end
   end
+
+  def check_user
+    @appointment = Appointment.find(params[:id])
+    if current_user.doctor? or current_user.id != @appointment.patient_id
+      redirect_to authenticated_root_path and return
+    end 
+    unless current_user.patient? and current_user.id == @appointment.patient_id
+      redirect_to edit_appointment_path(@appointment)
+    end         
+  end 
 
   def edit
     @appointment = Appointment.find(params[:id])
@@ -96,9 +107,9 @@ class AppointmentsController < ApplicationController
   def perform_update(appointments)
     # Do something
     appointments.each do |appointment|
-        if appointment.date.strftime("%Y-%m-%d") < Time.now.strftime("%Y-%m-%d")
-          appointment.update_attribute(:status, :unvisited)
-        end
+      if appointment.date.strftime("%Y-%m-%d") < Time.now.strftime("%Y-%m-%d")
+        appointment.update_attribute(:status, :unvisited)
+      end
     end
   end
 
