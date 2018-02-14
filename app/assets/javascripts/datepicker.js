@@ -12,7 +12,6 @@ $(document).ready(function(){
 
 		if (m < mm || d <= dd) {
 			alert("sorry, choose another date");
-			// $("#available_slots").hide();
 			$("#error-box").html('this is an error-box');
 		}
 
