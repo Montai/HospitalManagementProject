@@ -98,9 +98,13 @@
 
   <h3 class="text"><u>My Notes</u></h3>
 
-  <div class="field">
-    <%= render @appointment.notes if @appointment.notes.present? %><br>
+  <div class="field" id="<%= @appointment.id %>">
+    <% @appointment.notes.each do |note| %>
+      <%= render 'notes/note', note: note %>
+    <% end %>
   </div>
+    
+ 
 
   <% if @appointment.status != 'unvisited' && @appointment.status != 'visited' && @appointment.status != 'cancelled' %>
     <div class="field">

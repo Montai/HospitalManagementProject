@@ -1,6 +1,4 @@
 
-<link rel="stylesheet" type="text/css" href="note_style.css">
-
 <div class="section-container">
   <div class="container">
     <div class="post-container">
@@ -9,17 +7,13 @@
       </div>
       <div class="note-content"><%= note.description %><br></div>
       <h5>By:<%= "#{ note.user.first_name } on #{note.updated_at.strftime("%B %d, %Y")}" %></h5>
-      <% if @appointment.status == 'pending' and note.user.id == current_user.id %>
-      <%= link_to 'Delete', [note.appointment, note],
+      <%# if appointment.status == 'pending' and note.user.id == current_user.id %>
+      <%#= link_to 'Delete', [note.appointment, note],
                method: :delete, class: "ui-button-delete", data: { confirm: 'Are you sure to delete?' } %> 
-      <%= link_to 'Edit', edit_appointment_note_path(note.appointment, note), { class: "ui-button-edit" } %>
-      <% end %>
+      <%#= link_to 'Edit', edit_appointment_note_path(note.appointment, note), { class: "ui-button-edit" } %>
+      <%# end %>
     </div>
   </div>
-</div>
-
-<div id="note_field">
-  
 </div>
 
 

@@ -1,1 +1,1 @@
-$("#note_field").html("<%= j render('note') %>");
+$("#<%= @appointment.id %>").append("<%= j render '/notes/note', note: @note %>")

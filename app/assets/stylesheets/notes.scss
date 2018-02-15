@@ -1,3 +1,41 @@
 // Place all the styles related to the Notes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+h1 {
+  font-family: 'Raleway', sans-serif;
+  position: relative;
+  left: 70px;
+  font-size: 10px;
+}
+h3 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+}
+.content-div {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+}
+.post-title {
+  border: 1px solid blue;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+}
+.created_at, .read-more {
+  padding: 10px;
+  margin: 5px;
+}
+.container {
+  width: 500px;
+  position: relative;
+  left: 2px;
+}
+.post-container {
+  border: 5px solid lightblue;
+  padding: 10px;
+}
+.note-content {
+  width: 80%; 
+  word-wrap: break-word;
+  background-image: url("Note.jpg");
+}
