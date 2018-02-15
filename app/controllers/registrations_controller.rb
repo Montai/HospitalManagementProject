@@ -10,4 +10,8 @@ class RegistrationsController < Devise::RegistrationsController
 	  params.require(:user).permit(:first_name,:last_name,:gender,:date_of_birth,:role,:email,:password,:password_confirmation,:current_password)
 	end
 
+	def after_sign_in_path_for(resource)
+      appointments_path
+    end
+
 end

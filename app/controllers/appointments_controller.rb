@@ -13,7 +13,6 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new
     @note = @appointment.notes.build({user_id: current_user.id})
     @all_doctors = User.getalldoctors
-    # @image = @appointment.images.build
   end
 
   def create
@@ -21,16 +20,6 @@ class AppointmentsController < ApplicationController
     @appointment.patient_id = current_user.id
     @appointment.notes.first.user_id = current_user.id
     @all_doctors = User.getalldoctors
-    # @image = @appointment.build_image({imagable_id: params[:id]})
-    
-    # @image = @appointment.images.build
-    # if params[:time_slot].nil?
-    #   flash["alert"] = "Please choose a time slot"
-    #   render 'new' and return
-    # end 
-
-    # @appointment.starting_time = params[:time_slot]
-    # @appointment.ending_time = @appointment.starting_time + 1.hour
 
     if @appointment.save
       flash[:notice] = "Appointment saved!"
@@ -60,8 +49,6 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
     @appointment.status = get_current_status(@appointment.date)
     @all_doctors = User.getalldoctors
-    # @appointment.starting_time = params[:time_slot]
-    # @appointment.ending_time = @appointment.starting_time + 1.hour
     if @appointment.update(appointments_params)
       flash[:notice] = "Updated successfully!"
       redirect_to authenticated_root_path
@@ -97,7 +84,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
     @appointment.status = 3
     if @appointment.save 
-      flash[:notice] = 'visited'
+      flash[:notice] = 'appointment visited'
       redirect_to appointments_path
     else
       render authenticated_root_path
@@ -117,12 +104,6 @@ class AppointmentsController < ApplicationController
     @archives = current_user.past_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)
   end
 
-  
-
-  # def formatted_appointment_slots(slots)
-  #   slots.map{ |k| k.strftime("%H:%M") if k.present? }
-  # end
-
   def get_current_status(date)
     return 0 if date > Time.now
     return 1
@@ -132,7 +113,6 @@ class AppointmentsController < ApplicationController
 
     def appointments_params
       params.require(:appointment).permit(:date, :doctor_id, :patient_id, :image, :starting_time,
-        # images_attributes: [:id, :imagable_id, :imagable_type, :image, :_destroy],
         notes_attributes: [:id, :description, :user_id, :_destroy])
     end
 

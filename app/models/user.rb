@@ -34,11 +34,11 @@ class User < ActiveRecord::Base
             foreign_key: :doctor_id, dependent: :destroy do
 
     def future
-      where("status = ? OR status = ?", 0,2).order('date ASC')
+      where('status = ? OR status = ?', Appointment.statuses[:pending], Appointment.statuses[:cancelled]).order('date ASC')
     end
 
     def past
-      where.not(status: 0).order("field(status, 3,1,2)").order("date ASC")
+      where('status <> ?', Appointment.statuses[:pending]).order("field(status, 3,1,2)").order("date ASC")    
     end
 
   end
@@ -49,11 +49,11 @@ class User < ActiveRecord::Base
             foreign_key: :patient_id, dependent: :destroy do
 
     def future
-      where("status = ? OR status = ?", 0,2).order('date ASC')
+      where('status = ? OR status = ?', Appointment.statuses[:pending], Appointment.statuses[:cancelled]).order('date ASC')
     end
 
     def past
-      where.not(status: 0).order("field(status, 3,1,2)").order("date ASC")
+      where('status <> ?', Appointment.statuses[:pending]).order("field(status, 3,1,2)").order("date ASC")  
     end
 
   end
@@ -83,11 +83,5 @@ class User < ActiveRecord::Base
     end
 
   end
-
-  # after_create :welcome_send
-
-  # def welcome_send 
-  #   UserMailer.signup_confirmation(self).deliver
-  # end 
 
 end

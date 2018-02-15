@@ -1,8 +1,4 @@
 
-  <link rel="stylesheet" type="text/css" href="mystyle.css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-
 
   <%= link_to image_tag("Back.png", :size => '80x50'), appointments_path %><br>
 
@@ -33,43 +29,22 @@
     <div class="tr">
       <div class="tc">
         <div class="field">
-          <div><h4><u>Appointment Status </u> <h2><%= @appointment.status %></h2></h4>
-            
-          </div>
+          <div><h4><u>Appointment Status </u> <h2><%= @appointment.status %></h2></h4></div>
         </div>
       </div>
     </div>
-
-      <!-- <div class="tc">
-        <div class="field">
-          <div><h5><u>Appointment Starting Time:</u></h5>
-            <%#= @appointment.starting_time.to_s(:time) %>
-          </div>
-        </div>
-      </div>
-
-      <div class="tc">
-        <div class="field">
-          <div><h5><u>Appointment Ending Time:</u></h5>
-            <%#= (@appointment.starting_time + 1.hour).to_s(:time) %>
-          </div>
-        </div>
-      </div> -->
     
 
     <div class="tr">
       <div class="tc">
         <div class="field">
-          <%#= link_to 'Show Image', appointment_image_path(@appointment, @image) %>
           <% if @appointment.image.present? %>
-          <%#= image_tag(@appointment.image.thumb) %>
           <%= link_to @appointment.image.url, class: "fancybox" do %>
             <%= image_tag(@appointment.image.thumb) %>
           <% end %> 
           <% else %>
             <h6>No image</h6>
           <% end %>
-          <%#= link_to image_tag(@image.first.image.thumb), appointment_image_path(@appointment, @image), class: 'dock-item' %>
         </div>
       </div>
     </div>

@@ -9,8 +9,7 @@
     <div class="tr">
       <div class="tc">
         <div class="form-group">
-          <%#= f.label :Choose_Doctor %>
-          <label style="margin-right: 20px;" for="doctor"><b>Choose Doctor</b></label>
+          <label class="doctor-select-label"  for="doctor"><b>Choose Doctor</b></label>
           <%= f.collection_select(:doctor_id, @all_doctors, :id, :first_name) %>
         </div>
       </div>
@@ -19,11 +18,8 @@
     <div class="tr">
       <div class="tc">
         <div class="field">
-          <%#= f.label :Date %>
-          <label style="margin-right: 40px;" for="date"><b>Select Date</b></label>
-          <%#= f.date_select :date, start_year: 2018, default: 1.days.from_now, id: 'selected_date' %>
+          <label class="date-select-label" for="date"><b>Select Date</b></label>
           <%= f.date_field :date, :value => (Date.today + 1).strftime('%Y-%m-%d'), min: Date.today + 1.day, max: Date.today + 5.months %>
-          <%#= link_to "Check Availability", available_slots_appointments_path, id: "get_timeslots", remote: true %>
         </div>
       </div>
     </div><hr>
@@ -33,7 +29,6 @@
         <div class="field">
           <h4>Cause:</h4>
             <%= f.fields_for :notes do |note_field| %>
-                <%#= f.hidden_field :user_id, value: current_user.id %>
                 <%= note_field.label :Note %><br>
                 <%= note_field.text_area :description, placeholder: "Leave note here.", required: true %><br>
             <% end %>
@@ -44,8 +39,7 @@
     <div class="tr">
       <div class="tc">
         <div class="field">
-        <%#= f.label :image %>
-        <label style="margin-right: 80px;" for="image"><b>Choose Image</b></label>
+        <label class="image-file-field" for="image"><b>Change Image</b></label>
         <%= f.file_field :image, required: true %>
         <% if @appointment.errors.any? %>
           <%= @appointment.errors.messages[:image].first if @appointment.errors.messages[:image].present? %>

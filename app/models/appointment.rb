@@ -1,6 +1,5 @@
 class Appointment < ActiveRecord::Base
 
-  # attr_accessor :time_slot
   mount_uploader :image, ImageUploader
 
   enum status: [:pending, :unvisited, :cancelled, :visited]
@@ -23,10 +22,6 @@ class Appointment < ActiveRecord::Base
 
   has_many :notes, dependent: :destroy
 
-  # has_many :images, as: :imagable, dependent: :destroy
-
-  # accepts_nested_attributes_for :images, allow_destroy: true
-
   accepts_nested_attributes_for :notes, allow_destroy: true
 
 
@@ -44,11 +39,11 @@ class Appointment < ActiveRecord::Base
   class << self
 
     def closed_status
-      where('status = ?', 'unvisited' ).order('date DESC')
+      where(status: :unvisited).order('date DESC')
     end
 
     def all_pending_appointments
-      where('status = ?', 'pending')
+      where(status: :pending)
     end
 
     def available_appointment_slots(curr_app_date)
