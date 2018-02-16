@@ -1,31 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" type="text/css" href="application.css">
-</head>
-<body>
-  <nav class="navbar">
-    <div class="inner-navbar">
-      <ul class="nav-top">
-        <% if user_signed_in? && current_user.patient? %>
-          <li><%= link_to 'Home', authenticated_root_path %></li>
-          <li><%= link_to 'New Appointment', new_appointment_path %></li>
-          <li><%= link_to 'My Account', edit_user_registration_path  %></li>
-          <li><%= link_to 'Archives', archive_path %></li>
-          <li style="right: -58%; font-weight: 800"><%= link_to 'Logout', destroy_user_session_path, :method => :delete, data: { confirm: "Are you sure to log-out?" } %></li>
-          
-          <li style="right: -40%; font-weight: 800">Hi, <%= current_user.first_name %></li>
-        <% elsif user_signed_in? && current_user.doctor? %>
-          <li><%= link_to 'Home', authenticated_root_path %></li>
-          <li><%= link_to 'My Account', edit_user_registration_path  %></li>
-          <li><%= link_to 'Archives', archive_path %></li>
-          <li style="right: -65%; font-weight: 800"><%= link_to 'Logout', destroy_user_session_path, :method => :delete, data: { confirm: "Are you sure to log-out?" } %></li>
-          <li style="right: -50%; font-weight: 800">Hi, <%= current_user.first_name %></li>
-          <% else %>
-            <li><%= link_to 'Login', new_user_session_path  %></li>
-          <% end %>
-      </ul>
-    </div>
-  </nav>
-</body>
-<html>
+<nav class="navbar">
+  <div class="inner-navbar">
+    <ul class="nav-top">
+      <% if user_signed_in? && current_user.patient? %>
+        <li><%= link_to 'Home', authenticated_root_path %></li>
+        <li><%= link_to 'New Appointment', new_appointment_path %></li>
+        <li><%= link_to 'My Account', edit_user_registration_path  %></li>
+        <li><%= link_to 'Archives', archive_path, remote: true %></li>
+        <li class="logout-patient"><%= link_to 'Logout', destroy_user_session_path, :method => :delete, data: { confirm: "Are you sure to log-out?" } %></li>
+        
+        <li class="name-field-patient">Hi, <%= current_user.first_name %></li>
+      <% elsif user_signed_in? && current_user.doctor? %>
+        <li><%= link_to 'Home', authenticated_root_path %></li>
+        <li><%= link_to 'My Account', edit_user_registration_path  %></li>
+        <li><%= link_to 'Archives', archive_path, remote: true %></li>
+        <li class="logout-doctor"><%= link_to 'Logout', destroy_user_session_path, :method => :delete, data: { confirm: "Are you sure to log-out?" } %></li>
+        <li class="name-field-doctor">Hi, <%= current_user.first_name %></li>
+        <% else %>
+          <li><%= link_to 'Login', new_user_session_path  %></li>
+        <% end %>
+    </ul>
+  </div>
+</nav>
+

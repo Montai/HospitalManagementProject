@@ -3,16 +3,9 @@ class UpdateWorker
   sidekiq_options queue: 'appointments_job_queue'
 
   def perform(appointments)
-    # Do something
     appointments.each do |appointment|
-        if appointment.cancelled?
-          next
-        elsif appointment.date > Time.now
-          appointment.update_attribute(:status, :pending)
-        else
-          appointment.update_attribute(:status, :completed)
-        end
+      appointment.update_attribute(:status, :unvisited) if appointment.date.strftime("%Y-%m-%d") < Time.now.strftime("%Y-%m-%d")
     end
-  end
+  end 
 
 end

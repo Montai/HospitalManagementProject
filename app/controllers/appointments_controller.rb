@@ -1,12 +1,10 @@
 class AppointmentsController < ApplicationController
 
   before_action :is_patient?, only:[:new, :create]  
-  before_action :check_user, only:[:edit]
+  before_action :check_user, only:[:edit, :show]
 
   def index
-    @appointments = current_user.future_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)
-    @curr_appointments = Appointment.where(status: 0)
-    perform_update(@curr_appointments)
+    @appointments = current_user.future_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES) 
   end
 
   def new
@@ -22,17 +20,18 @@ class AppointmentsController < ApplicationController
     @all_doctors = User.getalldoctors
 
     if @appointment.save
-      flash[:notice] = "Appointment saved!"
-      redirect_to authenticated_root_path
+      @curr_appointments = Appointment.where('status = ?',Appointment.statuses[:pending])
+      UpdateWorker.perform_async(@curr_appointments)
+      redirect_to authenticated_root_path, notice: "Appointment saved!"
     else
-      render 'new'
+      render 'new', notice: "Unable to create Appointment, Try again!"
     end
   end
 
   def check_user
     @appointment = Appointment.find(params[:id])
     if current_user.doctor? or current_user.id != @appointment.patient_id
-      redirect_to authenticated_root_path and return
+      then redirect_to authenticated_root_path and return
     end 
     unless current_user.patient? and current_user.id == @appointment.patient_id
       redirect_to edit_appointment_path(@appointment)
@@ -42,7 +41,6 @@ class AppointmentsController < ApplicationController
   def edit
     @appointment = Appointment.find(params[:id])
     @all_doctors = User.getalldoctors
-    @note = @appointment.notes.first
   end
 
   def update
@@ -50,18 +48,16 @@ class AppointmentsController < ApplicationController
     @appointment.status = get_current_status(@appointment.date)
     @all_doctors = User.getalldoctors
     if @appointment.update(appointments_params)
-      flash[:notice] = "Updated successfully!"
-      redirect_to authenticated_root_path
+      redirect_to authenticated_root_path, notice: "Updated successfully!"
     else
-      flash[:alert] = "opps!"
-      render 'edit'
+      render 'edit', notice: "Unable to save Appointment, Try again!"
     end
   end
 
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
-    redirect_to authenticated_root_path
+    redirect_to authenticated_root_path, notice: "Appointment Deleted!"
   end
 
   def show
@@ -70,49 +66,49 @@ class AppointmentsController < ApplicationController
 
   def cancel_appointment
     @appointment = Appointment.find(params[:id])
-    @appointment.status = 2
+    @appointment.status = Appointment.statuses[:cancelled]
      
     if @appointment.save
-      flash[:notice] = 'appointment cancelled!'
-      redirect_to appointments_path
+      redirect_to appointments_path, notice: "Appointment Cancelled!"
     else
-      render authenticated_root_path
+      render authenticated_root_path, notice: "Unable to cancel, try again!"
     end
   end
 
   def visited_patient_appointment 
     @appointment = Appointment.find(params[:id])
-    @appointment.status = 3
+    @appointment.status = Appointment.statuses[:visited]
     if @appointment.save 
-      flash[:notice] = 'appointment visited'
-      redirect_to appointments_path
+      redirect_to appointments_path, notice: "Appointment Visited!"
     else
-      render authenticated_root_path
+      render authenticated_root_path, notice: "Unable to change status, try again!"
     end 
   end 
 
   def perform_update(appointments)
-    # Do something
+    # Grab appointments and change status if date is passed 
     appointments.each do |appointment|
-      if appointment.date.strftime("%Y-%m-%d") < Time.now.strftime("%Y-%m-%d")
-        appointment.update_attribute(:status, :unvisited)
-      end
+      appointment.update_attribute(:status, :unvisited) if appointment.date.strftime("%Y-%m-%d") < Time.now.strftime("%Y-%m-%d")
     end
   end
 
   def archive
-    @archives = current_user.past_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)
+    @archives = current_user.past_appointments
+    respond_to do |format|
+      format.html
+      format.js
+    end 
   end
 
   def get_current_status(date)
-    return 0 if date > Time.now
-    return 1
+    return Appointment.statuses[:pending] if date > Time.now
+    return Appointment.statuses[:unvisited]
   end
 
   private
 
     def appointments_params
-      params.require(:appointment).permit(:date, :doctor_id, :patient_id, :image, :starting_time,
+      params.require(:appointment).permit(:date, :doctor_id, :patient_id, :image,
         notes_attributes: [:id, :description, :user_id, :_destroy])
     end
 

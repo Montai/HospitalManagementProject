@@ -2,92 +2,93 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-  .body {
-    position: relative;
-  }
-  .div {
-    /*border: 1px solid black; */
-  }
-  .text-left {
-    font-size: 30px;
-    font-family: 'Nunito', sans-serif;
-    text-align: center;
-  }
-  .div-form {
-    display: table;
-    position: relative;
-    left: 25%;
-    width: 40%;
-    border: 2px solid black;
-    border-spacing: 5px;
-    border-radius: 5px;
-    margin: 20px;
-  }
-  .div-table {
-    display: table;
-    width: 100%;
-    border: 2px solid lightgrey;
-    border-spacing: 5px;
-    margin: 20px;
-    box-shadow: 0px 2px 20px 2px green;
-  }
+/******************* Appointment styling *******************************************/
+.body {
+	position: relative;
+}
+.div {
+/*border: 1px solid black; */
+}
+.text-left {
+	font-size: 30px;
+	font-family: 'Nunito', sans-serif;
+	text-align: center;
+}
+.div-form {
+	display: table;
+	position: relative;
+	left: 25%;
+	width: 40%;
+	border: 2px solid black;
+	border-spacing: 5px;
+	border-radius: 5px;
+	margin: 20px;
+}
+.container-top {
+	display: table;
+	width: 100%;
+	border: 2px solid lightgrey;
+	border-spacing: 5px;
+	margin: 20px;
+	box-shadow: 0px 2px 20px 2px green;
+}
 
-  .tr {
-    display: table-row;
-  }
-  .tc {
-    display: table-cell;
-    vertical-align: top;
-    background-color: #fff;
-    padding: 5px 10px;
-    text-align: center;
-  }
+.container-row {
+	display: table-row;
+}
+.container-col {
+	display: table-cell;
+	vertical-align: top;
+	background-color: #fff;
+	padding: 5px 10px;
+	text-align: center;
+}
 
-  .field {
-    margin: 2px;
-  }
-  .image-container {
-    position: relative;
-    left: 40%;
-  }
-  .cancel-button-field {
-    position: relative;
-    top: 10px;
-  }
-  .text {
-    text-align: left;
-    position: relative;
-    left: 2%;
-    font-size: 30px;
-    font-family: 'Nunito', sans-serif;
-  }
-  .paginate-field {
-    margin-top: 5px;
-    /*position: fixed;*/
-    left: 40%;
-    text-align: center;
-  }
-  .doctor-select-label {
-  	margin-right: 20px;
-  }
-  .date-select-label {
-  	margin-right: 40px;
-  }
-  .image-file-field {
-  	margin-right: 40px;
-  }
+.field {
+	margin: 2px;
+}
+.image-container {
+	position: relative;
+	left: 40%;
+}
+.cancel-button-field {
+	position: relative;
+	top: 10px;
+}
+.text {
+	text-align: left;
+	position: relative;
+	left: 2%;
+	font-size: 30px;
+	font-family: 'Nunito', sans-serif;
+}
+.paginate-field {
+	margin-top: 5px;
+	/*position: fixed;*/
+	left: 40%;
+	text-align: center;
+}
+.doctor-select-label {
+	margin-right: 20px;
+}
+.date-select-label {
+	margin-right: 40px;
+}
+.image-file-field {
+	margin-right: 40px;
+}
 
-  .paginate-field { 
-  	padding: 2px; 
-  	margin: 2px; 
-  }
-  .paginate-field a { 
-  	padding: 2px 5px 2px 5px; 
-  	margin: 2px; border: 1px solid #aaaadd; 
-  	text-decoration:none; color: #000099; 
-  }
-  .paginate-field a:hover,
-  .paginate-field a:active { 
-  	border: 1px solid #000099; 
-  	color: #000; 
-  }
+.paginate-field { 
+	padding: 2px; 
+	margin: 2px; 
+}
+.paginate-field a { 
+	padding: 2px 5px 2px 5px; 
+	margin: 2px; border: 1px solid #aaaadd; 
+	text-decoration:none; color: #000099; 
+}
+.paginate-field a:hover,
+.paginate-field a:active { 
+	border: 1px solid #000099; 
+	color: #000; 
+}

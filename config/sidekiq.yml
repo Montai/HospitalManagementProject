@@ -1,0 +1,3 @@
+:queues:
+  - [appointments_job_queue, 2]
+  - default

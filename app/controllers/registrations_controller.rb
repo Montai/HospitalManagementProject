@@ -2,6 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
 	
   private
 
+  	#Permit attributes
     def sign_up_params
 	  params.require(:user).permit(:first_name,:last_name,:gender,:date_of_birth,:role,:email,:password,:password_confirmation)
 	end
@@ -9,9 +10,5 @@ class RegistrationsController < Devise::RegistrationsController
 	def account_update_params
 	  params.require(:user).permit(:first_name,:last_name,:gender,:date_of_birth,:role,:email,:password,:password_confirmation,:current_password)
 	end
-
-	def after_sign_in_path_for(resource)
-      appointments_path
-    end
 
 end

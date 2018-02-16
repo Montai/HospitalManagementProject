@@ -4,10 +4,11 @@
 
 <%= form_for(@appointment)  do |f| %>
 
-  <div class="div-table" id="edit_div">
+  <div class="container-top" id="edit_div">
+  
     <h2 class="edit-heading">Book Appointment</h2><hr>
-    <div class="tr">
-      <div class="tc">
+    <div class="container-row">
+      <div class="container-col">
         <div class="form-group">
           <label class="doctor-select-label"  for="doctor"><b>Choose Doctor</b></label>
           <%= f.collection_select(:doctor_id, @all_doctors, :id, :first_name) %>
@@ -15,8 +16,8 @@
       </div>
     </div>
 
-    <div class="tr">
-      <div class="tc">
+    <div class="container-row">
+      <div class="container-col">
         <div class="field">
           <label class="date-select-label" for="date"><b>Select Date</b></label>
           <%= f.date_field :date, :value => (Date.today + 1).strftime('%Y-%m-%d'), min: Date.today + 1.day, max: Date.today + 5.months %>
@@ -24,8 +25,8 @@
       </div>
     </div><hr>
 
-    <div class="tr">
-      <div class="tc">
+    <div class="container-row">
+      <div class="container-col">
         <div class="field">
           <h4>Cause:</h4>
             <%= f.fields_for :notes do |note_field| %>
@@ -36,8 +37,8 @@
       </div>
     </div><hr>
 
-    <div class="tr">
-      <div class="tc">
+    <div class="container-row">
+      <div class="container-col">
         <div class="field">
         <label class="image-file-field" for="image"><b>Change Image</b></label>
         <%= f.file_field :image, required: true %>
@@ -49,8 +50,8 @@
     </div>
 
 
-    <div class = "tr">
-      <div class="tc">
+    <div class ="container-row">
+      <div class ="container-col">
         <%= f.submit :Book, :class => 'update-button' %>
       </div>
     </div>

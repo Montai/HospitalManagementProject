@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
 
-  before_action :check_user, only:[:edit, :destroy]
+  before_action :check_user, only:[:edit, :destroy, :show]
 
   def new
     @appointment = Appointment.new
@@ -13,11 +13,10 @@ class NotesController < ApplicationController
     @note.user_id = current_user.id
     if @note.save
       respond_to do |format|
-        format.html 
-        format.js
+        format.js 
       end
     else
-      redirect_to appointments_path(@appointment), notice: "opps"
+      redirect_to appointments_path(@appointment), notice: "Unable to add note, try again!"
     end
   end
 
@@ -29,7 +28,7 @@ class NotesController < ApplicationController
     @appointment = Appointment.find(params[:appointment_id])
     @note = @appointment.notes.find(params[:id])
     @note.destroy
-    redirect_to appointment_path(@appointment)
+    redirect_to appointment_path(@appointment), notice: "Note destroyed!"
   end
 
   def check_user
@@ -48,11 +47,9 @@ class NotesController < ApplicationController
     @appointment = Appointment.find(params[:appointment_id])
     @note = @appointment.notes.find(params[:id])
     if @note.update(notes_params)
-      flash[:notice] = "Updated"
-      redirect_to appointment_path(@appointment)
+      redirect_to appointment_path(@appointment), notice: "Updated Note"
     else
-      flash[:alert] = "Opps!"
-      render 'edit'
+      render 'edit', notice: "Unable to update note, try again!"
     end
   end
 

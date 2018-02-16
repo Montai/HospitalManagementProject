@@ -1,52 +1,54 @@
-
-
-
-<h1 class="text">My Upcoming Appointments</h1>
+<h1 class="text" id="index_header">My Upcoming Appointments</h1>
 
 <% if @appointments.blank? %>
   <p>No appointments found.</p>
 <% else %>
 
-  <div class="div-table">
-    <div class="tr">
-      <div class="tc"><u><b>Date</b></u></div>
-      <div class="tc"><u><b>Name</b></u></div>
-      <div class="tc"><u><b>Status</b></u></div>
+  <div class="container-top" id="container_top_index">
+    <div class="container-row">
+      <div class="container-col"><u><b>Date</b></u></div>
+      <div class="container-col"><u><b>Name</b></u></div>
+      <div class="container-col"><u><b>Status</b></u></div>
       <% if current_user.patient? %>
-        <div class="tc"><u><b>Actions</b></u></div>
+        <div class="container-col"><u><b>Actions</b></u></div>
       <% end %>
     </div>
+
     <% @appointments.each do |apps| %>
-      <div class="tr">
-          <div class="tc"> <%= apps.date.strftime("%B %d, %Y") %></div>
+
+      <div class="container-row">
+          <div class="container-col"> <%= apps.date.strftime("%B %d, %Y") %></div>
           <% if current_user.doctor? %>
-            <div class="tc"> <%= apps.patient.first_name  %>
+            <div class="container-col"> <%= apps.patient.first_name  %>
                              <%= apps.patient.last_name %> ( Patient )
             </div>
           <% else %>
-            <div class="tc"> <%= apps.doctor.first_name  %>
+            <div class="container-col"> <%= apps.doctor.first_name  %>
                              <%= apps.doctor.last_name %> ( Doctor )
             </div>
           <% end %>
-          <div class="tc"> <%= apps.status %></div>
-          <div class="tc"> <%= link_to image_tag("Show.png", :size => '20x20'), appointment_path(apps) %></div>
+          <div class="container-col"> <%= apps.status %></div>
+          <div class="container-col"> <%= link_to image_tag("Show.png", :size => '20x20'), appointment_path(apps) %></div>
           <% if current_user.patient? and can? :update, apps %>
             <% if apps.status != 'cancelled' %>
-              <div class="tc"> <%= link_to image_tag("Edit.png", :size => '20x20'), edit_appointment_path(apps) %>
+              <div class="container-col"> <%= link_to image_tag("Edit.png", :size => '20x20'), edit_appointment_path(apps) %>
               </div>
             <% end %>
-            <div class="tc">
+            <div class="container-col">
               <%= link_to appointment_path(apps) , method: :delete, data: {confirm: "Hey, Are you sure?"} do %>
                 <%= image_tag("Delete.png", :size => '20x20') %>
               <% end %>
             </div>
           <% end %>
       </div>
+
     <% end %>
   </div>
 
-  <div class="paginate-field">
+  <div class="paginate-field" id="index_paginate_field">
     <%= will_paginate @appointments %>
   </div>
+
+  <div id="archive-field"></div>
 
 <% end %>

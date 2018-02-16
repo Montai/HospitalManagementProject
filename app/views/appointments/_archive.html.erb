@@ -1,0 +1,40 @@
+
+<%= link_to image_tag("Back.png", :size => '80x50'), appointments_path %><br>
+
+<h1 class="text" id="archive_header">Closed Appointments</h1>
+
+<% if @archives.blank? %>
+  <p>No appointments found.</p>
+<% else %>
+
+  <div class="container-top" id="archive_container">
+    <div class="container-row">
+      <div class="container-col"><u><b>Date</b></u></div>
+      <div class="container-col"><u><b>Name</b></u></div>
+      <div class="container-col"><u><b>Status</b></u></div>
+      <div class="container-col"><u><b>Show</b></u></div>
+    </div>
+
+    <% @archives.each do |apps| %>
+
+      <div class="container-row">
+          <div class="container-col"> <%= apps.date.to_formatted_s(:long) %></div>
+          <% if current_user.doctor? %>
+            <div class="container-col"> <%= apps.patient.first_name  %>
+                             <%= apps.patient.last_name %> ( Patient )
+            </div>
+          <% else %>
+            <div class="container-col"> <%= apps.doctor.first_name  %>
+                             <%= apps.doctor.last_name %> ( Doctor )
+            </div>
+          <% end %>
+          <div class="container-col"> <%= apps.status %></div>
+          <div class="container-col"> <%= link_to image_tag("Show.png", :size => '20x20'), appointment_path(apps) %></div>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div id="index_field"></div>
+  
+<% end %>

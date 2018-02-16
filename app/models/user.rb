@@ -38,7 +38,8 @@ class User < ActiveRecord::Base
     end
 
     def past
-      where('status <> ?', Appointment.statuses[:pending]).order("field(status, 3,1,2)").order("date ASC")    
+      where('status <> ?', Appointment.statuses[:pending]).order("date ASC")  
+  
     end
 
   end
@@ -53,14 +54,14 @@ class User < ActiveRecord::Base
     end
 
     def past
-      where('status <> ?', Appointment.statuses[:pending]).order("field(status, 3,1,2)").order("date ASC")  
+      where('status <> ?', Appointment.statuses[:pending]).order("date ASC")  
     end
 
   end
 
-  has_many :visited_doctors, through: :doctor_appointments
-  has_many :patients, through: :patient_appointments
-  has_many :images, as: :imagable, dependent: :destroy
+  # has_many :visited_doctors, through: :doctor_appointments
+  # has_many :patients, through: :patient_appointments
+  # has_many :images, as: :imagable, dependent: :destroy
   has_many :notes, dependent: :destroy
 
 
