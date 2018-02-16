@@ -59,20 +59,18 @@ class User < ActiveRecord::Base
 
   end
 
-  # has_many :visited_doctors, through: :doctor_appointments
-  # has_many :patients, through: :patient_appointments
-  # has_many :images, as: :imagable, dependent: :destroy
   has_many :notes, dependent: :destroy
+  has_many :images, as: :imagable, dependent: :destroy
 
 
   def future_appointments
-    result = self.patient_appointments.future if self.doctor?
+    result = self.patient_appointments.future.includes(:patient) if self.doctor?
     result = self.doctor_appointments.future.includes(:doctor) if self.patient?
     result
   end
 
   def past_appointments
-    result = self.patient_appointments.past if self.doctor?
+    result = self.patient_appointments.past.includes(:patient) if self.doctor?
     result = self.doctor_appointments.past.includes(:doctor) if self.patient?
     result
   end 

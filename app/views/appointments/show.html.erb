@@ -1,5 +1,5 @@
 
-<%= link_to image_tag("Back.png", :size => '80x50'), appointments_path %><br>
+<%= link_to image_tag("Back.png", size: '80x50'), appointments_path %><br>
 
 <h3 class="text"><u>Appointment Details</u></h3>
 
@@ -55,10 +55,10 @@
       <% if @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d") ||
        @appointment.date > Time.now && (@appointment.status == "pending" ) %>
         <div class="cancel-button-field">
-          <%= link_to image_tag("Cancel.png", :size => '60x60'), {:action => :cancel_appointment, :controller => :appointments}, :method => :post, data: { confirm: "Are you sure?" } %>
+          <%= link_to image_tag("Cancel.png", :size => '60x60'), { action: :cancel_appointment, controller: :appointments}, method: :post, data: { confirm: "Are you sure?" } %>
           <% if current_user.doctor? and @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d") %>
-          <%= link_to image_tag("Approve.png", :size => '55x55'), {:action => :visited_patient_appointment , :controller => :appointments}, :method => :post, data: { confirm: "Are you sure?" } %>
-        <% end %>
+          <%= link_to image_tag("Approve.png", :size => '55x55'), {action: :visited_patient_appointment , controller: :appointments}, method: :post, data: { confirm: "Are you sure?" } %>
+          <% end %>
         </div>
         
       <% end %>

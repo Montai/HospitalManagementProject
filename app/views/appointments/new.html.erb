@@ -1,11 +1,11 @@
 
-<%= link_to image_tag("Back.png", :size => '80x50'), appointments_path %><br>
+<%= link_to image_tag("Back.png", size: '80x50'), appointments_path %><br>
 
 
 <%= form_for(@appointment)  do |f| %>
 
   <div class="container-top" id="edit_div">
-  
+
     <h2 class="edit-heading">Book Appointment</h2><hr>
     <div class="container-row">
       <div class="container-col">
@@ -20,7 +20,7 @@
       <div class="container-col">
         <div class="field">
           <label class="date-select-label" for="date"><b>Select Date</b></label>
-          <%= f.date_field :date, :value => (Date.today + 1).strftime('%Y-%m-%d'), min: Date.today + 1.day, max: Date.today + 5.months %>
+          <%= f.date_field :date, value: (Date.today + 1).strftime('%Y-%m-%d'), min: Date.today + 1.day, max: Date.today + 5.months %>
         </div>
       </div>
     </div><hr>

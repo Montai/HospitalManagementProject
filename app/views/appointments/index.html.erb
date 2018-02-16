@@ -28,15 +28,15 @@
             </div>
           <% end %>
           <div class="container-col"> <%= apps.status %></div>
-          <div class="container-col"> <%= link_to image_tag("Show.png", :size => '20x20'), appointment_path(apps) %></div>
+          <div class="container-col"> <%= link_to image_tag("Show.png", size: '20x20'), appointment_path(apps) %></div>
           <% if current_user.patient? and can? :update, apps %>
             <% if apps.status != 'cancelled' %>
-              <div class="container-col"> <%= link_to image_tag("Edit.png", :size => '20x20'), edit_appointment_path(apps) %>
+              <div class="container-col"> <%= link_to image_tag("Edit.png", size: '20x20'), edit_appointment_path(apps) %>
               </div>
             <% end %>
             <div class="container-col">
               <%= link_to appointment_path(apps) , method: :delete, data: {confirm: "Hey, Are you sure?"} do %>
-                <%= image_tag("Delete.png", :size => '20x20') %>
+                <%= image_tag("Delete.png", size: '20x20') %>
               <% end %>
             </div>
           <% end %>

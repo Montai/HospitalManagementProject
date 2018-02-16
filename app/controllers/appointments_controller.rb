@@ -4,7 +4,7 @@ class AppointmentsController < ApplicationController
   before_action :check_user, only:[:edit, :show]
 
   def index
-    @appointments = current_user.future_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES) 
+    @appointments = current_user.future_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)      
   end
 
   def new
@@ -18,10 +18,9 @@ class AppointmentsController < ApplicationController
     @appointment.patient_id = current_user.id
     @appointment.notes.first.user_id = current_user.id
     @all_doctors = User.getalldoctors
+    UpdateWorker.perform_async(current_user.id)
 
     if @appointment.save
-      @curr_appointments = Appointment.where('status = ?',Appointment.statuses[:pending])
-      UpdateWorker.perform_async(@curr_appointments)
       redirect_to authenticated_root_path, notice: "Appointment saved!"
     else
       render 'new', notice: "Unable to create Appointment, Try again!"
@@ -85,12 +84,6 @@ class AppointmentsController < ApplicationController
     end 
   end 
 
-  def perform_update(appointments)
-    # Grab appointments and change status if date is passed 
-    appointments.each do |appointment|
-      appointment.update_attribute(:status, :unvisited) if appointment.date.strftime("%Y-%m-%d") < Time.now.strftime("%Y-%m-%d")
-    end
-  end
 
   def archive
     @archives = current_user.past_appointments

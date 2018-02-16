@@ -1,5 +1,5 @@
 
-<%= link_to image_tag("Back.png", :size => '80x50'), appointments_path %><br>
+<%= link_to image_tag("Back.png", size: '80x50'), appointments_path %><br>
 
 <h1 class="text" id="archive_header">Closed Appointments</h1>
 
@@ -29,10 +29,11 @@
             </div>
           <% end %>
           <div class="container-col"> <%= apps.status %></div>
-          <div class="container-col"> <%= link_to image_tag("Show.png", :size => '20x20'), appointment_path(apps) %></div>
+          <div class="container-col"> <%= link_to image_tag("Show.png", size: '20x20'), appointment_path(apps) %></div>
       </div>
 
     <% end %>
+    
   </div>
 
   <div id="index_field"></div>
