@@ -65,10 +65,7 @@ li {
     font-weight:bold;
     text-transform:uppercase;
     text-shadow:rgba(0, 0, 0, 0.30) 0 -1.25px 0;
-    
     border-radius:3px;
-    -webkit-box-shadow:rgba(255, 255, 255, 0.3) 0 1px 0, inset rgba(255, 255, 255, 0.3) 0 1px 0;
-    -moz-box-shadow:rgba(255, 255, 255, 0.3) 0 1px 0, inset rgba(255, 255, 255, 0.3) 0 1px 0;
     box-shadow:rgba(255, 255, 255, 0.3) 0 1px 0, inset rgba(255, 255, 255, 0.3) 0 1px 0;
   }
   position: relative;
@@ -170,7 +167,6 @@ div#sign_in_form {
   padding-bottom: 5%;
 
   h2{
-
     text-align: center;
     font-weight: 800;
     margin-left: -15%;
@@ -198,7 +194,6 @@ div#sign_in_form {
     
     /** Button Style **/ 
     display:-moz-inline-stack;
-    -webkit-font-smoothing:antialiased;
     display:inline-block;
     vertical-align:middle;
     vertical-align:auto;

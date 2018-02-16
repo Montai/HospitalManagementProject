@@ -7,17 +7,17 @@ class User < ActiveRecord::Base
   validates :first_name, 
             presence: true, 
             length: { minimum: 2, maximum: 15 }, 
-            format: { with: /\A[a-zA-Z]+\z/, message: "only letters are allowed" }
+            format: { with: /\A[a-zA-Z]+\z/, message: 'only letters are allowed' }
 
   validates :last_name, 
             presence: true, 
             length: { minimum: 2, maximum: 15 }, 
-            format: { with: /\A[a-zA-Z]+\z/, message: "only letters are allowed" }
+            format: { with: /\A[a-zA-Z]+\z/, message: 'only letters are allowed' }
 
   validates :email, 
             presence: true, 
             uniqueness: true, 
-            format: { with: /\A(\S+)@(.+)\.(\S+)\z/, message: "Check e-mail format(abc123@example.com)" }
+            format: { with: /\A(\S+)@(.+)\.(\S+)\z/, message: 'Check e-mail format(abc123@example.com)' }
 
   validates :password, 
             presence: true, 
@@ -34,12 +34,13 @@ class User < ActiveRecord::Base
             foreign_key: :doctor_id, dependent: :destroy do
 
     def future
-      where('status = ? OR status = ?', Appointment.statuses[:pending], Appointment.statuses[:cancelled]).order('date ASC')
+      where('status = ? OR status = ?', Appointment.statuses[:pending], Appointment.statuses[:cancelled])
+      .order('date ASC')
     end
 
     def past
-      where('status <> ?', Appointment.statuses[:pending]).order("date ASC")  
-  
+      where('status <> ?', Appointment.statuses[:pending])
+      .order("date ASC")  
     end
 
   end
@@ -50,11 +51,13 @@ class User < ActiveRecord::Base
             foreign_key: :patient_id, dependent: :destroy do
 
     def future
-      where('status = ? OR status = ?', Appointment.statuses[:pending], Appointment.statuses[:cancelled]).order('date ASC')
+      where('status = ? OR status = ?', Appointment.statuses[:pending], Appointment.statuses[:cancelled])
+      .order('date ASC')
     end
 
     def past
-      where('status <> ?', Appointment.statuses[:pending]).order("date ASC")  
+      where('status <> ?', Appointment.statuses[:pending])
+      .order("date ASC")  
     end
 
   end

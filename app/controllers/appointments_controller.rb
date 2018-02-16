@@ -21,9 +21,9 @@ class AppointmentsController < ApplicationController
     UpdateWorker.perform_async(current_user.id)
 
     if @appointment.save
-      redirect_to authenticated_root_path, notice: "Appointment saved!"
+      redirect_to authenticated_root_path, notice: 'Appointment saved!'
     else
-      render 'new', notice: "Unable to create Appointment, Try again!"
+      render 'new', notice: 'Unable to create Appointment, Try again!'
     end
   end
 
@@ -47,16 +47,16 @@ class AppointmentsController < ApplicationController
     @appointment.status = get_current_status(@appointment.date)
     @all_doctors = User.getalldoctors
     if @appointment.update(appointments_params)
-      redirect_to authenticated_root_path, notice: "Updated successfully!"
+      redirect_to authenticated_root_path, notice: 'Updated successfully!'
     else
-      render 'edit', notice: "Unable to save Appointment, Try again!"
+      render 'edit', notice: 'Unable to save Appointment, Try again!'
     end
   end
 
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
-    redirect_to authenticated_root_path, notice: "Appointment Deleted!"
+    redirect_to authenticated_root_path, notice: 'Appointment Deleted!'
   end
 
   def show
@@ -68,9 +68,9 @@ class AppointmentsController < ApplicationController
     @appointment.status = Appointment.statuses[:cancelled]
      
     if @appointment.save
-      redirect_to appointments_path, notice: "Appointment Cancelled!"
+      redirect_to appointments_path, notice: 'Appointment Cancelled!'
     else
-      render authenticated_root_path, notice: "Unable to cancel, try again!"
+      render authenticated_root_path, notice: 'Unable to cancel, try again!'
     end
   end
 
@@ -78,9 +78,9 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
     @appointment.status = Appointment.statuses[:visited]
     if @appointment.save 
-      redirect_to appointments_path, notice: "Appointment Visited!"
+      redirect_to appointments_path, notice: 'Appointment Visited!'
     else
-      render authenticated_root_path, notice: "Unable to change status, try again!"
+      render authenticated_root_path, notice: 'Unable to change status, try again!'
     end 
   end 
 

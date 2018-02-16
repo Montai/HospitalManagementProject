@@ -3,8 +3,13 @@
   <div class="field">
     <%= f.label :Description %><br>
     <%= f.text_area :description, required: true %>
-    <% if @note.errors.any? %>
-      <%= @note.errors.messages[:description].first if @note.errors.messages[:description].present? %>
+  </div>
+
+  <div>
+    <% if @note && @note.errors.any? %>
+      <% @note.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+      <% end %>
     <% end %>
   </div>
 

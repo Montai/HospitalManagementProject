@@ -7,7 +7,7 @@ class Appointment < ActiveRecord::Base
   validates :date, presence: true
   validates :image, 
             presence: true, 
-            format: { with: %r{\.(gif|jpg|png)\z}i, message: "must be gif,png or jpeg" }
+            format: { with: %r{\.(gif|jpg|png)\z}i, message: 'must be gif,png or jpeg' }
   
   validate :validate_image
   validate :validate_appointment_date 
@@ -28,11 +28,11 @@ class Appointment < ActiveRecord::Base
 
 
   def validate_appointment_date
-    self.errors.add(:date, "can not be left as blank") and return if self.date.blank?
+    self.errors.add(:date, 'can not be left as blank') and return if self.date.blank?
   end
 
   def validate_image
-    self.errors.add(:image, "can't be blank") and return if self.image.blank?
+    self.errors.add(:image, 'can not be blank') and return if self.image.blank?
   end 
 
 
@@ -44,10 +44,6 @@ class Appointment < ActiveRecord::Base
 
     def all_pending_appointments
       where(status: :pending)
-    end
-
-    def available_appointment_slots(curr_app_date)
-      where('date = ? ',curr_app_date).pluck('starting_time')
     end    
 
   end

@@ -16,7 +16,7 @@ class NotesController < ApplicationController
         format.js 
       end
     else
-      redirect_to appointments_path(@appointment), notice: "Unable to add note, try again!"
+      redirect_to appointments_path(@appointment), notice: 'Unable to add note, try again!'
     end
   end
 
@@ -28,7 +28,7 @@ class NotesController < ApplicationController
     @appointment = Appointment.find(params[:appointment_id])
     @note = @appointment.notes.find(params[:id])
     @note.destroy
-    redirect_to appointment_path(@appointment), notice: "Note destroyed!"
+    redirect_to appointment_path(@appointment), notice: 'Note destroyed!'
   end
 
   def check_user
@@ -47,9 +47,9 @@ class NotesController < ApplicationController
     @appointment = Appointment.find(params[:appointment_id])
     @note = @appointment.notes.find(params[:id])
     if @note.update(notes_params)
-      redirect_to appointment_path(@appointment), notice: "Updated Note"
+      redirect_to appointment_path(@appointment), notice: 'Updated Note'
     else
-      render 'edit', notice: "Unable to update note, try again!"
+      render 'edit', notice: 'Unable to update note, try again!'
     end
   end
 

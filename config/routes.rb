@@ -20,13 +20,14 @@ Rails.application.routes.draw do
   end
 
   resources :appointments do
-    # get :available_slots, on: :collection
     resources :notes
     resources :images, only: [:show]
   end
 
   match 'appointments/:id/cancel_appointment' => "appointments#cancel_appointment", :via => :post
+
   match 'appointments/:id/visited_patient_appointment' => "appointments#visited_patient_appointment", :via => :post
+  
   get 'archive' => "appointments#archive"
 
   
