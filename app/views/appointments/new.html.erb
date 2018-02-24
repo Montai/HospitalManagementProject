@@ -20,19 +20,31 @@
       <div class="container-col">
         <div class="field">
           <label class="date-select-label" for="date"><b>Select Date</b></label>
-          <%= f.date_field :date, value: (Date.today + 1).strftime('%Y-%m-%d'), min: Date.today + 1.day, max: Date.today + 5.months %>
+          <%= f.date_field :date, value: (Date.today + 1).strftime('%Y-%m-%d'), min: Date.today + 1.day, max: Date.today + 5.months, class: "date-picker" %>
+          <%= link_to "Check Availability", available_slots_appointments_path, id: "get_timeslots", remote: true, style: "display:none;" %><br />
+          <div class="check-slot">
+            <%= label_tag :Available_Slots %><br />
+            <div class="available-slots">
+              
+            </div> 
+          </div>              
         </div>
       </div>
     </div>
-
+    
     <div class="container-row">
       <div class="container-col">
         <div class="field">
           <h4>Cause:</h4>
             <%= f.fields_for :notes do |note_field| %>
                 <%= note_field.label :Note %><br>
-                <%= note_field.text_area :description, placeholder: "Leave note here.", required: true %><br>
+                <%= note_field.text_area :description, placeholder: "Leave note here." %><br>
             <% end %>
+            <div class="validation-err-message">
+              <% if @appointment.errors.any? %>
+                <%= @appointment.errors.messages[:"notes.description"].join(',') if @appointment.errors.messages[:"notes.description"].present? %>
+              <% end %>
+            </div>
         </div>
       </div>
     </div>
@@ -41,10 +53,12 @@
       <div class="container-col">
         <div class="field">
         <label class="image-file-field" for="image"><b>Change Image</b></label>
-        <%= f.file_field :image, required: true %>
-        <% if @appointment.errors.any? %>
-          <%= @appointment.errors.messages[:image].first if @appointment.errors.messages[:image].present? %>
-        <% end %>
+        <%= f.file_field :image %>
+        <div class="validation-err-message">
+          <% if @appointment.errors.any? %>
+            <%= @appointment.errors.messages[:image].join(' ,') if @appointment.errors.messages[:image].present? %>
+          <% end %>
+        </div>
         </div>
       </div>
     </div>
@@ -55,6 +69,7 @@
         <%= f.submit :Book, :class => 'update-button' %>
       </div>
     </div>
+
   </div>
 
 <% end %>

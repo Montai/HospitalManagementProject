@@ -314,3 +314,9 @@ div#tc {
   border-radius:3px;
   box-shadow:rgba(255, 255, 255, 0.3) 0 1px 0, inset rgba(255, 255, 255, 0.3) 0 1px 0;
 }
+
+.validation-err-message{
+  color : #ff0000;
+  font-style: italic;
+  text-align : center;
+}

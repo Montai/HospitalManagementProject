@@ -1,5 +1,5 @@
-graph 1 6.4583 6.7083
-node "m_ActiveRecord::SchemaMigration" 1.25 4.6111 2.5139 0.63889 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+graph 1 5.4343 6.3194
+node "m_ActiveRecord::SchemaMigration" 1.25 4.2222 2.5139 0.63889 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
   <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">ActiveRecord::SchemaMigration</font></td></tr>
 </table>
 |
@@ -7,18 +7,17 @@ node "m_ActiveRecord::SchemaMigration" 1.25 4.6111 2.5139 0.63889 <{<table borde
   <tr><td align="left" width="130" port="version">version <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
 </table>
 }> solid Mrecord black lightgrey
-node m_Appointment 4.0417 1.9306 2.0139 1.1806 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+node m_Appointment 1.625 1.6389 2.0139 1 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
   <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Appointment</font></td></tr>
 </table>
 |
 <table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
   <tr><td align="left" width="130" port="date">date <font face="Arial Italic" color="grey60">date ∗</font></td></tr>
-  <tr><td align="left" width="130" port="ending_time">ending_time <font face="Arial Italic" color="grey60">time</font></td></tr>
-  <tr><td align="left" width="130" port="starting_time">starting_time <font face="Arial Italic" color="grey60">time</font></td></tr>
+  <tr><td align="left" width="130" port="image">image <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
   <tr><td align="left" width="130" port="status">status <font face="Arial Italic" color="grey60">integer</font></td></tr>
 </table>
 }> solid Mrecord black lightgrey
-node m_Image 2.625 0.41667 2.0139 0.81944 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+node m_Image 4.0417 1.6389 2.0139 0.81944 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
   <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Image</font></td></tr>
 </table>
 |
@@ -27,7 +26,7 @@ node m_Image 2.625 0.41667 2.0139 0.81944 <{<table border="0" align="center" cel
   <tr><td align="left" width="130" port="image">image <font face="Arial Italic" color="grey60">string</font></td></tr>
 </table>
 }> solid Mrecord black lightgrey
-node m_Note 5.4583 0.41667 2.0139 0.63889 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+node m_Note 3.6389 0.31944 2.0139 0.63889 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
   <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Note</font></td></tr>
 </table>
 |
@@ -35,7 +34,7 @@ node m_Note 5.4583 0.41667 2.0139 0.63889 <{<table border="0" align="center" cel
   <tr><td align="left" width="130" port="description">description <font face="Arial Italic" color="grey60">text (65535) ∗</font></td></tr>
 </table>
 }> solid Mrecord black lightgrey
-node m_User 4.0417 4.6111 2.25 3.1667 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+node m_User 4.0417 4.2222 2.25 3.1667 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
   <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">User</font></td></tr>
 </table>
 |
@@ -57,11 +56,9 @@ node m_User 4.0417 4.6111 2.25 3.1667 <{<table border="0" align="center" cellspa
   <tr><td align="left" width="130" port="sign_in_count">sign_in_count <font face="Arial Italic" color="grey60">integer ∗</font></td></tr>
 </table>
 }> solid Mrecord black lightgrey
-edge m_Appointment m_Image 4 3.498 1.3463 3.3623 1.204 3.2181 1.0528 3.0868 0.91502 solid black
-edge m_Appointment m_Note 4 4.5853 1.3463 4.7523 1.1712 4.9322 0.98246 5.0851 0.82211 solid black
-edge m_User m_Appointment 4 4.0417 3.0311 4.0417 2.8976 4.0417 2.7675 4.0417 2.6464 solid black
+edge m_Appointment m_Note 4 2.3749 1.144 2.6015 0.99866 2.8468 0.84135 3.0605 0.70433 solid black
+edge m_User m_Appointment 7 2.9145 2.8583 2.8457 2.7832 2.7767 2.7096 2.7083 2.6389 2.5735 2.4994 2.4228 2.3554 2.2777 2.2221 solid black
  solid black
-edge m_User m_Image 7 3.0361 3.0309 2.9577 2.8653 2.8879 2.696 2.8333 2.5278 2.6645 2.0074 2.6218 1.3794 2.6155 0.94703 solid black
-edge m_User m_Note 7 5.0473 3.0309 5.1257 2.8653 5.1954 2.696 5.25 2.5278 5.4311 1.9695 5.4671 1.2875 5.4687 0.85593 solid black
-edge m_User m_User 7 5.1676 5.0935 5.4013 5.0428 5.5694 4.8819 5.5694 4.6111 5.5694 4.3911 5.4585 4.2436 5.2915 4.1689 dotted black
+edge m_User m_Image 4 4.0417 2.6445 4.0417 2.4747 4.0417 2.312 4.0417 2.1693 solid black
+edge m_User m_Note 7 5.1686 2.7363 5.4302 2.2125 5.5541 1.6309 5.25 1.1389 5.1321 0.9481 4.9538 0.80099 4.7582 0.68806 solid black
 stop

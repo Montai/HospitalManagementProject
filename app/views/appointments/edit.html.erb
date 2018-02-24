@@ -32,7 +32,12 @@
 
             <%= f.fields_for :notes, f.object.notes.first do |note_field| %>                
                 <%= note_field.label :Note %><br>
-                <%= note_field.text_area :description, placeholder: "Leave note here.", required: true %><br>
+                <%= note_field.text_area :description, placeholder: "Leave note here." %><br>
+                <div class="validation-err-message">
+                  <% if @appointment.errors.any? %>
+                    <%= @appointment.errors.messages[:"notes.description"].join(',') if @appointment.errors.messages[:"notes.description"].present? %>
+                  <% end %>
+                </div>
             <% end %>
             
         </div>
@@ -44,7 +49,7 @@
       <div class="container-col">
         <div class="field">
            <label class="image-file-field" for="image"><b>Change Image</b></label>
-          <%= f.file_field :image, required: true %>
+          <%= f.file_field :image %>
           <% unless @appointment.new_record? %>
           <%= link_to image_tag(f.object.image.url, style: "height: 50px; width: 50px;"), f.object.image.url, target: "_blank" %>
 

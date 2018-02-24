@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
 
-  before_action :check_user, only:[:edit, :destroy, :show]
+  before_action :check_user, only:[:edit, :destroy]
 
   def new
     @appointment = Appointment.new
@@ -35,7 +35,7 @@ class NotesController < ApplicationController
     @appointment = Appointment.find(params[:appointment_id])
     @note = @appointment.notes.find(params[:id])
     #Restrict user to edit other users notes
-    redirect_to authenticated_root_path and return if current_user.id != @note.user_id
+    redirect_to root_path and return if current_user.id != @note.user_id
   end 
 
   def edit

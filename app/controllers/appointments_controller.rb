@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
 
   before_action :is_patient?, only:[:new, :create]  
-  before_action :check_user, only:[:edit, :show]
+  before_action :check_user, only:[:edit]
 
   def index
     @appointments = current_user.future_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)      
@@ -13,15 +13,27 @@ class AppointmentsController < ApplicationController
     @all_doctors = User.getalldoctors
   end
 
+  def available_slots
+    binding.pry
+    all_slots = ["10:00", "12:00", "14:00"]
+    slots = Appointment.where(date: params["query"], doctor_id: params["doctor"]).pluck("slot_tag")
+    @test_slots = all_slots - slots
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def create
+    binding.pry
     @appointment = Appointment.new(appointments_params)
     @appointment.patient_id = current_user.id
+    @appointment.slot_tag = params["slot"]
     @appointment.notes.first.user_id = current_user.id
     @all_doctors = User.getalldoctors
     UpdateWorker.perform_async(current_user.id)
 
     if @appointment.save
-      redirect_to authenticated_root_path, notice: 'Appointment saved!'
+      redirect_to root_path, notice: 'Appointment saved!'
     else
       render 'new', notice: 'Unable to create Appointment, Try again!'
     end
@@ -30,7 +42,7 @@ class AppointmentsController < ApplicationController
   def check_user
     @appointment = Appointment.find(params[:id])
     if current_user.doctor? or current_user.id != @appointment.patient_id
-      then redirect_to authenticated_root_path and return
+      then redirect_to root_path and return
     end 
     unless current_user.patient? and current_user.id == @appointment.patient_id
       redirect_to edit_appointment_path(@appointment)
@@ -47,7 +59,7 @@ class AppointmentsController < ApplicationController
     @appointment.status = get_current_status(@appointment.date)
     @all_doctors = User.getalldoctors
     if @appointment.update(appointments_params)
-      redirect_to authenticated_root_path, notice: 'Updated successfully!'
+      redirect_to root_path, notice: 'Updated successfully!'
     else
       render 'edit', notice: 'Unable to save Appointment, Try again!'
     end
@@ -56,7 +68,7 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
-    redirect_to authenticated_root_path, notice: 'Appointment Deleted!'
+    redirect_to root_path, notice: 'Appointment Deleted!'
   end
 
   def show
@@ -70,7 +82,7 @@ class AppointmentsController < ApplicationController
     if @appointment.save
       redirect_to appointments_path, notice: 'Appointment Cancelled!'
     else
-      render authenticated_root_path, notice: 'Unable to cancel, try again!'
+      render root_path, notice: 'Unable to cancel, try again!'
     end
   end
 
@@ -80,7 +92,7 @@ class AppointmentsController < ApplicationController
     if @appointment.save 
       redirect_to appointments_path, notice: 'Appointment Visited!'
     else
-      render authenticated_root_path, notice: 'Unable to change status, try again!'
+      render root_path, notice: 'Unable to change status, try again!'
     end 
   end 
 
@@ -101,7 +113,7 @@ class AppointmentsController < ApplicationController
   private
 
     def appointments_params
-      params.require(:appointment).permit(:date, :doctor_id, :patient_id, :image,
+      params.require(:appointment).permit(:date, :doctor_id, :patient_id, :image, :slot_tag,
         notes_attributes: [:id, :description, :user_id, :_destroy])
     end
 

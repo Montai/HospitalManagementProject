@@ -4,20 +4,23 @@ class User < ActiveRecord::Base
 
   enum role: [:patient, :doctor]
 
+  NAME_REGEX = /\A[^0-9`!@#\$%\^&*+_=]+\z/
+  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
   validates :first_name, 
             presence: true, 
             length: { minimum: 2, maximum: 15 }, 
-            format: { with: /\A[a-zA-Z]+\z/, message: 'only letters are allowed' }
+            format: { with: NAME_REGEX, message: 'only letters are allowed' }
 
   validates :last_name, 
             presence: true, 
             length: { minimum: 2, maximum: 15 }, 
-            format: { with: /\A[a-zA-Z]+\z/, message: 'only letters are allowed' }
+            format: { with: NAME_REGEX, message: 'only letters are allowed' }
 
   validates :email, 
             presence: true, 
             uniqueness: true, 
-            format: { with: /\A(\S+)@(.+)\.(\S+)\z/, message: 'Check e-mail format(abc123@example.com)' }
+            format: { with: EMAIL_REGEX, message: 'Check e-mail format(abc123@example.com)' }
 
   validates :password, 
             presence: true, 
@@ -64,6 +67,7 @@ class User < ActiveRecord::Base
 
   has_many :notes, dependent: :destroy
   has_many :images, as: :imagable, dependent: :destroy
+  has_one :appointment_slot, -> { where(role: 1) }, foreign_key: 'doctor_id'
 
 
   def future_appointments
@@ -78,6 +82,10 @@ class User < ActiveRecord::Base
     result
   end 
 
+  def after_confirmation
+    send_user_mail
+  end 
+
   class << self
 
     def getalldoctors
@@ -85,5 +93,10 @@ class User < ActiveRecord::Base
     end
 
   end
+
+  private
+    def send_user_mail
+      UserMailer.send_welcome_email(self).deliver_later
+    end 
 
 end

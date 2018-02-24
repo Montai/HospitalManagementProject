@@ -1,12 +1,8 @@
 class Note < ActiveRecord::Base
-
-  validate :validate_note
+  validates :description, 
+            presence: true,  
+            format: { with: /\A[a-zA-Z0-9\s]+\z/i, message: "can only contain letters and numbers." }
 
   belongs_to :appointment
   belongs_to :user
-
-  def validate_note
-  	self.errors.add(:description, 'can not be left as blank') and return if self.description.blank?
-  end 
-
 end

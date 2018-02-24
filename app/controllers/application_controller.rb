@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
       return if current_user.doctor?
     end
 
-    def after_sign_out_path_for(resource)
-      appointments_path
-    end
+    # def after_sign_up_path_for(resource)
+    #   stored_location_for(resource) || root_path
+    # end
     
 end
