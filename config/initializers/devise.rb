@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require "omniauth-google-oauth2"
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -253,7 +253,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-
+  # config.omniauth :facebook, "APP_ID", "APP_SECRET"
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
@@ -276,4 +276,10 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  config.omniauth :facebook, "425134871242634", "3cbc8ab45b64c5183b6aa39dbc6edcac", callback_url: "http://localhost:3000/users/auth/facebook/callback"
+  config.omniauth :google_oauth2, "318075625187-7ve4ko8b5nv2u4ktma9o4ir67rba6l6b.apps.googleusercontent.com", "xDdwZCTGGK3JUVk8suGLk8oH", callback_url: "http://localhost:3000/auth/google_oauth2/callback"
+  config.omniauth :twitter, "Sdx75RR66kJ00UTDns7moqpNP", "AmBckOAXBBJgNL270Geek56vqy9Ht4TIrxCDQQ347TFRtDrPNm", callback_url: "http://localhost:3000/users/auth/twitter/callback"
+
+
+
 end

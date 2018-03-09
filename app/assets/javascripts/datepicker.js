@@ -27,6 +27,7 @@
 //      }
 //        })
 //    }
+
   $(".check-slot").children().hide();
 
   $('body').on('change', '.date-picker', function(){

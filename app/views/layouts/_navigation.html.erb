@@ -8,7 +8,7 @@
         <li><%= link_to 'Archives', archive_path, remote: true %></li>
         <li class="logout-patient"><%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: "Are you sure to log-out?" } %></li>
 
-        
+
         <li class="name-field-patient">Hi, <%= current_user.first_name %></li>
       <% elsif user_signed_in? && current_user.doctor? %>
         <li><%= link_to 'Home', root_path %></li>
@@ -22,4 +22,3 @@
     </ul>
   </div>
 </nav>
-

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root to: 'welcome#index'
   devise_for :users, controllers: {
                 registrations: "registrations",
+                omniauth_callbacks: 'users/omniauth_callbacks',
                 sessions: "sessions"
   }
   root 'appointments#index'

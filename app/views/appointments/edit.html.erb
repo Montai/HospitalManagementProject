@@ -1,7 +1,4 @@
-
 <%= link_to image_tag("Back.png", :size => '80x50'), appointments_path %><br>
-
-
 
 <%= form_for(@appointment) do |f| %>
 
@@ -21,16 +18,23 @@
         <div class="field">
           <label class="date-select-label" for="date"><b>Select Date</b></label>
           <%= f.date_field :date,  min: Date.today + 1.day, max: Date.today + 5.months %>
+          <%= link_to "Check Availability", available_slots_appointments_path, id: "get_timeslots", remote: true, style: "display:none;" %><br />
+          <div class="check-slot">
+            <%= label_tag :Available_Slots %><br/>
+            <div class="available-slots">
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    
+
     <div class="container-row">
       <div class="container-col">
         <div class="field">
           <h4>Cause:</h4>
 
-            <%= f.fields_for :notes, f.object.notes.first do |note_field| %>                
+            <%= f.fields_for :notes, f.object.notes.first do |note_field| %>
                 <%= note_field.label :Note %><br>
                 <%= note_field.text_area :description, placeholder: "Leave note here." %><br>
                 <div class="validation-err-message">
@@ -39,12 +43,12 @@
                   <% end %>
                 </div>
             <% end %>
-            
+
         </div>
       </div>
     </div>
 
-    
+
     <div class="container-row">
       <div class="container-col">
         <div class="field">
@@ -69,4 +73,3 @@
   </div>
 
 <% end %>
-

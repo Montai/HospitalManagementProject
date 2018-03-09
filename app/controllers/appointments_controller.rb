@@ -1,10 +1,10 @@
 class AppointmentsController < ApplicationController
 
-  before_action :is_patient?, only:[:new, :create]  
-  before_action :check_user, only:[:edit]
+  before_action :is_patient?, only: [:new, :create]  
+  before_action :check_user, only: [:edit]
 
   def index
-    @appointments = current_user.future_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)      
+    @appointments = current_user.future_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)
   end
 
   def new
@@ -14,7 +14,6 @@ class AppointmentsController < ApplicationController
   end
 
   def available_slots
-    binding.pry
     all_slots = ["10:00", "12:00", "14:00"]
     slots = Appointment.where(date: params["query"], doctor_id: params["doctor"]).pluck("slot_tag")
     @test_slots = all_slots - slots
@@ -24,7 +23,6 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    binding.pry
     @appointment = Appointment.new(appointments_params)
     @appointment.patient_id = current_user.id
     @appointment.slot_tag = params["slot"]
@@ -43,11 +41,11 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
     if current_user.doctor? or current_user.id != @appointment.patient_id
       then redirect_to root_path and return
-    end 
+    end
     unless current_user.patient? and current_user.id == @appointment.patient_id
       redirect_to edit_appointment_path(@appointment)
-    end         
-  end 
+    end
+  end
 
   def edit
     @appointment = Appointment.find(params[:id])
@@ -78,7 +76,7 @@ class AppointmentsController < ApplicationController
   def cancel_appointment
     @appointment = Appointment.find(params[:id])
     @appointment.status = Appointment.statuses[:cancelled]
-     
+
     if @appointment.save
       redirect_to appointments_path, notice: 'Appointment Cancelled!'
     else
@@ -86,15 +84,15 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def visited_patient_appointment 
+  def visited_patient_appointment
     @appointment = Appointment.find(params[:id])
     @appointment.status = Appointment.statuses[:visited]
-    if @appointment.save 
+    if @appointment.save
       redirect_to appointments_path, notice: 'Appointment Visited!'
     else
       render root_path, notice: 'Unable to change status, try again!'
-    end 
-  end 
+    end
+  end
 
 
   def archive
@@ -102,7 +100,7 @@ class AppointmentsController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-    end 
+    end
   end
 
   def get_current_status(date)
