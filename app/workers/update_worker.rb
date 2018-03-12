@@ -9,6 +9,5 @@ class UpdateWorker
     @appointments.each do |appointment|
       appointment.update_attribute(:status, :unvisited) if appointment.date.strftime("%Y-%m-%d") < Time.now.strftime("%Y-%m-%d")
     end
-  end 
-
+  end
 end

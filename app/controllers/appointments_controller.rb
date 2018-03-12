@@ -11,11 +11,10 @@ class AppointmentsController < ApplicationController
     @note = @appointment.notes.build({user_id: current_user.id})
     @all_doctors = User.getalldoctors
   end
-  
+
   def create
     @appointment = Appointment.new(appointments_params)
     @appointment.patient_id = current_user.id
-    #@appointment.slot_tag = params["slot"]
     @appointment.notes.first.user_id = current_user.id
     @all_doctors = User.getalldoctors
     UpdateWorker.perform_async(current_user.id)
