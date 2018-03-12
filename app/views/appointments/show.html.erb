@@ -1,23 +1,22 @@
 
-<%= link_to image_tag("Back.png", size: '80x50'), appointments_path %><br>
 
-<h3 class="text"><u>Appointment Details</u></h3>
+<h3 class="header-text well"><u>Appointment Details</u></h3>
 
-<div class="container-top">
-  
-  <div class="container-row">
-    <div class="container-col">
+<div class="container well">
+
+  <div class="row">
+    <div class="col-md-6">
       <% if current_user.patient? %>
         <h4><u>Doctor Name</u><h2><%= @appointment.doctor.first_name %> <%= @appointment.doctor.last_name %></h2></h4>
-        
+
       <% else %>
         <h4><u>Patient Name</u><h2><%= @appointment.patient.first_name %> <%= @appointment.patient.last_name %></h2></h4>
       <% end %>
     </div>
   </div>
 
-  <div class="container-row">
-    <div class="container-col">
+  <div class="row">
+    <div class="col-md-6">
       <div class="field">
         <div><h4><u>Appointment Date </u> <h2><%= @appointment.date.strftime("%B %d, %Y") %></h2></h4>
         </div>
@@ -26,59 +25,57 @@
   </div>
 
 
-  <div class="container-row">
-    <div class="container-col">
+  <div class="row">
+    <div class="col-md-6">
       <div class="field">
         <div><h4><u>Appointment Status </u> <h2><%= @appointment.status %></h2></h4></div>
       </div>
     </div>
   </div>
-  
 
-  <div class="container-row">
-    <div class="container-col">
+
+  <div class="row">
+    <div class="col-md-6">
       <div class="field">
         <% if @appointment.image.present? %>
         <%= link_to @appointment.image.url, class: "fancybox" do %>
           <%= image_tag(@appointment.image.thumb) %>
-        <% end %> 
+        <% end %>
         <% else %>
           <h6>No image</h6>
         <% end %>
       </div>
     </div>
-  </div>
+  </div><br>
 
-
-  <div class="container-row">
-    <div class="container-col">
+  <div class="row">
+    <div class="col-md-6">
       <div class="field">
       <% if @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d") ||
        @appointment.date > Time.now && (@appointment.status == "pending" ) %>
         <div class="cancel-button-field">
-          <%= link_to image_tag("Cancel.png", :size => '60x60'), { action: :cancel_appointment, controller: :appointments}, method: :post, data: { confirm: "Are you sure?" } %>
+          <%= link_to "Cancel", { action: :cancel_appointment, controller: :appointments}, method: :post, data: { confirm: "Are you sure?" },class: "btn btn-danger" %>
+          <%= link_to "Back", appointments_path, class: "btn btn-info" %><br>
           <% if current_user.doctor? and @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d") %>
           <%= link_to image_tag("Approve.png", :size => '55x55'), {action: :visited_patient_appointment , controller: :appointments}, method: :post, data: { confirm: "Are you sure?" } %>
           <% end %>
         </div>
-        
       <% end %>
      </div>
     </div>
-  </div><br>
-
+  </div>
 </div>
 
 
 
-<h3 class="text"><u>My Notes</u></h3>
+<h3 class="header-text well"><u>My Notes</u></h3>
 
 <div class="field" id="<%= @appointment.id %>">
   <% @appointment.notes.each do |note| %>
     <%= render 'notes/note', note: note %>
   <% end %>
 </div>
-  
+
 
 
 <% if @appointment.status != 'unvisited' && @appointment.status != 'visited' && @appointment.status != 'cancelled' %>
@@ -86,6 +83,3 @@
     <%= render 'notes/form' %>
   </div>
 <% end %>
-
-
-

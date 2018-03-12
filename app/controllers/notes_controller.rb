@@ -1,5 +1,4 @@
 class NotesController < ApplicationController
-
   before_action :check_user, only:[:edit, :destroy]
 
   def new
@@ -13,7 +12,7 @@ class NotesController < ApplicationController
     @note.user_id = current_user.id
     if @note.save
       respond_to do |format|
-        format.js 
+        format.js
       end
     else
       redirect_to appointments_path(@appointment), notice: 'Unable to add note, try again!'
@@ -36,7 +35,7 @@ class NotesController < ApplicationController
     @note = @appointment.notes.find(params[:id])
     #Restrict user to edit other users notes
     redirect_to root_path and return if current_user.id != @note.user_id
-  end 
+  end
 
   def edit
     @appointment = Appointment.find(params[:appointment_id])
@@ -58,5 +57,4 @@ class NotesController < ApplicationController
     def notes_params
       params.require(:note).permit(:description)
     end
-
 end

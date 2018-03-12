@@ -1,7 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     @user = User.from_omniauth(request.env["omniauth.auth"])
-    #binding.pry
     user = User.find_by(email: @user.email)
     if user.persisted?
       flash[:notice] = 'Signed In!'
@@ -25,7 +24,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def twitter
     @user = User.from_omniauth(request.env["omniauth.auth"])
-    #binding.pry
     user = User.find_by(email: @user.email)
     if user.persisted?
       flash[:notice] = 'Signed In!'

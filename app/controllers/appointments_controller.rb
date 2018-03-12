@@ -1,6 +1,5 @@
 class AppointmentsController < ApplicationController
-
-  before_action :is_patient?, only: [:new, :create]  
+  before_action :is_patient?, only: [:new, :create]
   before_action :check_user, only: [:edit]
 
   def index
@@ -12,20 +11,11 @@ class AppointmentsController < ApplicationController
     @note = @appointment.notes.build({user_id: current_user.id})
     @all_doctors = User.getalldoctors
   end
-
-  def available_slots
-    all_slots = ["10:00", "12:00", "14:00"]
-    slots = Appointment.where(date: params["query"], doctor_id: params["doctor"]).pluck("slot_tag")
-    @test_slots = all_slots - slots
-    respond_to do |format|
-      format.js
-    end
-  end
-
+  
   def create
     @appointment = Appointment.new(appointments_params)
     @appointment.patient_id = current_user.id
-    @appointment.slot_tag = params["slot"]
+    #@appointment.slot_tag = params["slot"]
     @appointment.notes.first.user_id = current_user.id
     @all_doctors = User.getalldoctors
     UpdateWorker.perform_async(current_user.id)
@@ -94,13 +84,8 @@ class AppointmentsController < ApplicationController
     end
   end
 
-
   def archive
-    @archives = current_user.past_appointments
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @archives = current_user.past_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)
   end
 
   def get_current_status(date)
@@ -114,5 +99,4 @@ class AppointmentsController < ApplicationController
       params.require(:appointment).permit(:date, :doctor_id, :patient_id, :image, :slot_tag,
         notes_attributes: [:id, :description, :user_id, :_destroy])
     end
-
 end

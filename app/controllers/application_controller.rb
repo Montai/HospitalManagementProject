@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   protected
-
+  
     def is_patient?
       return if current_user.blank?
       return if current_user.patient?
@@ -15,9 +15,4 @@ class ApplicationController < ActionController::Base
       return if current_user.blank?
       return if current_user.doctor?
     end
-
-    # def after_sign_up_path_for(resource)
-    #   stored_location_for(resource) || root_path
-    # end
-
 end
