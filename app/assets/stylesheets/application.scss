@@ -16,6 +16,10 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ 
+//Variable declaration
+$primary-color: #b3ffb3;
+$border-color: #006600;
 
 .top-navigation {
   width: 100%;
@@ -23,56 +27,54 @@
   padding: 10px;
   position: absolute;
 }
-
 .main-container {
   position: absolute;
   margin-top: 40px;
   width: 100%;
-}
-.row {
-  margin: 2px;
-  padding: 2px;
-}
-
-.form-control {
-  width: 30%;
-}
-.sign-in-form {
-  position: relative;
-  margin: 10px;
-  width: 30%;
-  height: 560px;
-  border: 2px solid #006600;
-  border-radius: 5px;
-  padding: 10px;
-  background: radial-gradient(circle, #b3ffb3, white)
-}
-.sign-up-form {
-  position: relative;
-  margin: 10px;
-  width: 30%;
-  height: auto;
-  border: 2px solid #006600;
-  border-radius: 5px;
-  padding: 10px;
-  background: radial-gradient(circle, #b3ffb3, white)
-}
-.well {
-  background: radial-gradient(circle, #b3ffb3, white)
-}
-.twitter-icon, .google-icon {
-  position: relative;
-  left: 85px;
-}
-.facebook-icon {
-  position: relative;
-  left: 75px;
-}
-.links {
-  position: relative;
-  left: 85px;
-}
-.validation-err-message {
-  color : #ff0000;
-  font-style: italic;
+  .row {
+    margin: 2px;
+    padding: 2px;
+  }
+  .form-control {
+    width: 30%;
+  }
+  .sign-in-form {
+    position: relative;
+    margin: 10px;
+    width: 30%;
+    height: 560px;
+    border: 2px solid $border-color;
+    border-radius: 5px;
+    padding: 10px;
+    background: radial-gradient(circle, $primary-color, white)
+  }
+  .sign-up-form {
+    position: relative;
+    margin: 10px;
+    width: 30%;
+    height: auto;
+    border: 2px solid $border-color;
+    border-radius: 5px;
+    padding: 10px;
+    background: radial-gradient(circle, $primary-color, white)
+  }
+  .well {
+    background: radial-gradient(circle, $primary-color, white)
+  }
+  .twitter-icon, .google-icon {
+    position: relative;
+    left: 85px;
+  }
+  .facebook-icon {
+    position: relative;
+    left: 75px;
+  }
+  .links {
+    position: relative;
+    left: 85px;
+  }
+  .validation-err-message {
+    color : #ff0000;
+    font-style: italic;
+  }
 }

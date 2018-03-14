@@ -18,7 +18,7 @@
     <h4>Cause:</h4>
     <%= f.fields_for :notes do |note_field| %>
     <%= note_field.label :Note %><br>
-    <%= note_field.text_area :description, placeholder: "Leave note here.", class: "form-control" %><br>
+    <%= note_field.text_area :description, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, class: "form-control", placeholder: "Leave note here." %><br>
     <% end %>
     <div class="validation-err-message">
     <% if @appointment.errors.any? %>

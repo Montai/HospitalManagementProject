@@ -279,7 +279,4 @@ Devise.setup do |config|
   config.omniauth :facebook, "425134871242634", "3cbc8ab45b64c5183b6aa39dbc6edcac", callback_url: "http://localhost:3000/users/auth/facebook/callback"
   config.omniauth :google_oauth2, "318075625187-7ve4ko8b5nv2u4ktma9o4ir67rba6l6b.apps.googleusercontent.com", "xDdwZCTGGK3JUVk8suGLk8oH", callback_url: "http://localhost:3000/auth/google_oauth2/callback"
   config.omniauth :twitter, "Sdx75RR66kJ00UTDns7moqpNP", "AmBckOAXBBJgNL270Geek56vqy9Ht4TIrxCDQQ347TFRtDrPNm", callback_url: "http://localhost:3000/users/auth/twitter/callback"
-
-
-
 end

@@ -38309,3 +38309,1492 @@ Processing by AppointmentsController#show as HTML
   Rendered appointments/show.html.erb within layouts/application (27.1ms)
   Rendered layouts/_navigation.html.erb (0.3ms)
 Completed 200 OK in 92ms (Views: 85.8ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/appointments/227" for 127.0.0.1 at 2018-03-12 06:30:19 +0530
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"227"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mNote Load (0.2ms)[0m  [1mSELECT `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m
+  Rendered notes/_note.html.erb (8.1ms)
+  Rendered notes/_form.html.erb (1.6ms)
+  Rendered appointments/show.html.erb within layouts/application (26.8ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 1559ms (Views: 1512.2ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/assets/application.self-b6a94a490215b398ac31e18e1b57c773f49830dc8c0c960c86f796df8b1c214a.css?body=1" for 127.0.0.1 at 2018-03-12 06:30:21 +0530
+
+
+Started GET "/appointments/227/notes/335/edit" for 127.0.0.1 at 2018-03-12 06:30:28 +0530
+Processing by NotesController#edit as HTML
+  Parameters: {"appointment_id"=>"227", "id"=>"335"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.1ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m
+  [1m[35mNote Load (0.7ms)[0m  SELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227 AND `notes`.`id` = 335 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m  [["id", "227"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227 AND `notes`.`id` = 335 LIMIT 1  [["appointment_id", 227], ["id", "335"]]
+  Rendered notes/edit.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.1ms)
+
+SyntaxError (/home/mindfire/Documents/MY_PROJECT/HospitalManagementProject-master/app/views/notes/edit.html.erb:10: syntax error, unexpected tLABEL, expecting '='
+...uffer.append=( f.submit, class: "btn btn-success" );@output_...
+...                               ^):
+  app/views/notes/edit.html.erb:10: syntax error, unexpected tLABEL, expecting '='
+
+
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.3ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (23.1ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (15.0ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (29.5ms)
+
+
+Started GET "/appointments/227/notes/335/edit" for 127.0.0.1 at 2018-03-12 06:31:55 +0530
+Processing by NotesController#edit as HTML
+  Parameters: {"appointment_id"=>"227", "id"=>"335"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1
+  [1m[36mNote Load (0.2ms)[0m  [1mSELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227 AND `notes`.`id` = 335 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1  [["id", "227"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227 AND `notes`.`id` = 335 LIMIT 1[0m  [["appointment_id", 227], ["id", "335"]]
+  Rendered notes/edit.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.7ms)
+
+SyntaxError (/home/mindfire/Documents/MY_PROJECT/HospitalManagementProject-master/app/views/notes/edit.html.erb:10: syntax error, unexpected tLABEL, expecting '='
+...uffer.append=( f.submit, class: 'btn btn-success' );@output_...
+...                               ^):
+  app/views/notes/edit.html.erb:10: syntax error, unexpected tLABEL, expecting '='
+
+
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.9ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (27.7ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (16.9ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (34.1ms)
+
+
+Started GET "/appointments/227/notes/335/edit" for 127.0.0.1 at 2018-03-12 06:31:58 +0530
+Processing by NotesController#edit as HTML
+  Parameters: {"appointment_id"=>"227", "id"=>"335"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.1ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m
+  [1m[35mNote Load (0.2ms)[0m  SELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227 AND `notes`.`id` = 335 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m  [["id", "227"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227 AND `notes`.`id` = 335 LIMIT 1  [["appointment_id", 227], ["id", "335"]]
+  Rendered notes/edit.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.6ms)
+
+SyntaxError (/home/mindfire/Documents/MY_PROJECT/HospitalManagementProject-master/app/views/notes/edit.html.erb:10: syntax error, unexpected tLABEL, expecting '='
+...uffer.append=( f.submit, class: 'btn btn-success' );@output_...
+...                               ^):
+  app/views/notes/edit.html.erb:10: syntax error, unexpected tLABEL, expecting '='
+
+
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.8ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (25.0ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (16.6ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (31.5ms)
+
+
+Started GET "/appointments/227/notes/335/edit" for 127.0.0.1 at 2018-03-12 06:32:04 +0530
+Processing by NotesController#edit as HTML
+  Parameters: {"appointment_id"=>"227", "id"=>"335"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1
+  [1m[36mNote Load (0.2ms)[0m  [1mSELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227 AND `notes`.`id` = 335 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1  [["id", "227"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227 AND `notes`.`id` = 335 LIMIT 1[0m  [["appointment_id", 227], ["id", "335"]]
+  Rendered notes/edit.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 73ms (Views: 67.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/appointments/227" for 127.0.0.1 at 2018-03-12 06:32:11 +0530
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"227"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mNote Load (0.2ms)[0m  [1mSELECT `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1
+  [1m[36mAppointment Load (0.7ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m
+  Rendered notes/_note.html.erb (5.2ms)
+  Rendered notes/_form.html.erb (3.2ms)
+  Rendered appointments/show.html.erb within layouts/application (14.4ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 83ms (Views: 78.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/appointments/227/notes/335/edit" for 127.0.0.1 at 2018-03-12 06:36:11 +0530
+Processing by NotesController#edit as HTML
+  Parameters: {"appointment_id"=>"227", "id"=>"335"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m
+  [1m[35mNote Load (0.2ms)[0m  SELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227 AND `notes`.`id` = 335 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m  [["id", "227"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227 AND `notes`.`id` = 335 LIMIT 1  [["appointment_id", 227], ["id", "335"]]
+  Rendered notes/edit.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 85ms (Views: 77.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/appointments/227/notes/335/edit" for 127.0.0.1 at 2018-03-12 06:38:35 +0530
+Processing by NotesController#edit as HTML
+  Parameters: {"appointment_id"=>"227", "id"=>"335"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1
+  [1m[36mNote Load (0.1ms)[0m  [1mSELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227 AND `notes`.`id` = 335 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1  [["id", "227"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227 AND `notes`.`id` = 335 LIMIT 1[0m  [["appointment_id", 227], ["id", "335"]]
+  Rendered notes/edit.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 87ms (Views: 81.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/appointments/227/notes/335/edit" for 127.0.0.1 at 2018-03-12 06:38:51 +0530
+Processing by NotesController#edit as HTML
+  Parameters: {"appointment_id"=>"227", "id"=>"335"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m
+  [1m[35mNote Load (0.2ms)[0m  SELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227 AND `notes`.`id` = 335 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m  [["id", "227"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227 AND `notes`.`id` = 335 LIMIT 1  [["appointment_id", 227], ["id", "335"]]
+  Rendered notes/edit.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 90ms (Views: 82.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/appointments/227" for 127.0.0.1 at 2018-03-12 06:38:55 +0530
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"227"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mNote Load (0.2ms)[0m  SELECT `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1
+  Rendered notes/_note.html.erb (3.4ms)
+  Rendered notes/_form.html.erb (1.8ms)
+  Rendered appointments/show.html.erb within layouts/application (11.2ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 70ms (Views: 67.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 06:39:22 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (3, 2, 8)[0m
+  Rendered appointments/index.html.erb within layouts/application (11.4ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 72ms (Views: 67.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/appointments/227/edit" for 127.0.0.1 at 2018-03-12 06:39:29 +0530
+Processing by AppointmentsController#edit as HTML
+  Parameters: {"id"=>"227"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1  [["id", "227"]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT id, first_name FROM `users` WHERE `users`.`role` = 1[0m
+  [1m[35mNote Load (0.3ms)[0m  SELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227  ORDER BY `notes`.`id` ASC LIMIT 1
+  Rendered appointments/edit.html.erb within layouts/application (9.1ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 79ms (Views: 74.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/appointments" for 127.0.0.1 at 2018-03-12 06:39:36 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (3.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (3, 2, 8)[0m
+  Rendered appointments/index.html.erb within layouts/application (24.2ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 116ms (Views: 109.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/archive" for 127.0.0.1 at 2018-03-12 06:39:43 +0530
+Processing by AppointmentsController#archive as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.5ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status <> 0)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 8, 10, 6)
+  Rendered appointments/archive.html.erb within layouts/application (13.5ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 83ms (Views: 77.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 06:39:49 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (3, 2, 8)[0m
+  Rendered appointments/index.html.erb within layouts/application (13.8ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 92ms (Views: 89.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/appointments/new" for 127.0.0.1 at 2018-03-12 06:39:51 +0530
+Processing by AppointmentsController#new as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT id, first_name FROM `users` WHERE `users`.`role` = 1[0m
+  Rendered appointments/new.html.erb within layouts/application (7.3ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 78ms (Views: 73.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/appointments" for 127.0.0.1 at 2018-03-12 06:39:56 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (1.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (3, 2, 8)
+  Rendered appointments/index.html.erb within layouts/application (16.2ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 93ms (Views: 87.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/appointments/227" for 127.0.0.1 at 2018-03-12 06:39:57 +0530
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"227"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mNote Load (0.1ms)[0m  SELECT `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1
+  Rendered notes/_note.html.erb (5.4ms)
+  Rendered notes/_form.html.erb (2.5ms)
+  Rendered appointments/show.html.erb within layouts/application (14.4ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 102ms (Views: 96.8ms | ActiveRecord: 1.9ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-03-12 06:40:03 +0530
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"29GaUYlHnXAyAsWf/Y19W/oQm8d2j3/1ol7e/IDb8gukkCuAEwwUNnJdMima4seyXmbRWTUEJm6ssb1DqXdRpA=="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 06:40:03 +0530
+Processing by AppointmentsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-03-12 06:40:03 +0530
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.6ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 83ms (Views: 81.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-03-12 09:23:50 +0530
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lN/qs0suK4a/RIQUr+/Xdd0hlWHZFZfjgXZHEjEW2oce9WsENZ3nP6zdEj8IrvJPzBKO5Iq1CPDBNcT4sMeKlg==", "user"=>{"email"=>"pat5@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'pat5@gmail.com'  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2018-03-12 00:38:44', `current_sign_in_at` = '2018-03-12 03:53:50', `sign_in_count` = 12, `updated_at` = '2018-03-12 03:53:50' WHERE `users`.`id` = 4
+  [1m[36m (48.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 200ms (ActiveRecord: 49.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 09:23:50 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (3, 2, 8)
+  Rendered appointments/index.html.erb within layouts/application (9.9ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 1517ms (Views: 1513.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.self-018895a7fcfcfeeac2d6b065ac0b1baf0a43328be7a56c54281dc3d0c3317bfc.css?body=1" for 127.0.0.1 at 2018-03-12 09:23:51 +0530
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 09:24:19 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (3, 2, 8)[0m
+  Rendered appointments/index.html.erb within layouts/application (10.6ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 92ms (Views: 88.8ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-03-12 09:24:30 +0530
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"L10pCkIlONFo98c8TQVD5DjUKqIsXB8SIgxaW42fZYKODMJ6JqcsVel0pyvdlFQmgauUfcrt4Z1fbmHzCTqieQ=="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 09:24:30 +0530
+Processing by AppointmentsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-03-12 09:24:30 +0530
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.4ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 89ms (Views: 88.1ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateCkeditorAssets (20180312093636)
+  [1m[35m (258.3ms)[0m  CREATE TABLE `ckeditor_assets` (`id` int(11) auto_increment PRIMARY KEY, `data_file_name` varchar(255) NOT NULL, `data_content_type` varchar(255), `data_file_size` int(11), `type` varchar(30), `width` int(11), `height` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (198.1ms)[0m  [1mCREATE  INDEX `index_ckeditor_assets_on_type`  ON `ckeditor_assets` (`type`) [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20180312093636')[0m
+  [1m[35m (37.5ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.5ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'hospital_management_dev'
+  AND fk.table_name = 'appointments'
+
+  [1m[36m (0.3ms)[0m  [1mSHOW CREATE TABLE `appointments`[0m
+  [1m[35m (0.5ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'hospital_management_dev'
+  AND fk.table_name = 'ckeditor_assets'
+
+  [1m[36m (0.3ms)[0m  [1mSHOW CREATE TABLE `ckeditor_assets`[0m
+  [1m[35m (0.4ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'hospital_management_dev'
+  AND fk.table_name = 'images'
+
+  [1m[36m (0.3ms)[0m  [1mSHOW CREATE TABLE `images`[0m
+  [1m[35m (0.4ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'hospital_management_dev'
+  AND fk.table_name = 'notes'
+
+  [1m[36m (0.3ms)[0m  [1mSHOW CREATE TABLE `notes`[0m
+  [1m[35m (0.4ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'hospital_management_dev'
+  AND fk.table_name = 'users'
+
+  [1m[36m (0.3ms)[0m  [1mSHOW CREATE TABLE `users`[0m
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-03-12 09:39:25 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (9871.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9994.7ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 10331ms (Views: 10300.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/ckeditor/ckeditor.self-5627b7c5975c03aa8c738623a75f40df11e006c51dad749183c4ced4ea4906a1.js?body=1" for 127.0.0.1 at 2018-03-12 09:39:36 +0530
+
+
+Started GET "/assets/config.self-89dd6757f3472a53db5cbfdc5fc705091a15b887e12681d57007869b5b0575b7.js?body=1" for 127.0.0.1 at 2018-03-12 09:39:36 +0530
+
+
+Started GET "/assets/ckeditor/init.self-2f3e80b764bc18c9362e6f3326e1f32d4a8bdceff67345a3453a93b111626ff3.js?body=1" for 127.0.0.1 at 2018-03-12 09:39:36 +0530
+
+
+Started GET "/assets/application.self-44dc72337fbefc4f8c73fc8781b922cf9e4f99f8d068e6563c3820851d9390f6.js?body=1" for 127.0.0.1 at 2018-03-12 09:39:36 +0530
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-03-12 09:39:45 +0530
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6cIZTzouKcN77ZAh5o5hRDgUE8qnYKByGUZb56n8PERF6Y5y69g8bvNGQg6/ItvOZ4Jgg1a3che/SSyxE4eNRQ==", "user"=>{"email"=>"pat5@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'pat5@gmail.com'  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2018-03-12 03:53:50', `current_sign_in_at` = '2018-03-12 04:09:45', `sign_in_count` = 13, `updated_at` = '2018-03-12 04:09:45' WHERE `users`.`id` = 4
+  [1m[36m (44.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 296ms (ActiveRecord: 46.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 09:39:45 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (3, 2, 8)
+  Rendered appointments/index.html.erb within layouts/application (33.9ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 179ms (Views: 114.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/appointments/227" for 127.0.0.1 at 2018-03-12 09:39:48 +0530
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"227"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mNote Load (0.1ms)[0m  SELECT `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1
+  Rendered notes/_note.html.erb (8.2ms)
+  Rendered notes/_form.html.erb (2.8ms)
+  Rendered appointments/show.html.erb within layouts/application (37.6ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 117ms (Views: 108.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/appointments/new" for 127.0.0.1 at 2018-03-12 09:39:53 +0530
+Processing by AppointmentsController#new as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT id, first_name FROM `users` WHERE `users`.`role` = 1
+  Rendered appointments/new.html.erb within layouts/application (27.4ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 108ms (Views: 100.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/appointments/new" for 127.0.0.1 at 2018-03-12 09:40:43 +0530
+Processing by AppointmentsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT id, first_name FROM `users` WHERE `users`.`role` = 1
+  Rendered appointments/new.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 100ms (Views: 96.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/appointments/new" for 127.0.0.1 at 2018-03-12 09:42:38 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by AppointmentsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT id, first_name FROM `users` WHERE `users`.`role` = 1[0m
+  Rendered appointments/new.html.erb within layouts/application (24.1ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 745ms (Views: 672.7ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/appointments/new" for 127.0.0.1 at 2018-03-12 09:45:50 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by AppointmentsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT id, first_name FROM `users` WHERE `users`.`role` = 1[0m
+  Rendered appointments/new.html.erb within layouts/application (24.5ms)
+  Rendered layouts/_navigation.html.erb (2.3ms)
+Completed 200 OK in 875ms (Views: 808.5ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/appointments/new" for 127.0.0.1 at 2018-03-12 09:48:29 +0530
+Processing by AppointmentsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT id, first_name FROM `users` WHERE `users`.`role` = 1[0m
+  Rendered appointments/new.html.erb within layouts/application (36.2ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 130ms (Views: 126.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/ckeditor/config.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:48:30 +0530
+
+
+Started GET "/assets/ckeditor/skins/moono-lisa/editor.css?t=H5SC" for 127.0.0.1 at 2018-03-12 09:48:30 +0530
+
+
+Started GET "/assets/ckeditor/lang/en-gb.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:48:30 +0530
+
+
+Started GET "/assets/ckeditor/styles.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:48:30 +0530
+
+
+Started GET "/assets/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css" for 127.0.0.1 at 2018-03-12 09:48:30 +0530
+
+
+Started GET "/assets/ckeditor/plugins/tableselection//styles/tableselection.css" for 127.0.0.1 at 2018-03-12 09:48:30 +0530
+
+
+Started GET "/assets/ckeditor/plugins/scayt/dialogs/dialog.css" for 127.0.0.1 at 2018-03-12 09:48:30 +0530
+
+
+Started GET "/assets/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css" for 127.0.0.1 at 2018-03-12 09:48:30 +0530
+
+
+Started GET "/assets/ckeditor/plugins/copyformatting/styles/copyformatting.css" for 127.0.0.1 at 2018-03-12 09:48:30 +0530
+
+
+Started GET "/assets/ckeditor/skins/moono-lisa/icons.png?t=08ffd39" for 127.0.0.1 at 2018-03-12 09:48:30 +0530
+
+
+Started GET "/assets/ckeditor/contents.css?t=H5SC" for 127.0.0.1 at 2018-03-12 09:48:30 +0530
+
+
+Started GET "/assets/ckeditor/plugins/copyformatting/styles/copyformatting.css" for 127.0.0.1 at 2018-03-12 09:48:30 +0530
+
+
+Started GET "/assets/ckeditor/plugins/tableselection//styles/tableselection.css" for 127.0.0.1 at 2018-03-12 09:48:30 +0530
+
+
+Started POST "/appointments" for 127.0.0.1 at 2018-03-12 09:49:22 +0530
+Processing by AppointmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HL+JRUMm/cTsPdesfhNlvEjswf8zPEoQeup92Fj9eCq/YiYgqVzMV/NXQdq1vNBQT2FWf2APLPA77Tz8rmBAsg==", "appointment"=>{"doctor_id"=>"11", "date"=>"2018-03-14", "notes_attributes"=>{"0"=>{"description"=>"<p>This is a note</p>\r\n"}}}, "commit"=>"Book"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT id, first_name FROM `users` WHERE `users`.`role` = 1[0m
+  Rendered appointments/new.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 115ms (Views: 79.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/ckeditor/config.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:49:23 +0530
+
+
+Started GET "/assets/ckeditor/skins/moono-lisa/editor.css?t=H5SC" for 127.0.0.1 at 2018-03-12 09:49:23 +0530
+
+
+Started GET "/assets/ckeditor/lang/en-gb.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:49:23 +0530
+
+
+Started GET "/assets/ckeditor/styles.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:49:23 +0530
+
+
+Started GET "/assets/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css" for 127.0.0.1 at 2018-03-12 09:49:23 +0530
+
+
+Started GET "/assets/ckeditor/plugins/scayt/dialogs/dialog.css" for 127.0.0.1 at 2018-03-12 09:49:23 +0530
+
+
+Started GET "/assets/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css" for 127.0.0.1 at 2018-03-12 09:49:23 +0530
+
+
+Started GET "/assets/ckeditor/plugins/tableselection//styles/tableselection.css" for 127.0.0.1 at 2018-03-12 09:49:23 +0530
+
+
+Started GET "/assets/ckeditor/plugins/copyformatting/styles/copyformatting.css" for 127.0.0.1 at 2018-03-12 09:49:23 +0530
+
+
+Started GET "/assets/ckeditor/contents.css?t=H5SC" for 127.0.0.1 at 2018-03-12 09:49:23 +0530
+
+
+Started GET "/assets/ckeditor/plugins/copyformatting/styles/copyformatting.css" for 127.0.0.1 at 2018-03-12 09:49:23 +0530
+
+
+Started GET "/assets/ckeditor/plugins/tableselection//styles/tableselection.css" for 127.0.0.1 at 2018-03-12 09:49:23 +0530
+
+
+Started GET "/assets/ckeditor/skins/moono-lisa/icons.png?t=08ffd39" for 127.0.0.1 at 2018-03-12 09:49:23 +0530
+
+
+Started POST "/appointments" for 127.0.0.1 at 2018-03-12 09:49:51 +0530
+Processing by AppointmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DUrlabbI4AlwtBhrKHJUN+zPYs8DqtFfWeej/KP5K5Sul0oMXLLRmm/ejh3j3eHb60L1T1CZt78Y4OLYVWQTDA==", "appointment"=>{"doctor_id"=>"11", "date"=>"2018-03-13", "notes_attributes"=>{"0"=>{"description"=>"<p>This is a note</p>\r\n"}}, "image"=>#<ActionDispatch::Http::UploadedFile:0x007ffae7703228 @tempfile=#<Tempfile:/tmp/RackMultipart20180312-32156-2iovav.jpg>, @original_filename="sdf.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"appointment[image]\"; filename=\"sdf.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Book"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT id, first_name FROM `users` WHERE `users`.`role` = 1[0m
+  Rendered appointments/new.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 514ms (Views: 81.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/ckeditor/config.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:49:52 +0530
+
+
+Started GET "/assets/ckeditor/skins/moono-lisa/editor.css?t=H5SC" for 127.0.0.1 at 2018-03-12 09:49:52 +0530
+
+
+Started GET "/assets/ckeditor/lang/en-gb.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:49:52 +0530
+
+
+Started GET "/assets/ckeditor/styles.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:49:52 +0530
+
+
+Started GET "/assets/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css" for 127.0.0.1 at 2018-03-12 09:49:52 +0530
+
+
+Started GET "/assets/ckeditor/plugins/tableselection//styles/tableselection.css" for 127.0.0.1 at 2018-03-12 09:49:53 +0530
+
+
+Started GET "/assets/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css" for 127.0.0.1 at 2018-03-12 09:49:53 +0530
+
+
+Started GET "/assets/ckeditor/plugins/scayt/dialogs/dialog.css" for 127.0.0.1 at 2018-03-12 09:49:53 +0530
+
+
+Started GET "/assets/ckeditor/plugins/copyformatting/styles/copyformatting.css" for 127.0.0.1 at 2018-03-12 09:49:53 +0530
+
+
+Started GET "/assets/ckeditor/contents.css?t=H5SC" for 127.0.0.1 at 2018-03-12 09:49:53 +0530
+
+
+Started GET "/assets/ckeditor/plugins/tableselection//styles/tableselection.css" for 127.0.0.1 at 2018-03-12 09:49:53 +0530
+
+
+Started GET "/assets/ckeditor/skins/moono-lisa/icons.png?t=08ffd39" for 127.0.0.1 at 2018-03-12 09:49:53 +0530
+
+
+Started GET "/assets/ckeditor/plugins/copyformatting/styles/copyformatting.css" for 127.0.0.1 at 2018-03-12 09:49:53 +0530
+
+
+Started GET "/appointments" for 127.0.0.1 at 2018-03-12 09:51:46 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (3, 2, 8)
+  Rendered appointments/index.html.erb within layouts/application (18.3ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 98ms (Views: 94.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/appointments/new" for 127.0.0.1 at 2018-03-12 09:51:48 +0530
+Processing by AppointmentsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT id, first_name FROM `users` WHERE `users`.`role` = 1
+  Rendered appointments/new.html.erb within layouts/application (6.5ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 82ms (Views: 78.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/ckeditor/config.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:51:48 +0530
+
+
+Started GET "/assets/ckeditor/skins/moono-lisa/editor.css?t=H5SC" for 127.0.0.1 at 2018-03-12 09:51:48 +0530
+
+
+Started GET "/assets/ckeditor/lang/en-gb.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:51:48 +0530
+
+
+Started GET "/assets/ckeditor/styles.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:51:48 +0530
+
+
+Started GET "/assets/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css" for 127.0.0.1 at 2018-03-12 09:51:48 +0530
+
+
+Started GET "/assets/ckeditor/plugins/scayt/dialogs/dialog.css" for 127.0.0.1 at 2018-03-12 09:51:48 +0530
+
+
+Started GET "/assets/ckeditor/plugins/tableselection//styles/tableselection.css" for 127.0.0.1 at 2018-03-12 09:51:48 +0530
+
+
+Started GET "/assets/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css" for 127.0.0.1 at 2018-03-12 09:51:48 +0530
+
+
+Started GET "/assets/ckeditor/plugins/copyformatting/styles/copyformatting.css" for 127.0.0.1 at 2018-03-12 09:51:48 +0530
+
+
+Started GET "/assets/ckeditor/contents.css?t=H5SC" for 127.0.0.1 at 2018-03-12 09:51:48 +0530
+
+
+Started GET "/assets/ckeditor/plugins/copyformatting/styles/copyformatting.css" for 127.0.0.1 at 2018-03-12 09:51:48 +0530
+
+
+Started GET "/assets/ckeditor/skins/moono-lisa/icons.png?t=08ffd39" for 127.0.0.1 at 2018-03-12 09:51:48 +0530
+
+
+Started GET "/assets/ckeditor/plugins/tableselection//styles/tableselection.css" for 127.0.0.1 at 2018-03-12 09:51:48 +0530
+
+
+Started POST "/appointments" for 127.0.0.1 at 2018-03-12 09:52:03 +0530
+Processing by AppointmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xRzw5yyU7Lsgg6XvbYXpJ19QKwV/0X9f7Z9aoQcWok5mwV+Cxu7dKD/pM5mmKlzLWN28hSziGb+smBuF8Yua1g==", "appointment"=>{"doctor_id"=>"11", "date"=>"2018-03-13", "notes_attributes"=>{"0"=>{"description"=>"<p>This is a note</p>\r\n"}}}, "commit"=>"Book"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT id, first_name FROM `users` WHERE `users`.`role` = 1
+  Rendered appointments/new.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+Completed 200 OK in 104ms (Views: 97.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/ckeditor/config.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:52:04 +0530
+
+
+Started GET "/assets/ckeditor/skins/moono-lisa/editor.css?t=H5SC" for 127.0.0.1 at 2018-03-12 09:52:04 +0530
+
+
+Started GET "/assets/ckeditor/lang/en-gb.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:52:04 +0530
+
+
+Started GET "/assets/ckeditor/styles.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:52:04 +0530
+
+
+Started GET "/assets/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css" for 127.0.0.1 at 2018-03-12 09:52:04 +0530
+
+
+Started GET "/assets/ckeditor/plugins/tableselection//styles/tableselection.css" for 127.0.0.1 at 2018-03-12 09:52:04 +0530
+
+
+Started GET "/assets/ckeditor/plugins/scayt/dialogs/dialog.css" for 127.0.0.1 at 2018-03-12 09:52:04 +0530
+
+
+Started GET "/assets/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css" for 127.0.0.1 at 2018-03-12 09:52:04 +0530
+
+
+Started GET "/assets/ckeditor/plugins/copyformatting/styles/copyformatting.css" for 127.0.0.1 at 2018-03-12 09:52:04 +0530
+
+
+Started GET "/assets/ckeditor/contents.css?t=H5SC" for 127.0.0.1 at 2018-03-12 09:52:04 +0530
+
+
+Started GET "/assets/ckeditor/plugins/copyformatting/styles/copyformatting.css" for 127.0.0.1 at 2018-03-12 09:52:04 +0530
+
+
+Started GET "/assets/ckeditor/plugins/tableselection//styles/tableselection.css" for 127.0.0.1 at 2018-03-12 09:52:04 +0530
+
+
+Started GET "/assets/ckeditor/skins/moono-lisa/icons.png?t=08ffd39" for 127.0.0.1 at 2018-03-12 09:52:04 +0530
+
+
+Started POST "/appointments" for 127.0.0.1 at 2018-03-12 09:52:08 +0530
+Processing by AppointmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"j+bb82E+ONr2EJVJUlWGRbx669So+GDqpX1yi9ZVDKAsO3SWi0QJSel6Az+Z+jOpu/d8VPvLBgrkejOvIMg0OA==", "appointment"=>{"doctor_id"=>"11", "date"=>"2018-03-13", "notes_attributes"=>{"0"=>{"description"=>"<p>This is a note</p>\r\n"}}, "image"=>#<ActionDispatch::Http::UploadedFile:0x007ffae5cbc770 @tempfile=#<Tempfile:/tmp/RackMultipart20180312-32156-nxcz4d.jpg>, @original_filename="vomit.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"appointment[image]\"; filename=\"vomit.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Book"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT id, first_name FROM `users` WHERE `users`.`role` = 1
+  Rendered appointments/new.html.erb within layouts/application (4.1ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 287ms (Views: 88.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/ckeditor/config.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:52:09 +0530
+
+
+Started GET "/assets/ckeditor/lang/en-gb.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:52:09 +0530
+
+
+Started GET "/assets/ckeditor/skins/moono-lisa/editor.css?t=H5SC" for 127.0.0.1 at 2018-03-12 09:52:09 +0530
+
+
+Started GET "/assets/ckeditor/styles.js?t=H5SC" for 127.0.0.1 at 2018-03-12 09:52:09 +0530
+
+
+Started GET "/assets/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css" for 127.0.0.1 at 2018-03-12 09:52:09 +0530
+
+
+Started GET "/assets/ckeditor/plugins/tableselection//styles/tableselection.css" for 127.0.0.1 at 2018-03-12 09:52:09 +0530
+
+
+Started GET "/assets/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css" for 127.0.0.1 at 2018-03-12 09:52:09 +0530
+
+
+Started GET "/assets/ckeditor/plugins/copyformatting/styles/copyformatting.css" for 127.0.0.1 at 2018-03-12 09:52:09 +0530
+
+
+Started GET "/assets/ckeditor/plugins/scayt/dialogs/dialog.css" for 127.0.0.1 at 2018-03-12 09:52:09 +0530
+
+
+Started GET "/assets/ckeditor/contents.css?t=H5SC" for 127.0.0.1 at 2018-03-12 09:52:09 +0530
+
+
+Started GET "/assets/ckeditor/plugins/tableselection//styles/tableselection.css" for 127.0.0.1 at 2018-03-12 09:52:09 +0530
+
+
+Started GET "/assets/ckeditor/skins/moono-lisa/icons.png?t=08ffd39" for 127.0.0.1 at 2018-03-12 09:52:09 +0530
+
+
+Started GET "/assets/ckeditor/plugins/copyformatting/styles/copyformatting.css" for 127.0.0.1 at 2018-03-12 09:52:09 +0530
+
+
+Started GET "/appointments" for 127.0.0.1 at 2018-03-12 09:53:04 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (3, 2, 8)[0m
+  Rendered appointments/index.html.erb within layouts/application (9.0ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 83ms (Views: 80.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/appointments/new" for 127.0.0.1 at 2018-03-12 09:53:06 +0530
+Processing by AppointmentsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT id, first_name FROM `users` WHERE `users`.`role` = 1[0m
+  Rendered appointments/new.html.erb within layouts/application (6.3ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 88ms (Views: 83.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/appointments" for 127.0.0.1 at 2018-03-12 09:53:21 +0530
+Processing by AppointmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zOoYxxI3PcSciw5xer9G4qFkNhxQKbwbv3D4ItfZuqBvN7ei+E0MV4PhmAexEPMOpumhnAMa2vv+d7kGIUSCOA==", "appointment"=>{"doctor_id"=>"", "date"=>"2018-03-13", "notes_attributes"=>{"0"=>{"description"=>"This is a note"}}}, "commit"=>"Book"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT id, first_name FROM `users` WHERE `users`.`role` = 1[0m
+  Rendered appointments/new.html.erb within layouts/application (3.5ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 99ms (Views: 91.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/appointments" for 127.0.0.1 at 2018-03-12 09:53:29 +0530
+Processing by AppointmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XtOMFa/T8Zu4DOA9nN7KNZVHOntfgxMRBOOa6y6GxnL9DiNwRanACKdmdktXcX/Zksqt+wywdfFF5NvP2Bv+6g==", "appointment"=>{"doctor_id"=>"11", "date"=>"2018-03-13", "notes_attributes"=>{"0"=>{"description"=>"This is a note"}}}, "commit"=>"Book"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT id, first_name FROM `users` WHERE `users`.`role` = 1[0m
+  Rendered appointments/new.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 99ms (Views: 91.4ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/appointments" for 127.0.0.1 at 2018-03-12 09:53:32 +0530
+Processing by AppointmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GWneLnAPgZ36OGprzBMN3cm4dTScZZYKFhtjy6Qqx6e6tHFLmnWwDuVS/B0HvLgxzjXitM9W8OpXHCLvUrf/Pw==", "appointment"=>{"doctor_id"=>"11", "date"=>"2018-03-13", "notes_attributes"=>{"0"=>{"description"=>"This is a note"}}, "image"=>#<ActionDispatch::Http::UploadedFile:0x007ffae4b6d050 @tempfile=#<Tempfile:/tmp/RackMultipart20180312-32156-3dcwr5.jpg>, @original_filename="vomit.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"appointment[image]\"; filename=\"vomit.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Book"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `appointments` (`date`, `doctor_id`, `image`, `patient_id`, `created_at`, `updated_at`) VALUES ('2018-03-13', 11, 'vomit.jpg', 4, '2018-03-12 04:23:32', '2018-03-12 04:23:32')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `notes` (`description`, `user_id`, `appointment_id`, `created_at`, `updated_at`) VALUES ('This is a note', 4, 232, '2018-03-12 04:23:32', '2018-03-12 04:23:32')[0m
+  [1m[35m (39.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 206ms (ActiveRecord: 40.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 09:53:32 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.7ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (3, 2, 8, 11)[0m
+  Rendered appointments/index.html.erb within layouts/application (14.2ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 101ms (Views: 96.5ms | ActiveRecord: 1.4ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-03-12 09:53:40 +0530
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"mqFgBG1YLo/edfYaKR0clWv+RCJwDUxL70IZhlT7bwE5fM9hhyIfHMEfYGzisql5bHPToiM+KquuRViiomZXmQ=="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 32ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 09:53:40 +0530
+Processing by AppointmentsController#index as HTML
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-03-12 09:53:40 +0530
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (10.6ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 94ms (Views: 92.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-03-12 12:18:08 +0530
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Z0Kshtb4uq3+jo2P0jgdKbG9e9IWpNp5jRC4oi+v5I0yqraFMkB4o48jguxWYiXH5++3fGa3QFUIn+aDvTXyaw==", "user"=>{"email"=>"pat5@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'pat5@gmail.com'  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2018-03-12 04:09:45', `current_sign_in_at` = '2018-03-12 06:48:08', `sign_in_count` = 14, `updated_at` = '2018-03-12 06:48:08' WHERE `users`.`id` = 4[0m
+  [1m[35m (33.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 224ms (ActiveRecord: 36.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 12:18:08 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (3, 2, 8, 11)[0m
+  Rendered appointments/index.html.erb within layouts/application (24.5ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 183ms (Views: 169.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/appointments/227" for 127.0.0.1 at 2018-03-12 12:18:12 +0530
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"227"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.5ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mNote Load (0.4ms)[0m  [1mSELECT `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1[0m
+  Rendered notes/_note.html.erb (8.5ms)
+  Rendered notes/_form.html.erb (3.4ms)
+  Rendered appointments/show.html.erb within layouts/application (24.7ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 103ms (Views: 94.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 12:18:35 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (3, 2, 8, 11)
+  Rendered appointments/index.html.erb within layouts/application (23.5ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 106ms (Views: 102.3ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/appointments/227" for 127.0.0.1 at 2018-03-12 12:18:43 +0530
+Processing by AppointmentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"F8ao9/vutbjsTKhSe03hlUErO44T3LVurmbKWZmq+vYTNvRXmFFFCtOWwS/EHSm/zMvT1VtU0f0A22bDrQVYcg==", "id"=>"227"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 227 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mNote Load (0.4ms)[0m  SELECT `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 227
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM `notes` WHERE `notes`.`id` = 335[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM `appointments` WHERE `appointments`.`id` = 227
+  [1m[36m (39.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 50ms (ActiveRecord: 41.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 12:18:43 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.6ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 8, 11, 3)
+  Rendered appointments/index.html.erb within layouts/application (8.5ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 100ms (Views: 94.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/appointments/229" for 127.0.0.1 at 2018-03-12 12:18:47 +0530
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"229"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.3ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 229 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mNote Load (0.6ms)[0m  SELECT `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 229
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 229 LIMIT 1
+  Rendered notes/_note.html.erb (4.8ms)
+  Rendered notes/_form.html.erb (2.2ms)
+  Rendered appointments/show.html.erb within layouts/application (15.8ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 104ms (Views: 100.2ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/appointments/229/cancel_appointment" for 127.0.0.1 at 2018-03-12 12:18:55 +0530
+Processing by AppointmentsController#cancel_appointment as HTML
+  Parameters: {"authenticity_token"=>"92W5yawYNVSr3cQL9PLzwkUrS3fPVgdi0RZvRCv2K+jzleVpz6fF5pQHrXZLojvoyMujLIfeY/F/q8PeH1mJbA==", "id"=>"229"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 229 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE `appointments` SET `status` = 2, `updated_at` = '2018-03-12 06:48:55' WHERE `appointments`.`id` = 229
+  [1m[36m (41.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/appointments
+Completed 302 Found in 50ms (ActiveRecord: 42.2ms)
+
+
+Started GET "/appointments" for 127.0.0.1 at 2018-03-12 12:18:55 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.6ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 8, 11, 3)
+  Rendered appointments/index.html.erb within layouts/application (10.6ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 95ms (Views: 91.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 12:19:00 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 8, 11, 3)[0m
+  Rendered appointments/index.html.erb within layouts/application (13.8ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 92ms (Views: 88.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 12:19:40 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 8, 11, 3)
+  Rendered appointments/index.html.erb within layouts/application (11.1ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 89ms (Views: 85.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 12:19:53 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 8, 11, 3)[0m
+  Rendered appointments/index.html.erb within layouts/application (20.9ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 102ms (Views: 99.1ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-03-12 12:20:02 +0530
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rcQVvN4ekqWlyOlW9strmU7ot5KMZb6J5U9VNIDdqTipNEkcvaFiF5oSgCtJm6OzwwhfycTt2hpL8vmutHILvA=="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 12:20:02 +0530
+Processing by AppointmentsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-03-12 12:20:02 +0530
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (5.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.7ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 139ms (Views: 137.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-03-12 12:20:07 +0530
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (17.1ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 122ms (Views: 120.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-03-12 12:20:11 +0530
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (5.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (10.7ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 101ms (Views: 99.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-03-12 12:23:18 +0530
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (8.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.1ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 134ms (Views: 133.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2018-03-12 12:23:30 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+
+
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2018-03-12 12:23:31 +0530
+
+
+Started GET "/users/auth/google_oauth2/callback?state=984d2c6f42af22b60f94bd5a174ef823f9eca47226dcf73f&code=4/AAB3wINb3d7llmvbd1seV5tyktbDYPLca41x9GZefLhBpDQIR8jLNtOL1tOzq7VKoSNFY_k_hO-ZDj7HOAhyon0" for 127.0.0.1 at 2018-03-12 12:23:32 +0530
+Processing by Users::OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"984d2c6f42af22b60f94bd5a174ef823f9eca47226dcf73f", "code"=>"4/AAB3wINb3d7llmvbd1seV5tyktbDYPLca41x9GZefLhBpDQIR8jLNtOL1tOzq7VKoSNFY_k_hO-ZDj7HOAhyon0"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'saura.mandal1@gmail.com'  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2018-03-11 16:53:19', `current_sign_in_at` = '2018-03-12 06:53:35', `sign_in_count` = 21, `updated_at` = '2018-03-12 06:53:35' WHERE `users`.`id` = 12
+  [1m[36m (39.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 80ms (ActiveRecord: 42.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 12:23:35 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 12  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.6ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 12 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3)
+  Rendered appointments/index.html.erb within layouts/application (647.8ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 780ms (Views: 755.7ms | ActiveRecord: 3.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-03-12 12:23:47 +0530
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"jnYQuQF1GYmjlxpHPuiOsTipQNsqdnUrJHvSZRrVjn6VQCXatF5Few0MruTbvSFfFpkaegh4CpvdqhukUj5wig=="}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 12  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 12:23:47 +0530
+Processing by AppointmentsController#index as HTML
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-03-12 12:23:48 +0530
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (14.7ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 109ms (Views: 104.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/erd" for 127.0.0.1 at 2018-03-12 16:10:25 +0530
+Processing by Erd::ErdController#index as HTML
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/erd-0.4.0/app/views/erd/erd/_column.html.erb (0.5ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/erd-0.4.0/app/views/erd/erd/_column.html.erb (0.1ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/erd-0.4.0/app/views/erd/erd/_column.html.erb (0.1ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/erd-0.4.0/app/views/erd/erd/_column.html.erb (0.0ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/erd-0.4.0/app/views/erd/erd/_column.html.erb (0.5ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/erd-0.4.0/app/views/erd/erd/_model.html.erb (5.9ms)
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/erd-0.4.0/app/views/erd/erd/erd.html.erb (7.7ms)
+  [1m[35m (0.5ms)[0m  SELECT version FROM schema_migrations
+  Rendered /home/mindfire/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/erd-0.4.0/app/views/erd/erd/index.html.erb within layouts/erd/application (3.0ms)
+Completed 200 OK in 813ms (Views: 172.3ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/assets/jquery-ui.self-19a401e013f45edd5e82c89b1c7b458e1e740f7baefbc27e4ba7ba9b28f0b71a.css?body=1" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/assets/erd/application.self-a99caa30c4e64c47d6013e50ef880f32b963bf3d9df92760972136bc77f7200d.css?body=1" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/assets/erd/erd.self-7f725595696b36d6643ecd23a23ad912581ecd34cb0aa30c4d166f402ff9ea25.css?body=1" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/assets/jquery-ui.min.self-5c2f950bb589e4082a3ae9440729e67ccc341ed60897d2025390b49b77b87544.js?body=1" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/assets/raphael-min.self-e230bb3b122b4201035d011485b227744495122e28ef1c431844d21f3f8766c4.js?body=1" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/assets/erd/erd.self-dad7bd33efaa76f39684a000ee842d0b51e438fb3aaa3b6727f1b53560465031.js?body=1" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/assets/erd/application.self-29c15a76104243fc4fab0b953f6571b7056bbebdb2b4019eaab82bf4f241caae.js?body=1" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/assets/erd/close.png" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/assets/erd/angle-left.png" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/assets/erd/angle-right.png" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/assets/erd/background-213b77176735d00875adc4d720d77a5efbdf1ea033717414093a8a59f6752dd8.png" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/assets/erd/ui-bg_glass_75_e6e6e6_1x400.png" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/assets/erd/ui-bg_flat_75_ffffff_40x100.png" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/assets/erd/ui-icons_222222_256x240.png" for 127.0.0.1 at 2018-03-12 16:10:27 +0530
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-03-12 16:34:55 +0530
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.0ms)
+  Rendered layouts/_navigation.html.erb (2.3ms)
+Completed 200 OK in 174ms (Views: 150.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/assets/appointments.self-68343c3d0cf24ddfeb24129699f9a4f05e1e3d45db83aa06f794de33c6771526.css?body=1" for 127.0.0.1 at 2018-03-12 16:34:55 +0530
+
+
+Started GET "/assets/images.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2018-03-12 16:34:55 +0530
+
+
+Started GET "/assets/notes.self-647c9840aa74cba5e3beccf533251fb1255038170599986af5d2f773ed5ccfcf.css?body=1" for 127.0.0.1 at 2018-03-12 16:34:55 +0530
+
+
+Started GET "/assets/jquery.fancybox.self-362c6e2b20fd0c8020f2a74a6dacce9ce9bbf2e31a6920f75ff5380830ac940f.css?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/application.self-018895a7fcfcfeeac2d6b065ac0b1baf0a43328be7a56c54281dc3d0c3317bfc.css?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/fancybox.self-c554e97af4cdc8eafeb7c6f90768774a132751893545b63619edb0e571367846.css?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/bootstrap/alert.self-742145c5bb847aafdadc6e339be795628f8bc25f177e851f03a8c42278eb0312.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/bootstrap/transition.self-6ad2488465135ab731a045a8ebbe3ea2fc501aed286042496eda1664fdd07ba9.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/bootstrap/button.self-126ac9bf0e7f2d8568f8da3a00fd5f0fac6eae0946331003370161fbf8d7975e.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/bootstrap/carousel.self-e47323f363ceb3dc0bdbce05e36e709ed428e339833a41140a85cb0af24b8127.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/bootstrap/collapse.self-2eb697f62b587bb786ff940d82dd4be88cdeeaf13ca128e3da3850c5fcaec301.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/bootstrap/dropdown.self-561cca1cbaf67474e01e9536f106bad541594860a6df997004591c1c1957a147.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/bootstrap/modal.self-3e78617ade5663314b7ee0ea10375a5b34d59ffbade44939e3f2a4e4ef2019b3.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/bootstrap/tab.self-5bf7078b682f8b131332eefa46b45fa5eff2eca745fc0d03e2991450888f7c28.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/bootstrap/affix.self-6d6f1a7fc5c8aabf3547fa1b794fab6268f54bc55ad815e55873c71f52513517.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/bootstrap/scrollspy.self-969f3c5f48cdf1e439c7fa1154c13b948715f5c689f87837c0b64521d3b46ef6.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/bootstrap/tooltip.self-05afb177e08f98997ccfc84fa08a215e4b27d48d5fe4d049080675e9dffd8199.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/bootstrap/popover.self-0aa93860b59fe7393f1dd490f54b3cb994f9d6155adffce034d4e14ae361b041.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/jquery.browser.self-38b39b6fc732c17aa524f14f29b775182de517c1dc8a96007188804620765bfd.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/jquery.fancybox.self-128ac461e83ba76bc61246e8d0a12fa1eb5c3f49b5b8fd7ab9740935da5ec9ce.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/fancybox.self-75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/turbolinks.self-2db6ec539b9190f75e1d477b305df53d12904d5cafdd47c7ffd91ba25cbec128.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/ckeditor/init.self-2f3e80b764bc18c9362e6f3326e1f32d4a8bdceff67345a3453a93b111626ff3.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/ckeditor/ckeditor.self-5627b7c5975c03aa8c738623a75f40df11e006c51dad749183c4ced4ea4906a1.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/appointments.self-d3d6db57c3c5c9ef87b4c4d3e62cbb61a5ac6321bcda910034c405c627b93393.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/config.self-89dd6757f3472a53db5cbfdc5fc705091a15b887e12681d57007869b5b0575b7.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/datepicker.self-eabec6c86a3e129582dfb020e526752d4b8e729d60d6e8356206bfaae791314b.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/notes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/images.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/application.self-44dc72337fbefc4f8c73fc8781b922cf9e4f99f8d068e6563c3820851d9390f6.js?body=1" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/facebook-677746697db903a0c43d78177b538520dc5ea58780f51f6b769b341c3f9d0dd6.png" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/google-b168630a9f2f565c5034c529b0fc9db474628e5f3ac8ffda90e9391c5f32ebec.png" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started GET "/assets/twitter-0d7479f20d16833ddcbcaa18a08b1e8219adeb7fc3a5daf8b9b15a1a48402bf3.png" for 127.0.0.1 at 2018-03-12 16:34:56 +0530
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-03-12 16:35:06 +0530
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uw8nKHrEdDonwe8Js7AN560cafJbROMGNpIjSoY84ia29+6f+0I/FEpDOvdHBa+VS1IXrpqKb1iRuWpXUgYmhQ==", "user"=>{"email"=>"pat5@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'pat5@gmail.com'  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2018-03-12 06:48:08', `current_sign_in_at` = '2018-03-12 11:05:06', `sign_in_count` = 15, `updated_at` = '2018-03-12 11:05:06' WHERE `users`.`id` = 4[0m
+  [1m[35m (56.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 222ms (ActiveRecord: 57.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 16:35:06 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.3ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 8, 11, 3)[0m
+  Rendered appointments/index.html.erb within layouts/application (19.1ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 105ms (Views: 92.9ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/assets/Show-575be06aa475d108f421a97f90dbfc26f1612cbef5a4b155aa00d8ae176c10a7.png" for 127.0.0.1 at 2018-03-12 16:35:06 +0530
+
+
+Started GET "/assets/Delete-011f04d94fedd699cbb60d8c2c8e4f55033e38caf0056b667fea43a1eaa339a4.png" for 127.0.0.1 at 2018-03-12 16:35:06 +0530
+
+
+Started GET "/assets/Edit-f54eba6fa86b2acc509efd27f92e8e09ed80419c2d32585e77ea945afef5287b.png" for 127.0.0.1 at 2018-03-12 16:35:06 +0530
+
+
+Started GET "/appointments/new" for 127.0.0.1 at 2018-03-12 16:35:13 +0530
+Processing by AppointmentsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT id, first_name FROM `users` WHERE `users`.`role` = 1[0m
+  Rendered appointments/new.html.erb within layouts/application (8.9ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 101ms (Views: 85.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/archive" for 127.0.0.1 at 2018-03-12 16:35:17 +0530
+Processing by AppointmentsController#archive as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.4ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status <> 0)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 8, 10, 6)
+  Rendered appointments/archive.html.erb within layouts/application (12.1ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 90ms (Views: 85.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/appointments/6" for 127.0.0.1 at 2018-03-12 16:35:19 +0530
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.6ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 6 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mNote Load (0.4ms)[0m  SELECT `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 6
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  [1m[35mAppointment Load (0.3ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 6 LIMIT 1
+  Rendered notes/_note.html.erb (6.8ms)
+  Rendered appointments/show.html.erb within layouts/application (12.0ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 98ms (Views: 87.0ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 16:35:24 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 8, 11, 3)[0m
+  Rendered appointments/index.html.erb within layouts/application (15.7ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 95ms (Views: 90.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/archive" for 127.0.0.1 at 2018-03-12 16:35:34 +0530
+Processing by AppointmentsController#archive as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status <> 0)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 8, 10, 6)
+  Rendered appointments/archive.html.erb within layouts/application (17.1ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 118ms (Views: 114.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/appointments/6/edit" for 127.0.0.1 at 2018-03-12 16:35:39 +0530
+Processing by AppointmentsController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 6 LIMIT 1[0m  [["id", "6"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT id, first_name FROM `users` WHERE `users`.`role` = 1
+  [1m[36mNote Load (0.5ms)[0m  [1mSELECT  `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 6  ORDER BY `notes`.`id` ASC LIMIT 1[0m
+  Rendered appointments/edit.html.erb within layouts/application (11.6ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 85ms (Views: 81.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 16:35:47 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 4 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 8, 11, 3)
+  Rendered appointments/index.html.erb within layouts/application (13.1ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 97ms (Views: 92.8ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-03-12 16:35:50 +0530
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"a2HsGLBKLgHtzy7viO09ktisKHbVtojpFDOTLrBnhtCT7XH7Wyr5O2Q8kDmUjukOTD4/eXmhyhkqRH87q311FQ=="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-12 16:35:50 +0530
+Processing by AppointmentsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-03-12 16:35:50 +0530
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.2ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 89ms (Views: 88.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-03-12 16:38:29 +0530
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+Completed 200 OK in 90ms (Views: 88.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-03-13 10:55:27 +0530
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (5.8ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 201ms (Views: 158.7ms | ActiveRecord: 23.4ms)
+
+
+Started GET "/assets/facebook-677746697db903a0c43d78177b538520dc5ea58780f51f6b769b341c3f9d0dd6.png" for 127.0.0.1 at 2018-03-13 10:55:27 +0530
+
+
+Started GET "/assets/google-b168630a9f2f565c5034c529b0fc9db474628e5f3ac8ffda90e9391c5f32ebec.png" for 127.0.0.1 at 2018-03-13 10:55:27 +0530
+
+
+Started GET "/assets/twitter-0d7479f20d16833ddcbcaa18a08b1e8219adeb7fc3a5daf8b9b15a1a48402bf3.png" for 127.0.0.1 at 2018-03-13 10:55:27 +0530
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-03-13 10:55:30 +0530
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (7.6ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+Completed 200 OK in 89ms (Views: 88.3ms | ActiveRecord: 0.0ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'saura.mandal1@gmail.com' LIMIT 1[0m
+  [1m[36mAppointment Load (0.5ms)[0m  [1mSELECT  `appointments`.* FROM `appointments`  ORDER BY `appointments`.`id` DESC LIMIT 1[0m
+  [1m[35mAppointment Load (0.4ms)[0m  SELECT  `appointments`.* FROM `appointments`  ORDER BY `appointments`.`id` DESC LIMIT 1

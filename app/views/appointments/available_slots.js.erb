@@ -1,16 +1,16 @@
-var test_text = <%= raw @test_slots %>;
-
-if(test_text.length > 0) {
-  $(".check-slot").children().show();
-  $(".available-slots").text("");
-  test_text.forEach(function(item, index) {
-    var radio = "</br><input type='radio' name='slot' value='" + item + "'>" + item;
-    $(".available-slots").append(radio).css("color", "#000000");
-  });
-
-  $('.available-slots input:nth-child(2)').prop("checked", true);
-}
-else {
-  $(".check-slot").children().hide();
-  $(".available-slots").show().text("No slots available").css("color", "#ff0000");
-}
+// var test_text = <%= raw @test_slots %>;
+//
+// if(test_text.length > 0) {
+//   $(".check-slot").children().show();
+//   $(".available-slots").text("");
+//   test_text.forEach(function(item, index) {
+//     var radio = "</br><input type='radio' name='slot' value='" + item + "'>" + item;
+//     $(".available-slots").append(radio).css("color", "#000000");
+//   });
+//
+//   $('.available-slots input:nth-child(2)').prop("checked", true);
+// }
+// else {
+//   $(".check-slot").children().hide();
+//   $(".available-slots").show().text("No slots available").css("color", "#ff0000");
+// }

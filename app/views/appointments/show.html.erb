@@ -1,9 +1,6 @@
-
-
+<!-- Show Page -->
 <h3 class="header-text well"><u>Appointment Details</u></h3>
-
 <div class="container well">
-
   <div class="row">
     <div class="col-md-6">
       <% if current_user.patient? %>
@@ -14,7 +11,6 @@
       <% end %>
     </div>
   </div>
-
   <div class="row">
     <div class="col-md-6">
       <div class="field">
@@ -23,8 +19,6 @@
       </div>
     </div>
   </div>
-
-
   <div class="row">
     <div class="col-md-6">
       <div class="field">
@@ -32,8 +26,6 @@
       </div>
     </div>
   </div>
-
-
   <div class="row">
     <div class="col-md-6">
       <div class="field">
@@ -47,14 +39,13 @@
       </div>
     </div>
   </div><br>
-
   <div class="row">
     <div class="col-md-6">
       <div class="field">
       <% if @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d") ||
        @appointment.date > Time.now && (@appointment.status == "pending" ) %>
         <div class="cancel-button-field">
-          <%= link_to "Cancel", { action: :cancel_appointment, controller: :appointments}, method: :post, data: { confirm: "Are you sure?" },class: "btn btn-danger" %>
+          <%= link_to "Cancel Appointment", { action: :cancel_appointment, controller: :appointments}, method: :post, data: { confirm: "Are you sure?" },class: "btn btn-danger" %>
           <%= link_to "Back", appointments_path, class: "btn btn-info" %><br>
           <% if current_user.doctor? and @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d") %>
           <%= link_to image_tag("Approve.png", :size => '55x55'), {action: :visited_patient_appointment , controller: :appointments}, method: :post, data: { confirm: "Are you sure?" } %>
@@ -65,19 +56,12 @@
     </div>
   </div>
 </div>
-
-
-
 <h3 class="header-text well"><u>My Notes</u></h3>
-
 <div class="field" id="<%= @appointment.id %>">
   <% @appointment.notes.each do |note| %>
     <%= render 'notes/note', note: note %>
   <% end %>
 </div>
-
-
-
 <% if @appointment.status != 'unvisited' && @appointment.status != 'visited' && @appointment.status != 'cancelled' %>
   <div class="field">
     <%= render 'notes/form' %>

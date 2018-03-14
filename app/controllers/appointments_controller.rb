@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+  #Callbacks
   before_action :is_patient?, only: [:new, :create]
   before_action :check_user, only: [:edit]
 
@@ -18,7 +19,6 @@ class AppointmentsController < ApplicationController
     @appointment.notes.first.user_id = current_user.id
     @all_doctors = User.getalldoctors
     UpdateWorker.perform_async(current_user.id)
-
     if @appointment.save
       redirect_to root_path, notice: 'Appointment saved!'
     else
@@ -65,7 +65,6 @@ class AppointmentsController < ApplicationController
   def cancel_appointment
     @appointment = Appointment.find(params[:id])
     @appointment.status = Appointment.statuses[:cancelled]
-
     if @appointment.save
       redirect_to appointments_path, notice: 'Appointment Cancelled!'
     else

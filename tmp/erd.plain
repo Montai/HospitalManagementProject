@@ -1,5 +1,5 @@
-graph 1 5.4343 6.3194
-node "m_ActiveRecord::SchemaMigration" 1.25 4.2222 2.5139 0.63889 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+graph 1 7.5833 7.5972
+node "m_ActiveRecord::SchemaMigration" 1.25 4.9583 2.5139 0.63889 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
   <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">ActiveRecord::SchemaMigration</font></td></tr>
 </table>
 |
@@ -7,17 +7,30 @@ node "m_ActiveRecord::SchemaMigration" 1.25 4.2222 2.5139 0.63889 <{<table borde
   <tr><td align="left" width="130" port="version">version <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
 </table>
 }> solid Mrecord black lightgrey
-node m_Appointment 1.625 1.6389 2.0139 1 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+node m_Appointment 1.625 1.7361 2.0139 1.1806 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
   <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Appointment</font></td></tr>
 </table>
 |
 <table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
   <tr><td align="left" width="130" port="date">date <font face="Arial Italic" color="grey60">date ∗</font></td></tr>
   <tr><td align="left" width="130" port="image">image <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="slot_tag">slot_tag <font face="Arial Italic" color="grey60">string</font></td></tr>
   <tr><td align="left" width="130" port="status">status <font face="Arial Italic" color="grey60">integer</font></td></tr>
 </table>
 }> solid Mrecord black lightgrey
-node m_Image 4.0417 1.6389 2.0139 0.81944 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+node "m_Ckeditor::Asset" 6.5833 4.9583 2.0139 1.3611 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Ckeditor::Asset</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="data_content_type">data_content_type <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="data_file_name">data_file_name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="data_file_size">data_file_size <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="height">height <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="width">width <font face="Arial Italic" color="grey60">integer</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Image 4.0417 1.7361 2.0139 0.81944 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
   <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Image</font></td></tr>
 </table>
 |
@@ -34,7 +47,7 @@ node m_Note 3.6389 0.31944 2.0139 0.63889 <{<table border="0" align="center" cel
   <tr><td align="left" width="130" port="description">description <font face="Arial Italic" color="grey60">text (65535) ∗</font></td></tr>
 </table>
 }> solid Mrecord black lightgrey
-node m_User 4.0417 4.2222 2.25 3.1667 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+node m_User 4.0417 4.9583 2.25 4.25 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
   <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">User</font></td></tr>
 </table>
 |
@@ -46,19 +59,25 @@ node m_User 4.0417 4.2222 2.25 3.1667 <{<table border="0" align="center" cellspa
   <tr><td align="left" width="130" port="encrypted_password">encrypted_password <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
   <tr><td align="left" width="130" port="first_name">first_name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
   <tr><td align="left" width="130" port="gender">gender <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="image">image <font face="Arial Italic" color="grey60">text (65535)</font></td></tr>
   <tr><td align="left" width="130" port="last_name">last_name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
   <tr><td align="left" width="130" port="last_sign_in_at">last_sign_in_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
   <tr><td align="left" width="130" port="last_sign_in_ip">last_sign_in_ip <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="oauth_expires_at">oauth_expires_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="oauth_token">oauth_token <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="provider">provider <font face="Arial Italic" color="grey60">string</font></td></tr>
   <tr><td align="left" width="130" port="remember_created_at">remember_created_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
   <tr><td align="left" width="130" port="reset_password_sent_at">reset_password_sent_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
   <tr><td align="left" width="130" port="reset_password_token">reset_password_token <font face="Arial Italic" color="grey60">string</font></td></tr>
   <tr><td align="left" width="130" port="role">role <font face="Arial Italic" color="grey60">integer</font></td></tr>
   <tr><td align="left" width="130" port="sign_in_count">sign_in_count <font face="Arial Italic" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="uid">uid <font face="Arial Italic" color="grey60">string</font></td></tr>
 </table>
 }> solid Mrecord black lightgrey
-edge m_Appointment m_Note 4 2.3749 1.144 2.6015 0.99866 2.8468 0.84135 3.0605 0.70433 solid black
-edge m_User m_Appointment 7 2.9145 2.8583 2.8457 2.7832 2.7767 2.7096 2.7083 2.6389 2.5735 2.4994 2.4228 2.3554 2.2777 2.2221 solid black
+edge m_Appointment m_Note 4 2.4558 1.1493 2.6715 1.0005 2.8984 0.84402 3.0951 0.70834 solid black
+edge m_User m_Appointment 7 2.9133 3.102 2.8459 3.0098 2.7774 2.9197 2.7083 2.8333 2.595 2.6915 2.4651 2.5483 2.3355 2.4146 solid black
  solid black
-edge m_User m_Image 4 4.0417 2.6445 4.0417 2.4747 4.0417 2.312 4.0417 2.1693 solid black
-edge m_User m_Note 7 5.1686 2.7363 5.4302 2.2125 5.5541 1.6309 5.25 1.1389 5.1321 0.9481 4.9538 0.80099 4.7582 0.68806 solid black
+edge m_User m_Image 4 4.0417 2.836 4.0417 2.6283 4.0417 2.4336 4.0417 2.268 solid black
+edge m_User m_Note 7 5.168 3.2664 5.4857 2.5741 5.6491 1.7846 5.25 1.1389 5.1321 0.9481 4.9538 0.80099 4.7582 0.68806 solid black
 stop

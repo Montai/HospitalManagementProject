@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  #Callbacks
   before_action :check_user, only:[:edit, :destroy]
 
   def new
@@ -48,7 +49,7 @@ class NotesController < ApplicationController
     if @note.update(notes_params)
       redirect_to appointment_path(@appointment), notice: 'Updated Note'
     else
-      render 'edit', notice: 'Unable to update note, try again!'
+      render 'edit', notice: 'Sorry, Unable to update Note, Please try again!'
     end
   end
 

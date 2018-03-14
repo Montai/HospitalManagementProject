@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   enum role: [:patient, :doctor]
-  #Regex Variables
+  #Regex Variable Declaration
   NAME_REGEX = /\A[^0-9`!@#\$%\^&*+_=]+\z/
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   #Validations
@@ -27,30 +27,26 @@ class User < ActiveRecord::Base
   #Model Associations
   has_many :patient_appointments, class_name: "Appointment", foreign_key: :doctor_id, dependent: :destroy do
     def future
-      where('status = ? OR status = ?', Appointment.statuses[:pending], Appointment.statuses[:cancelled])
-      .order('date ASC')
+      where('status = ? OR status = ?', Appointment.statuses[:pending], Appointment.statuses[:cancelled]).order('date ASC')
     end
     def past
-      where('status <> ?', Appointment.statuses[:pending])
-      .order("date ASC")
+      where('status <> ?', Appointment.statuses[:pending]).order("date ASC")
     end
   end
 
   has_many :doctor_appointments, class_name: "Appointment", foreign_key: :patient_id, dependent: :destroy do
     def future
-      where('status = ? OR status = ?', Appointment.statuses[:pending], Appointment.statuses[:cancelled])
-      .order('date ASC')
+      where('status = ? OR status = ?', Appointment.statuses[:pending], Appointment.statuses[:cancelled]).order('date ASC')
     end
     def past
-      where('status <> ?', Appointment.statuses[:pending])
-      .order("date ASC")
+      where('status <> ?', Appointment.statuses[:pending]).order("date ASC")
     end
   end
 
   has_many :notes, dependent: :destroy
   has_many :images, as: :imagable, dependent: :destroy
 
-  #Public methods
+  #Instance methods
   def future_appointments
     result = self.patient_appointments.future.includes(:patient) if self.doctor?
     result = self.doctor_appointments.future.includes(:doctor) if self.patient?
@@ -81,8 +77,8 @@ class User < ActiveRecord::Base
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
-        user.name = auth.info.name   # assuming the user model has a name
-        user.image = auth.info.image # assuming the user model has an image
+        user.name = auth.info.name
+        user.image = auth.info.image
       end
     end
 
@@ -91,10 +87,10 @@ class User < ActiveRecord::Base
       user = User.where(email: data['email']).first
       # users to be created if they don't exist
       unless user
-          user = User.create(name: data['name'],
-             email: data['email'],
-             password: Devise.friendly_token[0,20]
-          )
+        user = User.create(name: data['name'],
+           email: data['email'],
+           password: Devise.friendly_token[0,20]
+        )
       end
       user
     end
