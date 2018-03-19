@@ -1,14 +1,12 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
   mount Sidekiq::Web => '/sidekiq'
-
+  root 'appointments#index' #Root Path
   devise_for :users, controllers: {
                 registrations: "registrations",
                 omniauth_callbacks: 'users/omniauth_callbacks',
                 sessions: "sessions"
   }
-  root 'appointments#index' #Root Path 
   devise_scope :user do
     authenticated :user do
       root 'appointments#index', as: :authenticated_root

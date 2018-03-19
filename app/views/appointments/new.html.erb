@@ -3,7 +3,7 @@
   <h2 class="edit-heading">Book Appointment</h2>
   <div class="form-group">
     <label class="doctor-select-label"  for="doctor"><b>Choose Doctor</b></label><br>
-    <%= f.collection_select(:doctor_id, @all_doctors, :id, :first_name, {prompt: 'Please select a Doctor', required: true}, {class: "form-control"}) %>
+    <%= f.collection_select(:doctor_id, @all_doctors, :id, :first_name, { prompt: "Please select a Doctor", required: true }, { class: "form-control" }) %>
     <div class="validation-err-message">
     <% if @appointment.errors.any? %>
     <%= @appointment.errors.messages[:"doctor_id"].join(',') if @appointment.errors.messages[:"doctor_id"].present? %>
@@ -18,7 +18,7 @@
     <h4>Cause:</h4>
     <%= f.fields_for :notes do |note_field| %>
     <%= note_field.label :Note %><br>
-    <%= note_field.text_area :description, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, class: "form-control", placeholder: "Leave note here." %><br>
+    <%= note_field.text_area :description, class: "form-control", placeholder: "Leave note here." %><br>
     <% end %>
     <div class="validation-err-message">
     <% if @appointment.errors.any? %>

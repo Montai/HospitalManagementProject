@@ -16,7 +16,7 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
- 
+
 //Variable declaration
 $primary-color: #b3ffb3;
 $border-color: #006600;
@@ -30,6 +30,7 @@ $border-color: #006600;
 .main-container {
   position: absolute;
   margin-top: 40px;
+  padding-top: 40px;
   width: 100%;
   .row {
     margin: 2px;
@@ -58,6 +59,10 @@ $border-color: #006600;
     padding: 10px;
     background: radial-gradient(circle, $primary-color, white)
   }
+  .container-fluid {
+    margin: 10px;
+    padding: 10px;
+  }
   .well {
     background: radial-gradient(circle, $primary-color, white)
   }
@@ -73,8 +78,11 @@ $border-color: #006600;
     position: relative;
     left: 85px;
   }
-  .validation-err-message {
+  .validation-err-message, .notice, .alert {
     color : #ff0000;
     font-style: italic;
   }
+}
+.navbar-brand {
+  cursor: default;
 }

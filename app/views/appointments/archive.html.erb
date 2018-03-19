@@ -7,11 +7,7 @@
       <div class="col-sm-2"><u><b>Date</b></u></div>
       <div class="col-sm-2"><u><b>Name</b></u></div>
       <div class="col-sm-2"><u><b>Status</b></u></div>
-      <% if current_user.patient? %>
-        <div class="col-sm-2"><u><b>Show</b></u></div>
-        <div class="col-sm-2"><u><b>Edit</b></u></div>
-        <div class="col-sm-2"><u><b>Delete</b></u></div>
-      <% end %>
+      <div class="col-sm-2"><u><b>Show</b></u></div>
     </div><br>
     <% @archives.each do |apps| %>
       <div class="row">
@@ -23,17 +19,8 @@
         <% end %>
         <div class="col-sm-2"><span class="label label-success"><%= apps.status %></span></div>
         <div class="col-sm-2"><%= link_to image_tag("Show.png", size: '20x20'), appointment_path(apps) %></div>
-        <% if current_user.patient? and can? :update, apps %>
-          <% if apps.status != 'cancelled' %>
-            <div class="col-sm-2"> <%= link_to image_tag("Edit.png", size: '20x20'), edit_appointment_path(apps) %></div>
-          <% end %>
-          <div class="col-sm-2"><%= link_to appointment_path(apps) , method: :delete, data: {confirm: "Hey, Are you sure?"} do %>
-            <%= image_tag("Delete.png", size: '20x20') %>
-          <% end %>
-          </div>
       </div><br>
     <% end %>
-  <% end %>
 <% end %>
 <div class="pagination">
   <%= will_paginate @archives %>

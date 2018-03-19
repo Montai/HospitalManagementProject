@@ -6,5 +6,8 @@ class Ability
     can :update, Note, Note.where('user_id = ?', user.id) do |note|
         note.user_id == user.id
     end
+    cannot :update, Appointment, Appointment.where('date < ?', Time.now) do |appointment|
+      appointment.date < Time.now
+    end
   end
 end

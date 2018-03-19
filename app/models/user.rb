@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
       where('status <> ?', Appointment.statuses[:pending]).order("date ASC")
     end
   end
-
+  
   has_many :doctor_appointments, class_name: "Appointment", foreign_key: :patient_id, dependent: :destroy do
     def future
       where('status = ? OR status = ?', Appointment.statuses[:pending], Appointment.statuses[:cancelled]).order('date ASC')
@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :twitter]
+
   #Instance methods
   def future_appointments
     result = self.patient_appointments.future.includes(:patient) if self.doctor?

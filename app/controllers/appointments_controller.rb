@@ -26,16 +26,6 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def check_user
-    @appointment = Appointment.find(params[:id])
-    if current_user.doctor? or current_user.id != @appointment.patient_id
-      then redirect_to root_path and return
-    end
-    unless current_user.patient? and current_user.id == @appointment.patient_id
-      redirect_to edit_appointment_path(@appointment)
-    end
-  end
-
   def edit
     @appointment = Appointment.find(params[:id])
     @all_doctors = User.getalldoctors
@@ -89,6 +79,16 @@ class AppointmentsController < ApplicationController
   def get_current_status(date)
     return Appointment.statuses[:pending] if date > Time.now
     return Appointment.statuses[:unvisited]
+  end
+
+  def check_user
+    @appointment = Appointment.find(params[:id])
+    if current_user.doctor? or current_user.id != @appointment.patient_id or @appointment.date < Time.now
+      then redirect_to root_path and return
+    end
+    unless current_user.patient? and current_user.id == @appointment.patient_id
+      redirect_to edit_appointment_path(@appointment)
+    end
   end
 
   private

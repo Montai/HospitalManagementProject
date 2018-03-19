@@ -1,6 +1,7 @@
 <!-- Show Page -->
 <h3 class="header-text well"><u>Appointment Details</u></h3>
 <div class="container well">
+  <%= link_to "Back", appointments_path, class: "btn btn-info" %><br>
   <div class="row">
     <div class="col-md-6">
       <% if current_user.patient? %>
