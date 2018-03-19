@@ -1,0 +1,45 @@
+%h1#index_header.text My Upcoming Appointments
+- if @appointments.blank?
+  %p No appointments found.
+- else
+  #container_top_index.container-fluid.well
+    .row
+      .col-sm-2
+        %u
+          %b Date
+      .col-sm-2
+        %u
+          %b Name
+      .col-sm-2
+        %u
+          %b Status
+      - if current_user.patient?
+        .col-sm-2
+          %u
+            %b Actions
+    %br/
+    - @appointments.each do |apps|
+      .row
+        .col-sm-2= apps.date.strftime("%B %d, %Y")
+        - if current_user.doctor?
+          .col-sm-2
+            = apps.patient.first_name
+            = apps.patient.last_name
+            ( Patient )
+        - else
+          .col-sm-2
+            = apps.doctor.first_name
+            = apps.doctor.last_name
+            ( Doctor )
+        .col-sm-2
+          %span.label.label-success= apps.status
+        .col-sm-2= link_to image_tag("Show.png", size: '20x20'), appointment_path(apps)
+        - if current_user.patient? and can? :update, apps
+          - if apps.status != 'cancelled'
+            .col-sm-2= link_to image_tag("Edit.png", size: '20x20'), edit_appointment_path(apps)
+          .col-sm-2
+            = link_to appointment_path(apps) , method: :delete, data: {confirm: "Hey, Are you sure?"} do
+              = image_tag("Delete.png", size: '20x20')
+      %br/
+    #index_paginate_field.paginate-field
+      = will_paginate @appointments

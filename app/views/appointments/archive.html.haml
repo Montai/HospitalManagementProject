@@ -1,0 +1,38 @@
+%h1#index_header.text Archived Appointments
+- if @archives.blank?
+  %p No appointments found.
+- else
+  #container_top_index.container-fluid.well
+    .row
+      .col-sm-2
+        %u
+          %b Date
+      .col-sm-2
+        %u
+          %b Name
+      .col-sm-2
+        %u
+          %b Status
+      .col-sm-2
+        %u
+          %b Show
+    %br
+    - @archives.each do |apps|
+      .row
+        .col-sm-2= apps.date.strftime("%B %d, %Y")
+        - if current_user.doctor?
+          .col-sm-2
+            = apps.patient.first_name
+            = apps.patient.last_name
+            ( Patient )
+        - else
+          .col-sm-2
+            = apps.doctor.first_name
+            = apps.doctor.last_name
+            ( Doctor )
+        .col-sm-2
+          %span.label.label-success= apps.status
+        .col-sm-2= link_to image_tag("Show.png", size: '20x20'), appointment_path(apps)
+      %br
+    .pagination
+      = will_paginate @archives

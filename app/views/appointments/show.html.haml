@@ -1,0 +1,62 @@
+/ Show Page
+%h3.header-text.well
+  %u Appointment Details
+.container.well
+  = link_to "Back", appointments_path, class: "btn btn-info"
+  %br/
+  .row
+    .col-md-6
+      - if current_user.patient?
+        %h4
+          %u Doctor Name
+          %h2
+            = @appointment.doctor.first_name
+            = @appointment.doctor.last_name
+      - else
+        %h4
+          %u Patient Name
+          %h2
+            = @appointment.patient.first_name
+            = @appointment.patient.last_name
+  .row
+    .col-md-6
+      .field
+        %div
+          %h4
+            %u Appointment Date
+            %h2= @appointment.date.strftime("%B %d, %Y")
+  .row
+    .col-md-6
+      .field
+        %div
+          %h4
+            %u Appointment Status
+            %h2= @appointment.status
+  .row
+    .col-md-6
+      .field
+        - if @appointment.image.present?
+          = link_to @appointment.image.url, class: "fancybox" do
+            = image_tag(@appointment.image.thumb)
+        - else
+          %h6 No image
+  %br/
+  .row
+    .col-md-6
+      .field
+        - if @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d") ||
+        - @appointment.date > Time.now && (@appointment.status == "pending")
+          .cancel-button-field
+            = link_to "Cancel Appointment", { action: :cancel_appointment, controller: :appointments}, method: :post, data: { confirm: "Are you sure?" },class: "btn btn-danger"
+            = link_to "Back", appointments_path, class: "btn btn-info"
+            %br/
+            - if current_user.doctor? and @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d")
+              = link_to image_tag("Approve.png", :size => '55x55'), {action: :visited_patient_appointment , controller: :appointments}, method: :post, data: { confirm: "Are you sure?" }
+%h3.header-text.well
+  %u My Notes
+.field{id: "#{@appointment.id}"}
+  - @appointment.notes.each do |note|
+    = render 'notes/note', note: note
+- if @appointment.status != 'unvisited' && @appointment.status != 'visited' && @appointment.status != 'cancelled'
+  .field
+    = render 'notes/form'

@@ -1,0 +1,54 @@
+.sign-up-form
+  .container
+    .card.card-container
+      %h2.sign-up-header Sign Up
+      %br/
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        .form-group
+          = f.label :first_name
+          %br/
+          = f.text_field :first_name, required: true, autofocus: true, class: "form-control", placeholder: "Enter first name"
+          - if @user.errors.any?
+            = @user.errors.messages[:first_name].first if @user.errors.messages[:first_name].present?
+        .form-group
+          = f.label :last_name
+          %br/
+          = f.text_field :last_name, required: true, autofocus: true, class: "form-control", placeholder: "Enter last name"
+          - if @user.errors.any?
+            = @user.errors.messages[:last_name].first if @user.errors.messages[:last_name].present?
+        .dropdown
+          = f.label :gender
+          %br/
+          = f.select(:gender, ['Male', 'Female'], {} , { :class => 'form-control' })
+        .form-group
+          = f.label :date_of_birth
+          %br/
+          = f.date_field :date_of_birth, start_year: 1900, required: true, class: 'form-control'
+        .form-group
+          = f.label :role
+          %br/
+          = f.select :role, User.roles.keys, {}, class: 'form-control'
+        .field
+          = f.label :email
+          %br/
+          = f.email_field :email, required: true, autofocus: true, class: "form-control", autocomplete: "email", placeholder: "Enter e-mail"
+          - if @user.errors.any?
+            = @user.errors.messages[:email].first if @user.errors.messages[:email].present?
+        .field
+          = f.label :password
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} characters minimum)
+          %br/
+          = f.password_field :password, required: true, autocomplete: "off", class: "form-control", placeholder: "Enter password"
+          - if @user.errors.any?
+            = @user.errors.messages[:password].first if @user.errors.messages[:password].present?
+        .field
+          = f.label :password_confirmation
+          %br/
+          = f.password_field :password_confirmation, required: true, autocomplete: "off", class: "form-control", placeholder: "Re-enter password"
+          - if @user.errors.any?
+            = @user.errors.messages[:password_confirmation].first if @user.errors.messages[:password_confirmation].present?
+        %br/
+        .actions
+          = f.submit "Sign up", class: 'btn btn-info'

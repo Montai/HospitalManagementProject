@@ -1,0 +1,36 @@
+#edit_div.container.well
+  = form_for(@appointment) do |f|
+    %h2.edit-heading Book Appointment
+    .form-group
+      %label.doctor-select-label{for: "doctor"}
+        %b Choose Doctor
+      %br/
+      = f.collection_select(:doctor_id, @all_doctors, :id, :first_name, { prompt: "Please select a Doctor", required: true }, { class: "form-control" })
+      .validation-err-message
+        - if @appointment.errors.any?
+          = @appointment.errors.messages[:"doctor_id"].join(',') if @appointment.errors.messages[:"doctor_id"].present?
+    .form-group
+      %label.date-select-label{for: "date"}
+        %b Select Date
+      = f.date_field :date, value: (Date.today + 1).strftime('%Y-%m-%d'), min: Date.today + 1.day, max: Date.today + 5.months, class: "form-control"
+    .form-group
+      %h4 Cause:
+      = f.fields_for :notes do |note_field|
+        = note_field.label :Note
+        %br/
+        = note_field.text_area :description, class: "form-control", placeholder: "Leave note here."
+        %br/
+      .validation-err-message
+        - if @appointment.errors.any?
+          = @appointment.errors.messages[:"notes.description"].join(',') if @appointment.errors.messages[:"notes.description"].present?
+    .form-group
+      %label.image-file-field{for: "image"}
+        %b Change Image
+      = f.file_field :image, class: "form-control"
+      .validation-err-message
+        - if @appointment.errors.any?
+          = @appointment.errors.messages[:image].join(' ,') if @appointment.errors.messages[:image].present?
+    .actions
+      = f.submit :Book, class: 'btn btn-info'
+      = link_to "Back", appointments_path, class: "btn btn-success"
+      %br/

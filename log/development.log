@@ -44821,3 +44821,148 @@ Processing by AppointmentsController#index as HTML
   Rendered appointments/index.html.erb within layouts/application (6.3ms)
   Rendered layouts/_navigation.html.erb (0.3ms)
 Completed 200 OK in 89ms (Views: 83.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/appointments" for 127.0.0.1 at 2018-03-19 22:12:03 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2)
+  Rendered appointments/index.html.erb within layouts/application (463.4ms)
+Completed 500 Internal Server Error in 553ms (ActiveRecord: 4.4ms)
+
+ActionView::Template::Error (couldn't find file 'ckeditor/init' with type 'application/javascript'
+Checked in these paths: 
+  /home/mindfire/PROJECTS/HospitalManagementProject-master/app/assets/images
+  /home/mindfire/PROJECTS/HospitalManagementProject-master/app/assets/javascripts
+  /home/mindfire/PROJECTS/HospitalManagementProject-master/app/assets/stylesheets
+  /home/mindfire/PROJECTS/HospitalManagementProject-master/vendor/assets/javascripts
+  /home/mindfire/PROJECTS/HospitalManagementProject-master/vendor/assets/stylesheets
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/jquery-rails-4.3.1/vendor/assets/javascripts
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/coffee-rails-4.1.1/lib/assets/javascripts
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/fancybox-rails-0.3.1/app/assets/images
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/fancybox-rails-0.3.1/vendor/assets/javascripts
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/fancybox-rails-0.3.1/vendor/assets/stylesheets
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/turbolinks-source-5.1.0/lib/assets/javascripts
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/bootstrap-sass-3.3.7/assets/stylesheets
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/bootstrap-sass-3.3.7/assets/javascripts
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/bootstrap-sass-3.3.7/assets/fonts
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/bootstrap-sass-3.3.7/assets/images):
+    20:       <div class="col-sm-2"><%= apps.doctor.first_name %> <%= apps.doctor.last_name %> ( Doctor )</div>
+    21:     <% end %>
+    22:     <div class="col-sm-2"><span class="label label-success"><%= apps.status %></span></div>
+    23:     <div class="col-sm-2"><%= link_to image_tag("Show.png", size: '20x20'), appointment_path(apps) %></div>
+    24:     <% if current_user.patient? and can? :update, apps %>
+    25:     <% if apps.status != 'cancelled' %>
+    26:       <div class="col-sm-2"><%= link_to image_tag("Edit.png", size: '20x20'), edit_appointment_path(apps) %></div>
+  app/assets/javascripts/application.js:18
+  app/views/appointments/index.html.erb:23:in `block in _app_views_appointments_index_html_erb__216391666671949692_39957300'
+  app/views/appointments/index.html.erb:14:in `_app_views_appointments_index_html_erb__216391666671949692_39957300'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.7ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (23.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (42.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-19 22:12:14 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2)[0m
+  Rendered appointments/index.html.erb within layouts/application (28.7ms)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (couldn't find file 'ckeditor/init' with type 'application/javascript'
+Checked in these paths: 
+  /home/mindfire/PROJECTS/HospitalManagementProject-master/app/assets/images
+  /home/mindfire/PROJECTS/HospitalManagementProject-master/app/assets/javascripts
+  /home/mindfire/PROJECTS/HospitalManagementProject-master/app/assets/stylesheets
+  /home/mindfire/PROJECTS/HospitalManagementProject-master/vendor/assets/javascripts
+  /home/mindfire/PROJECTS/HospitalManagementProject-master/vendor/assets/stylesheets
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/jquery-rails-4.3.1/vendor/assets/javascripts
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/coffee-rails-4.1.1/lib/assets/javascripts
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/fancybox-rails-0.3.1/app/assets/images
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/fancybox-rails-0.3.1/vendor/assets/javascripts
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/fancybox-rails-0.3.1/vendor/assets/stylesheets
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/turbolinks-source-5.1.0/lib/assets/javascripts
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/bootstrap-sass-3.3.7/assets/stylesheets
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/bootstrap-sass-3.3.7/assets/javascripts
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/bootstrap-sass-3.3.7/assets/fonts
+  /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/bootstrap-sass-3.3.7/assets/images):
+    20:       <div class="col-sm-2"><%= apps.doctor.first_name %> <%= apps.doctor.last_name %> ( Doctor )</div>
+    21:     <% end %>
+    22:     <div class="col-sm-2"><span class="label label-success"><%= apps.status %></span></div>
+    23:     <div class="col-sm-2"><%= link_to image_tag("Show.png", size: '20x20'), appointment_path(apps) %></div>
+    24:     <% if current_user.patient? and can? :update, apps %>
+    25:     <% if apps.status != 'cancelled' %>
+    26:       <div class="col-sm-2"><%= link_to image_tag("Edit.png", size: '20x20'), edit_appointment_path(apps) %></div>
+  app/assets/javascripts/application.js:18
+  app/views/appointments/index.html.erb:23:in `block in _app_views_appointments_index_html_erb__216391666671949692_39957300'
+  app/views/appointments/index.html.erb:14:in `_app_views_appointments_index_html_erb__216391666671949692_39957300'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (16.6ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (32.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-19 22:12:38 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.1ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2)
+  Rendered appointments/index.html.erb within layouts/application (4529.4ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+Completed 200 OK in 4699ms (Views: 4697.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/appointments.self-fc043f3226d3293f808140df610787c2297d4e5089cbf6dcd9f56d23af694297.css?body=1" for 127.0.0.1 at 2018-03-19 22:12:43 +0530
+
+
+Started GET "/assets/notes.self-f80b158faaf572c80e6c175bdab45c94cf970a4d2c1744490a6ab0b4945a3712.css?body=1" for 127.0.0.1 at 2018-03-19 22:12:43 +0530
+
+
+Started GET "/assets/application.self-3e102579ae6f8072f8f6c3443922d53a7cf9f0b47f32b539c6df1ca9f7524f5f.css?body=1" for 127.0.0.1 at 2018-03-19 22:12:43 +0530
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-03-19 22:12:50 +0530
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"y+gnH1aFSOfI6aGAJNlGZ7EPiwK+i8eQOjPK/U2/gDyEd7FHIBDAspgrpn94vnXGwtQqHZUkNRkr59PpnczPcQ=="}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-19 22:12:50 +0530
+Processing by AppointmentsController#index as HTML
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-03-19 22:12:50 +0530
+Processing by SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (5.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.5ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 87ms (Views: 84.8ms | ActiveRecord: 0.0ms)

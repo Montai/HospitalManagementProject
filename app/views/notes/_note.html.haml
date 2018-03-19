@@ -1,0 +1,13 @@
+.container
+  .jumbotron
+    .note-content
+      %b Note:
+      = note.description
+      %br/
+    %h5
+      %b By:
+      = "#{ note.user.first_name } on #{note.updated_at.strftime("%B %d, %Y")}"
+    - if can? :update, note
+      = link_to 'Delete', [note.appointment, note],                                                                       |
+        method: :delete, class: "ui-button-delete", data: { confirm: 'Are you sure to delete?' }, class: "btn btn-danger" |
+      = link_to 'Edit', edit_appointment_note_path(note.appointment, note), { class: "btn btn-success" }

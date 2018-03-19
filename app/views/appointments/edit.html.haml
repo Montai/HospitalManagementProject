@@ -1,0 +1,35 @@
+.container.well
+  = form_for(@appointment) do |f|
+    %h2.edit-heading Update Appointment
+    %hr/
+    .form-group
+      %label.doctor-select-label{for: "doctor"}
+        %b Choose Doctor
+      %br/
+      = f.collection_select(:doctor_id, @all_doctors, :id, :first_name, { prompt: "Please select a Doctor", required: true }, { class: "form-control" })
+    .form-group
+      %label.date-select-label{for: "date"}
+        %b Select Date
+      = f.date_field :date, min: Date.today + 1.day, max: Date.today + 5.months, class: "form-control"
+    .form-group
+      %h4 Cause:
+      = f.fields_for :notes, f.object.notes.first do |note_field|
+        = note_field.label :Note
+        %br/
+        = note_field.text_area :description, placeholder: "Leave note here.", class: "form-control"
+        %br/
+        .validation-err-message
+          - if @appointment.errors.any?
+            = @appointment.errors.messages[:"notes.description"].join(',') if @appointment.errors.messages[:"notes.description"].present?
+    .form-group
+      %label.image-file-field{for: "image"}
+        %b Change Image
+      = f.file_field :image, class: "form-control"
+      - unless @appointment.new_record?
+        = link_to image_tag(f.object.image.url, style: "height: 50px; width: 50px;"), f.object.image.url, target: "_blank"
+      - if @appointment.errors.any?
+        = @appointment.errors.messages[:image].first if @appointment.errors.messages[:image].present?
+    .action
+      = f.submit :Update , class: 'btn btn-info'
+      = link_to "Back", appointments_path, class: "btn btn-success"
+      %br/
