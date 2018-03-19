@@ -12,9 +12,9 @@
  !/log/.keep
  /tmp
  .DS_Store
-*/.DS_Store
-/test
-config/database.yml
+ */.DS_Store
+ /test
+ config/database.yml
 
  # Ignore Tests
  /test
