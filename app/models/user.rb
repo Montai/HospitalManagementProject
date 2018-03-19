@@ -5,25 +5,6 @@ class User < ActiveRecord::Base
   #Regex Variable Declaration
   NAME_REGEX = /\A[^0-9`!@#\$%\^&*+_=]+\z/
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  #Validations
-  validates :first_name,
-            presence: true,
-            length: { minimum: 2, maximum: 15 },
-            format: { with: NAME_REGEX, message: 'only letters are allowed' }
-  validates :last_name,
-            presence: true,
-            length: { minimum: 2, maximum: 15 },
-            format: { with: NAME_REGEX, message: 'only letters are allowed' }
-  validates :email,
-            presence: true,
-            uniqueness: true,
-            format: { with: EMAIL_REGEX, message: 'Check e-mail format(abc123@example.com)' }
-  validates :password,
-            presence: true,
-            length: { minimum: 6, maximum: 20 }
-  validates_confirmation_of :password
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :twitter]
   #Model Associations
   has_many :patient_appointments, class_name: "Appointment", foreign_key: :doctor_id, dependent: :destroy do
     def future
@@ -46,6 +27,25 @@ class User < ActiveRecord::Base
   has_many :notes, dependent: :destroy
   has_many :images, as: :imagable, dependent: :destroy
 
+  #Validations
+  validates :first_name,
+            presence: true,
+            length: { minimum: 2, maximum: 15 },
+            format: { with: NAME_REGEX, message: 'only letters are allowed' }
+  validates :last_name,
+            presence: true,
+            length: { minimum: 2, maximum: 15 },
+            format: { with: NAME_REGEX, message: 'only letters are allowed' }
+  validates :email,
+            presence: true,
+            uniqueness: true,
+            format: { with: EMAIL_REGEX, message: 'Check e-mail format(abc123@example.com)' }
+  validates :password,
+            presence: true,
+            length: { minimum: 6, maximum: 20 }
+  validates_confirmation_of :password
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :twitter]
   #Instance methods
   def future_appointments
     result = self.patient_appointments.future.includes(:patient) if self.doctor?
@@ -87,10 +87,7 @@ class User < ActiveRecord::Base
       user = User.where(email: data['email']).first
       # users to be created if they don't exist
       unless user
-        user = User.create(name: data['name'],
-           email: data['email'],
-           password: Devise.friendly_token[0,20]
-        )
+        user = User.create(name: data['name'], email: data['email'], password: Devise.friendly_token[0,20])
       end
       user
     end

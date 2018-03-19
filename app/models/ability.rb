@@ -1,6 +1,5 @@
 class Ability
   include CanCan::Ability
-
   def initialize(user)
     user ||= User.new
     can :update, Appointment if user.patient?

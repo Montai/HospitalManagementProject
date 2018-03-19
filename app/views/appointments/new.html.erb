@@ -1,9 +1,9 @@
 <div class="container well" id="edit_div">
-  <%= form_for(@appointment)  do |f| %>
+  <%= form_for(@appointment) do |f| %>
   <h2 class="edit-heading">Book Appointment</h2>
   <div class="form-group">
     <label class="doctor-select-label"  for="doctor"><b>Choose Doctor</b></label><br>
-    <%= f.collection_select(:doctor_id, @all_doctors, :id, :first_name, {:prompt => 'Please select a Doctor', required: true}, {class: "form-control"}) %>
+    <%= f.collection_select(:doctor_id, @all_doctors, :id, :first_name, {prompt: 'Please select a Doctor', required: true}, {class: "form-control"}) %>
     <div class="validation-err-message">
     <% if @appointment.errors.any? %>
     <%= @appointment.errors.messages[:"doctor_id"].join(',') if @appointment.errors.messages[:"doctor_id"].present? %>
@@ -35,8 +35,8 @@
     <% end %>
     </div>
   </div>
-  <div class ="actions">
-    <%= f.submit :Book, :class => 'btn btn-info' %>
+  <div class="actions">
+    <%= f.submit :Book, class: 'btn btn-info' %>
     <%= link_to "Back", appointments_path, class: "btn btn-success" %><br>
   </div>
   <% end %>
