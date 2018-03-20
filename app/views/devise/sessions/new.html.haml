@@ -2,25 +2,21 @@
   .container
     .card.card-container
       %h2.login-in-header Log In
-      %br/
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         = devise_error_messages!
         .form-group
           = f.label :email
-          %br/
+          %br
           = f.email_field :email, autofocus: true, required: true, autocomplete: "email", placeholder: "Enter e-mail", class: "form-control"
-          - if @user.errors.any?
-            = @user.errors.messages[:email].first if @user.errors.messages[:email].present?
         .form-group
           = f.label :password
-          %br/
+          %br
           = f.password_field :password, required: true, autocomplete: "off", placeholder: "Enter password", class: "form-control"
-          - if @user.errors.any?
         - if devise_mapping.rememberable?
           .field
             = f.check_box :remember_me
             = f.label :remember_me
         .actions
-          = f.submit "Log in", id: 'log_user', class: 'btn btn-info btn-md'
-      %br/
-      = render "devise/shared/links"
+          = f.submit "Log In", id: "log_user", class: "btn btn-info btn-md"
+        %br
+        = render "devise/shared/links"

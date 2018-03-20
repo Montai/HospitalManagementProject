@@ -40,12 +40,11 @@
             = image_tag(@appointment.image.thumb)
         - else
           %h6 No image
-  %br/
+  %br
   .row
     .col-md-6
       .field
-        - if @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d") ||
-        - @appointment.date > Time.now && (@appointment.status == "pending")
+        - if @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d") || @appointment.date > Time.now && (@appointment.status == "pending")
           .cancel-button-field
             = link_to "Cancel Appointment", { action: :cancel_appointment, controller: :appointments}, method: :post, data: { confirm: "Are you sure?" },class: "btn btn-danger"
             = link_to "Back", appointments_path, class: "btn btn-info"
