@@ -1,0 +1,25 @@
+.row
+  .col-sm-2
+    = appointment.date.strftime("%B %d, %Y")
+  - if current_user.doctor?
+    .col-sm-2
+      = appointment.patient.first_name
+      = appointment.patient.last_name
+      ( Patient )
+  - else
+    .col-sm-2
+      = appointment.doctor.first_name
+      = appointment.doctor.last_name
+      ( Doctor )
+  .col-sm-2
+    %span.label.label-success
+    = appointment.status
+  .col-sm-2= link_to image_tag("Show.png", size: '20x20'), appointment_path(appointment)
+  - if current_user.patient? and can? :update, appointment
+    - if appointment.status != 'cancelled'
+      .col-sm-2
+        = link_to image_tag("Edit.png", size: '20x20'), edit_appointment_path(appointment)
+    .col-sm-2
+      = link_to appointment_path(appointment) , method: :delete, data: {confirm: "Hey, Are you sure?"} do
+        = image_tag("Delete.png", size: '20x20')
+%br/

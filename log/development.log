@@ -46124,3 +46124,217 @@ Processing by SessionsController#new as HTML
   Rendered devise/sessions/new.html.haml within layouts/application (11.3ms)
   Rendered layouts/_navigation.html.haml (0.3ms)
 Completed 200 OK in 76ms (Views: 75.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-03-20 12:05:39 +0530
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yik5+ePffhSHQCrIH9jku++j+GevHMuRoJFkzvZrgh+Gddy2H1ZrnEPxYKLTpnRMSs++sJYSPCiur5fHAfC6Yg==", "user"=>{"email"=>"pat@hospital.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log In"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'pat@hospital.com'  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2018-03-20 03:43:51', `current_sign_in_at` = '2018-03-20 06:35:40', `sign_in_count` = 13, `updated_at` = '2018-03-20 06:35:40' WHERE `users`.`id` = 18
+  [1m[36m (34.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 208ms (ActiveRecord: 37.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 12:05:40 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2)
+  Rendered appointments/_appointment.html.haml (18.6ms)
+  Rendered appointments/index.html.haml within layouts/application (32.7ms)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 2.3ms)
+
+ActionView::Template::Error (undefined local variable or method `apps' for #<#<Class:0x007f26d7ce1210>:0x007f26b4230ff0>):
+    1: .row
+    2:   .col-sm-2= apps.date.strftime("%B %d, %Y")
+    3:   - if current_user.doctor?
+    4:     .col-sm-2
+    5:       = apps.patient.first_name
+  app/views/appointments/_appointment.html.haml:2:in `_app_views_appointments__appointment_html_haml__661580382028510423_69902396001400'
+  app/views/appointments/index.html.haml:21:in `_app_views_appointments_index_html_haml___2707122802143232186_69902103813580'
+  app/controllers/appointments_controller.rb:8:in `index'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.6ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (15.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (30.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 12:07:44 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2)[0m
+  Rendered appointments/_appointment.html.haml (19.8ms)
+  Rendered appointments/index.html.haml within layouts/application (22.7ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (undefined local variable or method `apps' for #<#<Class:0x007f26d7ce1210>:0x007f26d7097a18>):
+    13:       ( Doctor )
+    14:   .col-sm-2
+    15:     %span.label.label-success= appointment.status
+    16:   .col-sm-2= link_to image_tag("Show.png", size: '20x20'), appointment_path(apps)
+    17:   - if current_user.patient? and can? :update, apps
+    18:     - if appointment.status != 'cancelled'
+    19:       .col-sm-2= link_to image_tag("Edit.png", size: '20x20'), edit_appointment_path(apps)
+  app/views/appointments/_appointment.html.haml:16:in `_app_views_appointments__appointment_html_haml__661580382028510423_69902395524640'
+  app/views/appointments/index.html.haml:21:in `_app_views_appointments_index_html_haml___2707122802143232186_69902103813580'
+  app/controllers/appointments_controller.rb:8:in `index'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.1ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.7ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (16.1ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (31.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 12:07:51 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2)
+  Rendered appointments/_appointment.html.haml (17.1ms)
+  Rendered appointments/index.html.haml within layouts/application (20.7ms)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (undefined local variable or method `apps' for #<#<Class:0x007f26d7ce1210>:0x007f26d5405e68>):
+    13:       ( Doctor )
+    14:   .col-sm-2
+    15:     %span.label.label-success= appointment.status
+    16:   .col-sm-2= link_to image_tag("Show.png", size: '20x20'), appointment_path(apps)
+    17:   - if current_user.patient? and can? :update, apps
+    18:     - if appointment.status != 'cancelled'
+    19:       .col-sm-2= link_to image_tag("Edit.png", size: '20x20'), edit_appointment_path(apps)
+  app/views/appointments/_appointment.html.haml:16:in `_app_views_appointments__appointment_html_haml__661580382028510423_69902395524640'
+  app/views/appointments/index.html.haml:21:in `_app_views_appointments_index_html_haml___2707122802143232186_69902103813580'
+  app/controllers/appointments_controller.rb:8:in `index'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.1ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.0ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (15.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (30.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 12:08:20 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2)[0m
+  Rendered appointments/_appointment.html.haml (21.8ms)
+  Rendered appointments/index.html.haml within layouts/application (24.6ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.4ms)
+
+ActionView::Template::Error (undefined local variable or method `apps' for #<#<Class:0x007f26d7ce1210>:0x007f26d6d117b8>):
+    13:       ( Doctor )
+    14:   .col-sm-2
+    15:     %span.label.label-success= appointment.status
+    16:   .col-sm-2= link_to image_tag("Show.png", size: '20x20'), appointment_path(apps)
+    17:   - if current_user.patient? and can? :update, appointment
+    18:     - if appointment.status != 'cancelled'
+    19:       .col-sm-2= link_to image_tag("Edit.png", size: '20x20'), edit_appointment_path(apps)
+  app/views/appointments/_appointment.html.haml:16:in `_app_views_appointments__appointment_html_haml__661580382028510423_69902393112940'
+  app/views/appointments/index.html.haml:21:in `_app_views_appointments_index_html_haml___2707122802143232186_69902103813580'
+  app/controllers/appointments_controller.rb:8:in `index'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.1ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (15.6ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (30.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 12:08:34 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2)
+  Rendered appointments/_appointment.html.haml (19.2ms)
+  Rendered appointments/index.html.haml within layouts/application (22.9ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (undefined local variable or method `apps' for #<#<Class:0x007f26d7ce1210>:0x007f26d7ad12b8>):
+    13:       ( Doctor )
+    14:   .col-sm-2
+    15:     %span.label.label-success= appointment.status
+    16:   .col-sm-2= link_to image_tag("Show.png", size: '20x20'), appointment_path(apps)
+    17:   - if current_user.patient? and can? :update, appointment
+    18:     - if appointment.status != 'cancelled'
+    19:       .col-sm-2= link_to image_tag("Edit.png", size: '20x20'), edit_appointment_path(appointment)
+  app/views/appointments/_appointment.html.haml:16:in `_app_views_appointments__appointment_html_haml__661580382028510423_69902401779240'
+  app/views/appointments/index.html.haml:21:in `_app_views_appointments_index_html_haml___2707122802143232186_69902103813580'
+  app/controllers/appointments_controller.rb:8:in `index'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (16.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (34.1ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (15.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (31.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 12:08:47 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2)[0m
+  Rendered appointments/_appointment.html.haml (11.9ms)
+  Rendered appointments/index.html.haml within layouts/application (16.1ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 1709ms (Views: 1705.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/pagination.self-5d167251fcf7ca7d597a1a11fa32a0bd64cc16abce237e9c4410c1d0426a976d.js?body=1" for 127.0.0.1 at 2018-03-20 12:08:49 +0530
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 12:10:37 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2)
+  Rendered appointments/_appointment.html.haml (7.1ms)
+  Rendered appointments/index.html.haml within layouts/application (14.2ms)
+  Rendered layouts/_navigation.html.haml (0.3ms)
+Completed 200 OK in 77ms (Views: 74.2ms | ActiveRecord: 0.5ms)

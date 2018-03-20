@@ -5,6 +5,10 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = current_user.future_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
