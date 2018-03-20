@@ -1,0 +1,4 @@
+$('#upcoming_appointments').append('#{escape_javascript(render @appointments)}');
+$('a.load-more-appointments').attr('href', '#{appointments_path page: @appointments.next_page}');
+- unless @appointments.next_page
+  $('a.load-more-appointments').remove();

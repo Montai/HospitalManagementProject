@@ -46124,3 +46124,896 @@ Processing by SessionsController#new as HTML
   Rendered devise/sessions/new.html.haml within layouts/application (11.3ms)
   Rendered layouts/_navigation.html.haml (0.3ms)
 Completed 200 OK in 76ms (Views: 75.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 12:44:21 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/index.html.haml within layouts/application (562.1ms)
+  Rendered layouts/_navigation.html.haml (5.5ms)
+Completed 200 OK in 710ms (Views: 661.9ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/?page=2" for 127.0.0.1 at 2018-03-20 12:44:27 +0530
+Processing by AppointmentsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 8[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (8)
+  Rendered appointments/index.html.haml within layouts/application (10.5ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 78ms (Views: 73.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/?page=1" for 127.0.0.1 at 2018-03-20 12:44:29 +0530
+Processing by AppointmentsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)
+  Rendered appointments/index.html.haml within layouts/application (24.7ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 89ms (Views: 86.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/?page=1" for 127.0.0.1 at 2018-03-20 12:51:51 +0530
+Processing by AppointmentsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)
+  Rendered appointments/_appointment.html.haml (20.2ms)
+  Rendered appointments/index.html.haml within layouts/application (39.6ms)
+  Rendered layouts/_navigation.html.haml (0.5ms)
+Completed 200 OK in 211ms (Views: 178.6ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/assets/pagination.self-18631a71e613614a225cba98b7922f9894f437d55ddf83ad8525ce080a88f31f.js?body=1" for 127.0.0.1 at 2018-03-20 12:51:51 +0530
+
+
+Started GET "/?page=2" for 127.0.0.1 at 2018-03-20 12:52:00 +0530
+Processing by AppointmentsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 8
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (8)[0m
+  Rendered appointments/_appointment.html.haml (5.0ms)
+  Rendered appointments/index.html.haml within layouts/application (9.1ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 75ms (Views: 71.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/?page=1" for 127.0.0.1 at 2018-03-20 12:52:01 +0530
+Processing by AppointmentsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (20.2ms)
+  Rendered appointments/index.html.haml within layouts/application (28.2ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 118ms (Views: 115.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/appointments/236" for 127.0.0.1 at 2018-03-20 12:52:30 +0530
+Processing by AppointmentsController#show as HTML
+  Parameters: {"id"=>"236"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.4ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 236 LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 10 LIMIT 1
+  [1m[36mNote Load (0.5ms)[0m  [1mSELECT `notes`.* FROM `notes` WHERE `notes`.`appointment_id` = 236[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18 LIMIT 1
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 236 LIMIT 1[0m
+  Rendered notes/_note.html.haml (13.3ms)
+  Rendered notes/_form.html.haml (10.5ms)
+  Rendered appointments/show.html.haml within layouts/application (51.7ms)
+  Rendered layouts/_navigation.html.haml (0.5ms)
+Completed 200 OK in 128ms (Views: 119.2ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/appointments" for 127.0.0.1 at 2018-03-20 12:52:33 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (1.0ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (17.6ms)
+  Rendered appointments/index.html.haml within layouts/application (27.3ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 100ms (Views: 95.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/appointments" for 127.0.0.1 at 2018-03-20 12:53:02 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+Completed 406 Not Acceptable in 33ms (ActiveRecord: 3.2ms)
+
+ActionController::UnknownFormat (ActionController::UnknownFormat):
+  app/controllers/appointments_controller.rb:8:in `index'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.8ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (16.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (32.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 12:53:10 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 406 Not Acceptable in 5ms (ActiveRecord: 0.2ms)
+
+ActionController::UnknownFormat (ActionController::UnknownFormat):
+  app/controllers/appointments_controller.rb:8:in `index'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.6ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (17.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (32.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 12:53:55 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (12.8ms)
+  Rendered appointments/index.html.haml within layouts/application (27.1ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 136ms (Views: 103.4ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 13:06:57 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (12.2ms)
+  Rendered appointments/index.html.haml within layouts/application (18.2ms)
+  Rendered layouts/_navigation.html.haml (0.6ms)
+Completed 200 OK in 160ms (Views: 157.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/pagination.self-7170247d34cdec319c1ec88ddac076da3d8f45ec2ee6ef91c14fe72fa003d0ef.js?body=1" for 127.0.0.1 at 2018-03-20 13:06:57 +0530
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 13:07:01 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (14.5ms)
+  Rendered appointments/index.html.haml within layouts/application (22.4ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 95ms (Views: 90.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 13:10:08 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (14.6ms)
+  Rendered appointments/index.html.haml within layouts/application (21.6ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 161ms (Views: 156.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/pagination.self-c4dba1b09a4e4a1985bbf36055be70a9052c80bf559f05c966115541fd3ff8c4.js?body=1" for 127.0.0.1 at 2018-03-20 13:10:08 +0530
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular-a26394f7ede100ca118eff2eda08596275a9839b959c226e15439557a5a80742.woff" for 127.0.0.1 at 2018-03-20 13:10:16 +0530
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 13:14:01 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (15.7ms)
+  Rendered appointments/index.html.haml within layouts/application (23.7ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 1797ms (Views: 1793.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/infinite_scroll.self-c4dba1b09a4e4a1985bbf36055be70a9052c80bf559f05c966115541fd3ff8c4.js?body=1" for 127.0.0.1 at 2018-03-20 13:14:03 +0530
+
+
+Started GET "/?page=2" for 127.0.0.1 at 2018-03-20 13:14:08 +0530
+Processing by AppointmentsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 8[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (8)
+  Rendered appointments/_appointment.html.haml (5.4ms)
+  Rendered appointments/index.html.haml within layouts/application (11.1ms)
+  Rendered layouts/_navigation.html.haml (0.5ms)
+Completed 200 OK in 93ms (Views: 88.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/?page=1" for 127.0.0.1 at 2018-03-20 13:14:09 +0530
+Processing by AppointmentsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)
+  Rendered appointments/_appointment.html.haml (19.0ms)
+  Rendered appointments/index.html.haml within layouts/application (26.7ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 99ms (Views: 94.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/?page=1" for 127.0.0.1 at 2018-03-20 13:14:16 +0530
+Processing by AppointmentsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)
+  Rendered appointments/_appointment.html.haml (12.4ms)
+  Rendered appointments/index.html.haml within layouts/application (18.6ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 89ms (Views: 85.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/?page=1" for 127.0.0.1 at 2018-03-20 13:24:34 +0530
+Processing by AppointmentsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)
+  Rendered appointments/_appointment.html.haml (13.0ms)
+  Rendered appointments/index.html.haml within layouts/application (24.5ms)
+  Rendered layouts/_navigation.html.haml (0.5ms)
+Completed 200 OK in 191ms (Views: 186.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/infinite_scroll.self-4a7cad53373c305b810a1e77e228acd091cce9c610772d6497c8fa557e310ce5.js?body=1" for 127.0.0.1 at 2018-03-20 13:24:34 +0530
+
+
+Started GET "/?page=1" for 127.0.0.1 at 2018-03-20 13:24:38 +0530
+Processing by AppointmentsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.3ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)
+  Rendered appointments/_appointment.html.haml (13.8ms)
+  Rendered appointments/index.html.haml within layouts/application (21.5ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 94ms (Views: 89.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/?page=1" for 127.0.0.1 at 2018-03-20 13:24:38 +0530
+Processing by AppointmentsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.3ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)
+  Rendered appointments/_appointment.html.haml (11.5ms)
+  Rendered appointments/index.html.haml within layouts/application (16.8ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 80ms (Views: 76.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 13:24:41 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)
+  Rendered appointments/_appointment.html.haml (12.1ms)
+  Rendered appointments/index.html.haml within layouts/application (18.1ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 89ms (Views: 84.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 13:25:01 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (437.5ms)
+  Rendered appointments/index.html.haml within layouts/application (486.1ms)
+  Rendered layouts/_navigation.html.haml (5.5ms)
+Completed 200 OK in 627ms (Views: 579.5ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 13:44:05 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (11.1ms)
+  Rendered appointments/index.html.haml within layouts/application (16.5ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 1581ms (Views: 1577.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/jquery.inview.min.self-ba732a6d0b4db5e763fcba62ac2f0931e440fc10d1645597de4e3ec9890bcea9.js?body=1" for 127.0.0.1 at 2018-03-20 13:44:07 +0530
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 14:19:33 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (15.7ms)
+  Rendered appointments/index.html.haml within layouts/application (27.6ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 110ms (Views: 107.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 14:23:45 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (13.5ms)
+  Rendered appointments/index.html.haml within layouts/application (25.0ms)
+  Rendered layouts/_navigation.html.haml (0.3ms)
+Completed 200 OK in 101ms (Views: 97.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 14:31:20 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (13.9ms)
+  Rendered appointments/index.html.haml within layouts/application (21.0ms)
+  Rendered layouts/_navigation.html.haml (0.5ms)
+Completed 200 OK in 2023ms (Views: 2020.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/appointments.self-48fcc7cbc14ed5cdfff50275cc38f422349cd329f9f8dcb8fce65e3e2c907455.js?body=1" for 127.0.0.1 at 2018-03-20 14:31:22 +0530
+
+
+Started GET "/appointments?page=2&_=1521536482938" for 127.0.0.1 at 2018-03-20 14:31:23 +0530
+Processing by AppointmentsController#index as JS
+  Parameters: {"page"=>"2", "_"=>"1521536482938"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 8[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (8)
+  Rendered appointments/_appointment.html.haml (9.4ms)
+  Rendered appointments/index.js.haml (15.1ms)
+Completed 200 OK in 21ms (Views: 18.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/?page=2" for 127.0.0.1 at 2018-03-20 14:31:33 +0530
+Processing by AppointmentsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 8
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (8)[0m
+  Rendered appointments/_appointment.html.haml (3.9ms)
+  Rendered appointments/index.html.haml within layouts/application (10.2ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 90ms (Views: 87.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/?page=1" for 127.0.0.1 at 2018-03-20 14:31:35 +0530
+Processing by AppointmentsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (16.8ms)
+  Rendered appointments/index.html.haml within layouts/application (24.8ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 101ms (Views: 96.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/appointments?page=2&_=1521536482939" for 127.0.0.1 at 2018-03-20 14:31:37 +0530
+Processing by AppointmentsController#index as JS
+  Parameters: {"page"=>"2", "_"=>"1521536482939"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.4ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 8[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (8)
+  Rendered appointments/_appointment.html.haml (3.0ms)
+  Rendered appointments/index.js.haml (6.4ms)
+Completed 200 OK in 13ms (Views: 9.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/?page=1" for 127.0.0.1 at 2018-03-20 14:32:30 +0530
+Processing by AppointmentsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)
+  Rendered appointments/_appointment.html.haml (14.6ms)
+  Rendered appointments/index.html.haml within layouts/application (23.6ms)
+  Rendered layouts/_navigation.html.haml (0.5ms)
+Completed 200 OK in 108ms (Views: 104.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/appointments?page=2&_=1521536550754" for 127.0.0.1 at 2018-03-20 14:32:31 +0530
+Processing by AppointmentsController#index as JS
+  Parameters: {"page"=>"2", "_"=>"1521536550754"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.3ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 8
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (8)[0m
+  Rendered appointments/_appointment.html.haml (3.0ms)
+  Rendered appointments/index.js.haml (8.6ms)
+Completed 200 OK in 14ms (Views: 10.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 14:32:45 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (11.1ms)
+  Rendered appointments/index.html.haml within layouts/application (15.7ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 86ms (Views: 83.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/appointments?page=2&_=1521536565580" for 127.0.0.1 at 2018-03-20 14:32:45 +0530
+Processing by AppointmentsController#index as JS
+  Parameters: {"page"=>"2", "_"=>"1521536565580"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 8[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (8)
+  Rendered appointments/_appointment.html.haml (3.0ms)
+  Rendered appointments/index.js.haml (8.4ms)
+Completed 200 OK in 17ms (Views: 13.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/appointments/new" for 127.0.0.1 at 2018-03-20 14:32:52 +0530
+Processing by AppointmentsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT id, first_name FROM `users` WHERE `users`.`role` = 1
+  Rendered appointments/new.html.haml within layouts/application (18.4ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 92ms (Views: 75.8ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/appointments" for 127.0.0.1 at 2018-03-20 14:33:21 +0530
+Processing by AppointmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zy4CKkRiQNcgRszOwBC424QbiDfi7JrrEHjh2tuA76fLDG7dzGrh7MIgUdry3Zm466isXpSE7rwvq924FP3mMw==", "appointment"=>{"doctor_id"=>"3", "date"=>"2018-03-25", "notes_attributes"=>{"0"=>{"description"=>"This is a note"}}, "image"=>#<ActionDispatch::Http::UploadedFile:0x007f961b20f748 @tempfile=#<Tempfile:/tmp/RackMultipart20180320-9369-lnugez.jpg>, @original_filename="vomit.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"appointment[image]\"; filename=\"vomit.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Book"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `appointments` (`date`, `doctor_id`, `image`, `patient_id`, `created_at`, `updated_at`) VALUES ('2018-03-25', 3, 'vomit.jpg', 18, '2018-03-20 09:03:21', '2018-03-20 09:03:21')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `notes` (`description`, `user_id`, `appointment_id`, `created_at`, `updated_at`) VALUES ('This is a note', 18, 244, '2018-03-20 09:03:21', '2018-03-20 09:03:21')
+  [1m[36m (39.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 202ms (ActiveRecord: 40.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 14:33:21 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.7ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (13.0ms)
+  Rendered appointments/index.html.haml within layouts/application (19.8ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 84ms (Views: 79.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/appointments?page=2&_=1521536602066" for 127.0.0.1 at 2018-03-20 14:33:22 +0530
+Processing by AppointmentsController#index as JS
+  Parameters: {"page"=>"2", "_"=>"1521536602066"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.6ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 8[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (10, 8)
+  Rendered appointments/_appointment.html.haml (3.8ms)
+  Rendered appointments/index.js.haml (7.9ms)
+Completed 200 OK in 13ms (Views: 9.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/archive" for 127.0.0.1 at 2018-03-20 14:33:28 +0530
+Processing by AppointmentsController#archive as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.5ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status <> 0)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 10, 6, 3, 8, 11)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status <> 0)
+  Rendered appointments/archive.html.haml within layouts/application (15.4ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 90ms (Views: 84.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/others/Show.png" for 127.0.0.1 at 2018-03-20 14:33:28 +0530
+
+ActionController::RoutingError (No route matches [GET] "/others/Show.png"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.8) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.8) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.8) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  rack (1.6.8) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.8) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.0ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (49.6ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.1ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (40.4ms)
+
+
+Started GET "/archive?page=2" for 127.0.0.1 at 2018-03-20 14:33:30 +0530
+Processing by AppointmentsController#archive as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.7ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status <> 0)  ORDER BY date ASC LIMIT 8 OFFSET 8
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (3, 2, 8)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status <> 0)
+  Rendered appointments/archive.html.haml within layouts/application (9.9ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 85ms (Views: 79.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/others/Show.png" for 127.0.0.1 at 2018-03-20 14:33:30 +0530
+
+ActionController::RoutingError (No route matches [GET] "/others/Show.png"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.8) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.8) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.8) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  rack (1.6.8) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.8) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (34.6ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (21.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (39.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 14:33:34 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.1ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)
+  Rendered appointments/_appointment.html.haml (17.0ms)
+  Rendered appointments/index.html.haml within layouts/application (25.5ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 120ms (Views: 117.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/others/Show.png" for 127.0.0.1 at 2018-03-20 14:33:34 +0530
+
+ActionController::RoutingError (No route matches [GET] "/others/Show.png"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.8) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.8) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.8) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  rack (1.6.8) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.8) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.1ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (35.6ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.0ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (37.7ms)
+
+
+Started GET "/appointments?page=2&_=1521536602067" for 127.0.0.1 at 2018-03-20 14:33:34 +0530
+Processing by AppointmentsController#index as JS
+  Parameters: {"page"=>"2", "_"=>"1521536602067"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.2ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 8
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (10, 8)[0m
+  Rendered appointments/_appointment.html.haml (4.8ms)
+  Rendered appointments/index.js.haml (8.7ms)
+Completed 200 OK in 14ms (Views: 11.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 15:05:03 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.3ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)[0m
+  Rendered appointments/_appointment.html.haml (12.2ms)
+  Rendered appointments/index.html.haml within layouts/application (26.4ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 1579ms (Views: 1573.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/carousel.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js?body=1" for 127.0.0.1 at 2018-03-20 15:05:05 +0530
+
+
+Started GET "/assets/infinite_scroll.self-e2fe5b3bdaead95b232a40c8b0dfa56a88f02edec434655c0917239ee8c10cc9.js?body=1" for 127.0.0.1 at 2018-03-20 15:05:05 +0530
+
+
+Started GET "/carousel.js" for 127.0.0.1 at 2018-03-20 15:05:05 +0530
+
+ActionController::RoutingError (No route matches [GET] "/carousel.js"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.8) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.8) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.8) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  rack (1.6.8) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.8) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (38.0ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.9ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (38.1ms)
+
+
+Started GET "/carousel.js" for 127.0.0.1 at 2018-03-20 15:05:05 +0530
+
+ActionController::RoutingError (No route matches [GET] "/carousel.js"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.8) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.8) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.8) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  rack (1.6.8) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.8) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (43.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (15.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (31.3ms)
+
+
+Started GET "/appointments?page=2&_=1521538505209" for 127.0.0.1 at 2018-03-20 15:05:09 +0530
+Processing by AppointmentsController#index as JS
+  Parameters: {"page"=>"2", "_"=>"1521538505209"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mAppointment Load (0.2ms)[0m  [1mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 8[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (10, 8)
+  Rendered appointments/_appointment.html.haml (4.1ms)
+  Rendered appointments/index.js.haml (9.7ms)
+Completed 200 OK in 16ms (Views: 12.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-20 15:05:14 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.3ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 0
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 8, 10, 11)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)
+  Rendered appointments/_appointment.html.haml (13.6ms)
+  Rendered appointments/index.html.haml within layouts/application (19.1ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+Completed 200 OK in 106ms (Views: 102.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/carousel.js" for 127.0.0.1 at 2018-03-20 15:05:14 +0530
+
+ActionController::RoutingError (No route matches [GET] "/carousel.js"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.8) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.8) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.8) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  rack (1.6.8) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.8) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/share/rvm/rubies/ruby-2.3.4/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (45.3ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.1ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/mindfire/.rvm/gems/ruby-2.3.4@hms_development/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (43.0ms)
+
+
+Started GET "/appointments?page=2&_=1521538514186" for 127.0.0.1 at 2018-03-20 15:05:15 +0530
+Processing by AppointmentsController#index as JS
+  Parameters: {"page"=>"2", "_"=>"1521538514186"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mAppointment Load (0.3ms)[0m  SELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 18 AND (status = 0 OR status = 2)  ORDER BY date ASC LIMIT 8 OFFSET 8
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (10, 8)[0m
+  Rendered appointments/_appointment.html.haml (4.7ms)
+  Rendered appointments/index.js.haml (8.2ms)
+Completed 200 OK in 17ms (Views: 11.9ms | ActiveRecord: 0.8ms)

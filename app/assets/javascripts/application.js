@@ -13,6 +13,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require fancybox
+//= require jquery.inview.min.js
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
