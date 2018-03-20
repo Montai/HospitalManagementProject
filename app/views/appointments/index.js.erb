@@ -1,0 +1,7 @@
+$('#upcoming-appointments').append('<%= j render @appointments %>');
+<% if @appointments.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @appointments %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>
