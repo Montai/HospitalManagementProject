@@ -1,7 +1,15 @@
 .container.well
+  .row
+    .col-md-6
+      .field
+        - if current_user.image.present?
+          = image_tag(current_user.image.thumb, class: "img-thumbnail")
+        - else
+          %h6 No image
   = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
     %h2
       Edit #{resource_name.to_s.humanize}
+    = devise_error_messages!
     .form-group
       = f.label :email
       %br/
@@ -12,8 +20,7 @@
       %div
         Currently waiting confirmation for: #{resource.unconfirmed_email}
     .form-group
-      = f.label :password
-      %i (leave blank if you don't want to change it)
+      = f.label :password, "New Password"
       %br/
       = f.password_field :password, autocomplete: "off", class: "form-control"
       - if @minimum_password_length
@@ -27,9 +34,12 @@
       = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
     .form-group
       = f.label :current_password
-      %i (we need your current password to confirm your changes)
       %br/
       = f.password_field :current_password, autocomplete: "off", class: "form-control"
+    .form-group
+      %label.image-file-field{for: "image"}
+        %b Change Image
+      = f.file_field :image, class: "form-control"
     .actions
       = f.submit "Update", class: 'btn btn-info'
   %h3 Cancel my account

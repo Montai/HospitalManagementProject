@@ -31,13 +31,6 @@ class NotesController < ApplicationController
     redirect_to appointment_path(@appointment), notice: 'Note destroyed!'
   end
 
-  def check_user
-    @appointment = Appointment.find(params[:appointment_id])
-    @note = @appointment.notes.find(params[:id])
-    #Restrict user to edit other users notes
-    redirect_to root_path and return if current_user.id != @note.user_id
-  end
-
   def edit
     @appointment = Appointment.find(params[:appointment_id])
     @note = @appointment.notes.find(params[:id])
@@ -57,5 +50,13 @@ class NotesController < ApplicationController
 
     def notes_params
       params.require(:note).permit(:description)
+    end
+
+    #Method to restrict current user to edit/update other users Note
+    def check_user
+      @appointment = Appointment.find(params[:appointment_id])
+      @note = @appointment.notes.find(params[:id])
+      #Restrict user to edit other users notes
+      redirect_to root_path and return if current_user.id != @note.user_id
     end
 end

@@ -1,9 +1,9 @@
 .container
   = form_for([@appointment, @appointment.notes.build({user: current_user})], remote: true) do |f|
     .form-group
-      = f.label :Description
+      = f.label :Description, "Leave a Note"
       %br/
-      = f.text_area :description, required: true, class: "form-control"
+      = f.text_area :description, required: true, class: "form-control", id: "note_field_content"
     %div
       - if @note && @note.errors.any?
         - @note.errors.full_messages.each do |msg|

@@ -56,6 +56,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
   end
 
+  #Method used to cancel a patient appointment
   def cancel_appointment
     @appointment = Appointment.find(params[:id])
     @appointment.status = Appointment.statuses[:cancelled]
@@ -66,6 +67,7 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  #Method used to approve an Appointment by changing the status to Visited
   def visited_patient_appointment
     @appointment = Appointment.find(params[:id])
     @appointment.status = Appointment.statuses[:visited]
@@ -76,23 +78,15 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  #Show all the unvisited past appointments
   def archive
     @archives = current_user.past_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)
   end
 
+  #Method to get the current status according to Appointment Date
   def get_current_status(date)
     return Appointment.statuses[:pending] if date > Time.now
     return Appointment.statuses[:unvisited]
-  end
-
-  def check_user
-    @appointment = Appointment.find(params[:id])
-    if current_user.doctor? or current_user.id != @appointment.patient_id or @appointment.date < Time.now
-      then redirect_to root_path and return
-    end
-    unless current_user.patient? and current_user.id == @appointment.patient_id
-      redirect_to edit_appointment_path(@appointment)
-    end
   end
 
   private
@@ -100,5 +94,16 @@ class AppointmentsController < ApplicationController
     def appointments_params
       params.require(:appointment).permit(:date, :doctor_id, :patient_id, :image, :slot_tag,
         notes_attributes: [:id, :description, :user_id, :_destroy])
+    end
+
+    #Method to restrict current user to edit/update other users appointment
+    def check_user
+      @appointment = Appointment.find(params[:id])
+      if current_user.doctor? or current_user.id != @appointment.patient_id or @appointment.date < Time.now
+        then redirect_to root_path and return
+      end
+      unless current_user.patient? and current_user.id == @appointment.patient_id
+        redirect_to edit_appointment_path(@appointment)
+      end
     end
 end

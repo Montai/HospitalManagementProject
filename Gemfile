@@ -9,7 +9,7 @@ gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'mini_magick', '~> 4.8'
 gem 'haml'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
-gem 'sidekiq', '~> 5.1', '>= 5.1.1'
+gem 'sidekiq'
 gem 'fancybox-rails', '~> 0.3.1'
 gem 'cancan', '~> 1.6', '>= 1.6.10'
 gem 'sass-rails', '~> 5.0'
@@ -30,5 +30,6 @@ end
 
 group :development do
   gem 'web-console', '~> 2.0'
+  gem "letter_opener"
   gem 'spring'
 end

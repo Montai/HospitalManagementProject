@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  after_create :send_welcome_email
   enum role: [:patient, :doctor]
   #Regex Variable Declaration
   NAME_REGEX = /\A[^0-9`!@#\$%\^&*+_=]+\z/
@@ -14,7 +15,7 @@ class User < ActiveRecord::Base
       where('status <> ?', Appointment.statuses[:pending]).order("date ASC")
     end
   end
-  
+
   has_many :doctor_appointments, class_name: "Appointment", foreign_key: :patient_id, dependent: :destroy do
     def future
       where('status = ? OR status = ?', Appointment.statuses[:pending], Appointment.statuses[:cancelled]).order('date ASC')
@@ -44,6 +45,7 @@ class User < ActiveRecord::Base
             presence: true,
             length: { minimum: 6, maximum: 20 }
   validates_confirmation_of :password
+  mount_uploader :image, ImageUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :twitter]
 
@@ -93,4 +95,9 @@ class User < ActiveRecord::Base
       user
     end
   end
+
+  private
+    def send_welcome_email
+      UserMailer.welcome_email(self).deliver_now
+    end
 end

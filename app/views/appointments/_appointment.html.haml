@@ -12,8 +12,7 @@
       = appointment.doctor.last_name
       ( Doctor )
   .col-sm-2
-    %span.label.label-success
-    = appointment.status
+    %span.label.label-success= appointment.status
   .col-sm-2= link_to image_tag("Show.png", size: '20x20'), appointment_path(appointment)
   - if current_user.patient? and can? :update, appointment
     - if appointment.status != 'cancelled'
