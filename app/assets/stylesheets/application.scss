@@ -21,15 +21,18 @@
 $primary-color: #b3ffb3;
 $border-color: #006600;
 
+/* Style up the top navigation bar */
 .top-navigation {
   width: 100%;
   margin: 10px;
   padding: 10px;
   position: absolute;
+  /* Style the bootstrap button */
   button.btn.btn-default {
     margin-top: 8px;
   }
 }
+/* Main body container */
 .main-container {
   position: absolute;
   margin-top: 40px;
@@ -45,6 +48,7 @@ $border-color: #006600;
   .form-control {
     width: 30%;
   }
+  /* Style sign-in-form for user login */
   .sign-in-form {
     position: relative;
     margin: 10px;
@@ -55,6 +59,7 @@ $border-color: #006600;
     padding: 10px;
     background: radial-gradient(circle, $primary-color, white)
   }
+  /* Style sign-up-form for user login */
   .sign-up-form {
     position: relative;
     margin: 10px;
@@ -65,6 +70,7 @@ $border-color: #006600;
     padding: 10px;
     background: radial-gradient(circle, $primary-color, white)
   }
+  /* Style the inner container-fluid */
   .container-fluid {
     margin: 10px;
     padding: 10px;
@@ -72,6 +78,7 @@ $border-color: #006600;
   .well {
     background: radial-gradient(circle, $primary-color, white)
   }
+  /* Position the gmail, twitter & facebook icons */
   .twitter-icon, .google-icon {
     position: relative;
     left: 85px;
@@ -84,6 +91,7 @@ $border-color: #006600;
     position: relative;
     left: 85px;
   }
+  /* Style the custom errors messages */
   .validation-err-message, .notice, .alert {
     color : #ff0000;
     font-style: italic;
