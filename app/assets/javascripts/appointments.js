@@ -3,13 +3,16 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready(function() {
-  jQuery(function() {
-    return $("a.fancybox").fancybox({
-      'transitionIn': 'elastic',
-      'transitionOut': 'elastic',
-      'speedIn': 600,
-      'speedOut': 200,
-      'overlayShow': false
-    });
+  $(document).on('turbolinks:load', function() {
+  	var loading_posts = false;
+  	return $('a.load-more-appointments').on('inview', function(e, visible) {
+  	  if (loading_posts || !visible) {
+  	  	return
+  	  }
+  	  loading_posts = true;
+  	  return $.getScript($(this).attr('href'),function() {
+  	  	return loading_posts = false;
+  	  });
+  	});
   });
 });

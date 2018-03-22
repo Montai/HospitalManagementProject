@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /******************* Appointment styling *******************************************/
+/* Main Title Header */ 
 h1.well {
 	text-align: center;
 	margin-right: 10%;
@@ -11,6 +12,15 @@ h1.well {
   text-align: center;
   color: green;
   border: 2px solid grey;
+}
+/* Style previous page button */
+.prev.previous_page {
+  position: absolute;
+  left: 0px;
+}
+#container_top_index {
+  margin-left: 10%;
+  margin-right: 8%;
 }
 
 * {box-sizing:border-box}
