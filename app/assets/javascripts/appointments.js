@@ -4,7 +4,7 @@
 
 $(document).ready(function() {
   $(document).on('turbolinks:load', function() {
-  	var loading_posts = false;
+  	var loading_posts = false; //Set initial value to false
   	return $('a.load-more-appointments').on('inview', function(e, visible) {
   	  if (loading_posts || !visible) {
   	  	return

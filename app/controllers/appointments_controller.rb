@@ -2,6 +2,7 @@ class AppointmentsController < ApplicationController
   #Callbacks
   before_action :is_patient?, only: [:new, :create]
   before_action :check_user, only: [:edit]
+  before_action :find_current_appointment, except: [:index, :new, :create, :archive]
 
   def index
     @appointments = current_user.future_appointments.paginate(page: params[:page], per_page: PAGINATION_PAGES)
@@ -31,12 +32,10 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    @appointment = Appointment.find(params[:id])
     @all_doctors = User.getalldoctors
   end
 
   def update
-    @appointment = Appointment.find(params[:id])
     @appointment.status = get_current_status(@appointment.date)
     @all_doctors = User.getalldoctors
     if @appointment.update(appointments_params)
@@ -47,18 +46,15 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    @appointment = Appointment.find(params[:id])
     @appointment.destroy
     redirect_to root_path, notice: 'Appointment Deleted!'
   end
 
   def show
-    @appointment = Appointment.find(params[:id])
   end
 
   #Method used to cancel a patient appointment
   def cancel_appointment
-    @appointment = Appointment.find(params[:id])
     @appointment.status = Appointment.statuses[:cancelled]
     if @appointment.save
       redirect_to appointments_path, notice: 'Appointment Cancelled!'
@@ -69,7 +65,6 @@ class AppointmentsController < ApplicationController
 
   #Method used to approve an Appointment by changing the status to Visited
   def visited_patient_appointment
-    @appointment = Appointment.find(params[:id])
     @appointment.status = Appointment.statuses[:visited]
     if @appointment.save
       redirect_to appointments_path, notice: 'Appointment Visited!'
@@ -95,6 +90,10 @@ class AppointmentsController < ApplicationController
       params.require(:appointment).permit(:date, :doctor_id, :patient_id, :image, :slot_tag,
         notes_attributes: [:id, :description, :user_id, :_destroy])
     end
+
+    def find_current_appointment
+      @appointment = Appointment.find(params[:id])
+    end 
 
     #Method to restrict current user to edit/update other users appointment
     def check_user

@@ -9,19 +9,19 @@ class User < ActiveRecord::Base
   #Model Associations
   has_many :patient_appointments, class_name: "Appointment", foreign_key: :doctor_id, dependent: :destroy do
     def future
-      where('status = ? OR status = ?', Appointment.statuses[:pending], Appointment.statuses[:cancelled]).order('date ASC')
+      where('status = :pending OR status = :cancelled', pending: Appointment.statuses[:pending], cancelled: Appointment.statuses[:cancelled]).order('date ASC')
     end
     def past
-      where('status <> ?', Appointment.statuses[:pending]).order("date ASC")
+      where('status <> :pending', pending: Appointment.statuses[:pending]).order("date ASC")
     end
   end
 
   has_many :doctor_appointments, class_name: "Appointment", foreign_key: :patient_id, dependent: :destroy do
     def future
-      where('status = ? OR status = ?', Appointment.statuses[:pending], Appointment.statuses[:cancelled]).order('date ASC')
+      where('status = :pending OR status = :cancelled', pending: Appointment.statuses[:pending], cancelled: Appointment.statuses[:cancelled]).order('date ASC')
     end
     def past
-      where('status <> ?', Appointment.statuses[:pending]).order("date ASC")
+      where('status <> :pending', pending: Appointment.statuses[:pending]).order("date ASC")
     end
   end
 
@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :async, :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :twitter]
-
+  #Get the doctor list
   scope :getalldoctors, -> { (select('id, first_name').where('role = ?', User.roles[:doctor])) }      
   #Instance methods
   def future_appointments

@@ -44,7 +44,7 @@
   .row
     .col-md-6
       .field
-        - if (@appointment.status != "cancelled") && @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d") || @appointment.date > Time.now
+        - if (@appointment.status != "cancelled") or @appointment.date.strftime("%Y-%m-%d") < Time.now.strftime("%Y-%m-%d")
           .cancel-button-field
             = link_to "Cancel Appointment", { action: :cancel_appointment, controller: :appointments}, method: :post, data: { confirm: "Are you sure?" },class: "btn btn-danger"
             = link_to "Back", appointments_path, class: "btn btn-info"
@@ -55,7 +55,7 @@
   %u My Notes
 .field{id: "#{@appointment.id}"}
   - @appointment.notes.each do |note|
-    = render 'notes/note', note: note
+    = render 'shared/notes/note', note: note
 - if @appointment.status != 'unvisited' && @appointment.status != 'visited' && @appointment.status != 'cancelled'
   .field
-    = render 'notes/form'
+    = render 'shared/notes/form'

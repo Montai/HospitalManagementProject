@@ -36,5 +36,6 @@
             %b Actions
     %br/
     #upcoming_appointments
-      = render @appointments
+      - @appointments.each do |appointment|
+        = render 'shared/appointments/appointment', appointment: appointment
     = link_to 'Load More Appointments', appointments_path(page: @appointments.next_page), class: 'load-more-appointments', remote: true if @appointments.next_page

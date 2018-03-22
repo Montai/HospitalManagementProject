@@ -18,7 +18,7 @@
     - if appointment.status != 'cancelled'
       .col-sm-2
         = link_to image_tag("Edit.png", size: '20x20'), edit_appointment_path(appointment)
-    .col-sm-2
-      = link_to appointment_path(appointment) , method: :delete, data: {confirm: "Hey, Are you sure?"} do
-        = image_tag("Delete.png", size: '20x20')
+      .col-sm-2
+        = link_to appointment_path(appointment) , method: :delete, data: {confirm: "Hey, Are you sure?"} do
+          = image_tag("Delete.png", size: '20x20')
 %br/
