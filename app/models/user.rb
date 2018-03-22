@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   has_many :notes, dependent: :destroy
   has_many :images, as: :imagable, dependent: :destroy
 
-  #Validations
+  #Model Validations
   validates :first_name,
             presence: true,
             length: { minimum: 2, maximum: 15 },
@@ -47,8 +47,9 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   mount_uploader :image, ImageUploader
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :twitter]
+         :recoverable, :rememberable, :trackable, :validatable, :async, :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :twitter]
 
+  scope :getalldoctors, -> { (select('id, first_name').where('role = ?', User.roles[:doctor])) }      
   #Instance methods
   def future_appointments
     result = self.patient_appointments.future.includes(:patient) if self.doctor?
@@ -64,10 +65,6 @@ class User < ActiveRecord::Base
 
   #Class Methods
   class << self
-    def getalldoctors
-      all.select('id, first_name').doctor
-    end
-
     def new_with_session(params, session)
       super.tap do |user|
         if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]

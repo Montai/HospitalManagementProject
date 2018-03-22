@@ -7,6 +7,11 @@ h1.well {
 	text-align: center;
 	margin-right: 10%;
 }
+.header-text.well {
+  text-align: center;
+  color: green;
+  border: 2px solid grey;
+}
 
 * {box-sizing:border-box}
 
@@ -19,7 +24,7 @@ h1.well {
 
 /* Hide the images by default */
 .mySlides {
-    display: none;
+  display: none;
 }
 
 /* Next & previous buttons */

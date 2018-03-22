@@ -44,13 +44,13 @@
   .row
     .col-md-6
       .field
-        - if @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d") || @appointment.date > Time.now && (@appointment.status == "pending")
+        - if (@appointment.status != "cancelled") && @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d") || @appointment.date > Time.now
           .cancel-button-field
             = link_to "Cancel Appointment", { action: :cancel_appointment, controller: :appointments}, method: :post, data: { confirm: "Are you sure?" },class: "btn btn-danger"
             = link_to "Back", appointments_path, class: "btn btn-info"
             %br/
             - if current_user.doctor? and @appointment.date.strftime("%Y-%m-%d") === Time.now.strftime("%Y-%m-%d")
-              = link_to image_tag("Approve.png", :size => '55x55'), {action: :visited_patient_appointment , controller: :appointments}, method: :post, data: { confirm: "Are you sure?" }
+              = link_to image_tag("Approve.png", size: '55x55'), {action: :visited_patient_appointment , controller: :appointments}, method: :post, data: { confirm: "Are you sure?" }
 %h3.header-text.well
   %u My Notes
 .field{id: "#{@appointment.id}"}

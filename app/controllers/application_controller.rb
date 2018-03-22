@@ -7,12 +7,8 @@ class ApplicationController < ActionController::Base
   protected
   
     def is_patient?
-      return if current_user.blank?
+      redirect_to '/' and return if current_user.blank?
+      redirect_to '/', notice: 'Invalid Authorization' and return unless current_user.patient?
       return if current_user.patient?
-    end
-
-    def is_doctor?
-      return if current_user.blank?
-      return if current_user.doctor?
     end
 end
