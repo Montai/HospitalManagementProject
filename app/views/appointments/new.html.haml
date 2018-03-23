@@ -31,6 +31,6 @@
         - if @appointment.errors.any?
           = @appointment.errors.messages[:image].join(' ,') if @appointment.errors.messages[:image].present?
     .actions
-      = f.submit :Book, class: 'btn btn-info'
-      = link_to "Back", appointments_path, class: "btn btn-success"
+      = f.submit :Book, class: 'btn btn-primary'
+      = link_to "Back", appointments_path, class: "btn btn-warning"
       %br/

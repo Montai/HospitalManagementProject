@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby "2.3.4"
 #Using the rails 4.2.8 version
 gem 'rails', '4.2.8'
 #Using database adapter as MYSQL2

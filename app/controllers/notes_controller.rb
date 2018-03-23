@@ -55,6 +55,6 @@ class NotesController < ApplicationController
     def check_user
       @appointment = Appointment.find(params[:appointment_id])
       @note = @appointment.notes.find(params[:id])
-      redirect_to root_path and return if current_user.id != @note.user_id or @appointment.date < Time.now
+      redirect_to root_path and return if current_user.id != @note.user_id or @appointment.date < Time.now or @appointment.status == "cancelled"
     end
 end

@@ -10,7 +10,7 @@
     =image_tag "img3.jpg", style: "width: 100%"
   %a.prev{onclick: "plusSlides(-1)"} &#10094;
   %a.next{onclick: "plusSlides(1)"} &#10095;
-  %div{style: "text-align:center"}
+  %div
     %span.dot{onclick: "currentSlide(1)"}
     %span.dot{onclick: "currentSlide(2)"}
     %span.dot{onclick: "currentSlide(3)"}
@@ -38,4 +38,4 @@
     #upcoming_appointments
       - @appointments.each do |appointment|
         = render 'shared/appointments/appointment', appointment: appointment
-    = link_to 'Load More Appointments', appointments_path(page: @appointments.next_page), class: 'load-more-appointments', remote: true if @appointments.next_page
+    = link_to 'Load More Appointments', appointments_path(page: @appointments.next_page), class: 'load-more-appointments btn btn-primary', remote: true if @appointments.next_page

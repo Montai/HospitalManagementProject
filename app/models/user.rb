@@ -45,21 +45,23 @@ class User < ActiveRecord::Base
             presence: true,
             length: { minimum: 6, maximum: 20 }
   validates_confirmation_of :password
+  validate :image_size_validation
+  validate :validate_birth_date
   mount_uploader :image, ImageUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :async, :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :twitter]
   #Get the doctor list
-  scope :getalldoctors, -> { (select('id, first_name').where('role = ?', User.roles[:doctor])) }      
+  scope :getalldoctors, -> { (select('id, first_name').where('role = :user_role', user_role: User.roles[:doctor])) }      
   #Instance methods
   def future_appointments
-    result = self.patient_appointments.future.includes(:patient) if self.doctor?
-    result = self.doctor_appointments.future.includes(:doctor) if self.patient?
+    result = patient_appointments.future.includes(:patient) if doctor?
+    result = doctor_appointments.future.includes(:doctor) if patient?
     result
   end
 
   def past_appointments
-    result = self.patient_appointments.past.includes(:patient) if self.doctor?
-    result = self.doctor_appointments.past.includes(:doctor) if self.patient?
+    result = patient_appointments.past.includes(:patient) if doctor?
+    result = doctor_appointments.past.includes(:doctor) if patient?
     result
   end
 
@@ -94,7 +96,16 @@ class User < ActiveRecord::Base
   end
 
   private
+    #Send a welcome mail upon user signup
     def send_welcome_email
       UserMailer.welcome_email(self).deliver_now
     end
+
+    def image_size_validation
+      errors.add(:image, "should be less than 1 MB") if image.size > 1.megabytes
+    end 
+
+    def validate_birth_date
+      errors.add(:date_of_birth, "you must be 18 years or above") if date_of_birth > Time.now - 18.years 
+    end 
 end
