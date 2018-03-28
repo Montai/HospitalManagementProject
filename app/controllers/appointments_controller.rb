@@ -39,7 +39,7 @@ class AppointmentsController < ApplicationController
     @appointment.notes.first.user_id = current_user.id
     @appointment.slot_id = TimeSlot.find_by_slot(params[:slot]).id
     @all_doctors = User.get_all_doctors
-    
+
     if @appointment.save
       redirect_to root_path, notice: 'Appointment saved!'
     else
@@ -48,15 +48,14 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    authorize! :edit, @appointment
+    raise CanCan::AccessDenied.new("Not authorized!", :edit, @appointment)
     @all_doctors = User.get_all_doctors
     @slot = params["slot"]
     @action = 'edit'
   end
 
   def update
-    # binding.pry
-    authorize! :update, @appointment
+    raise CanCan::AccessDenied.new("Not authorized!", :update, @appointment)
     @appointment.status = Appointment.get_current_status(@appointment.date)
     @appointment.slot_id = TimeSlot.find_by_slot(params[:slot]).id if params[:slot] != nil
     @all_doctors = User.get_all_doctors
@@ -68,7 +67,7 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    authorize! :destroy, @appointment
+    raise CanCan::AccessDenied.new("Not authorized!", :destroy, @appointment)
     @appointment.destroy
     redirect_to root_path, notice: 'Appointment Deleted!'
   end
