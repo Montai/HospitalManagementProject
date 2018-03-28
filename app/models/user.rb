@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :async, :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :twitter]
   #Get the doctor list
-  scope :getalldoctors, -> { (select('id, first_name').where('role = :user_role', user_role: User.roles[:doctor])) }      
+  scope :get_all_doctors, -> { (select('id, first_name').where('role = :user_role', user_role: User.roles[:doctor])) }      
   #Instance methods
   def future_appointments
     result = patient_appointments.future.includes(:patient) if doctor?
@@ -103,9 +103,9 @@ class User < ActiveRecord::Base
 
     def image_size_validation
       errors.add(:image, "should be less than 1 MB") if image.size > 1.megabytes
-    end 
+    end
 
     def validate_birth_date
-      errors.add(:date_of_birth, "you must be 18 years or above") if date_of_birth > Time.now - 18.years 
-    end 
+      errors.add(:date_of_birth, "you must be 18 years or above") if date_of_birth > Time.now - 18.years
+    end
 end

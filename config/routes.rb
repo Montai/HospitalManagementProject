@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     match '/logout', :to => 'devise/sessions#destroy', via: :all
   end
   resources :appointments do
-    get :available_slots, on: :collection
-    resources :notes
+    get :get_slots, on: :collection
+    resources :notes, except: [:show]
     resources :images, only: [:show]
   end
   match 'appointments/:id/cancel_appointment' => "appointments#cancel_appointment", :via => :post

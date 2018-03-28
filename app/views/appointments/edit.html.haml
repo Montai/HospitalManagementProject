@@ -22,6 +22,10 @@
           - if @appointment.errors.any?
             = @appointment.errors.messages[:"notes.description"].join(',') if @appointment.errors.messages[:"notes.description"].present?
     .form-group
+      = link_to "Get Slots", { action: :get_slots, controller: :appointments }, id: "get_timeslots", style: 'display: none', remote: true
+      .check-slot
+        .available-slots
+    .form-group
       %label.image-file-field{for: "image"}
         %b Change Image
       = f.file_field :image, class: "form-control"
@@ -33,3 +37,13 @@
       = f.submit :Update , class: 'btn btn-info'
       = link_to "Back", appointments_path, class: "btn btn-success"
       %br/
+%script
+  $(document).ready(function() {
+  var link = $("#get_timeslots").prop("href");
+  var doctor = $("#appointment_doctor_id").val();
+  var date = $("#appointment_date").val();
+  var slot = #{@slot.to_json.html_safe};
+  $("#get_timeslots").prop("href", link.split('?')[0] + "?date=" + date + "&doctor=" + doctor + "&ifEdit=true&slot=" + slot);
+  $("#get_timeslots").trigger("click");
+  console.log('i am here');
+  });

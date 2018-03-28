@@ -1,0 +1,21 @@
+var test_text = <%= raw @test_slots %>;
+var ifEdit = <%= @if_edit.to_json.html_safe %>;
+var slot = <%= @slot.to_json.html_safe %>;
+if(test_text.length > 0) {
+  $(".check-slot").children().show();
+  $(".available-slots").text("");
+  test_text.forEach(function(item, index) {
+    var radio = "</br><input type='radio' name='slot' value='" + item + "'>" + item;
+    $(".available-slots").append(radio).css("color", "#000000");
+  });
+  if(ifEdit == "true") {
+  	$("input[name='slot'][value='"+ slot +"']").prop("checked",true);
+  }
+  else {
+  	$('.available-slots input:nth-child(2)').prop("checked", true);
+  }
+}
+else {
+  $(".check-slot").children().hide();
+  $(".available-slots").show().text("No slots available").css("color", "#ff0000");
+}

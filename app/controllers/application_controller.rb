@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
 
-  protected
-  
+  protected 
     def is_patient?
       redirect_to '/' and return if current_user.blank?
       redirect_to '/', notice: 'Invalid Authorization' and return unless current_user.patient?

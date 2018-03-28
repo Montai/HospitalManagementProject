@@ -7,7 +7,7 @@ gem 'mysql2', '~> 0.4.10'
 gem 'devise', '~> 4.1.1'
 #Using bootstrap sass to use bootstrap and its library
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
-#Using bootstrap kind of pagination 
+#Using bootstrap kind of pagination
 gem 'bootstrap-will_paginate'
 #Using carrier wave to upload image
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
@@ -33,6 +33,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
+gem 'whenever', require: false
+gem "sidekiq-cron", "~> 0.6.3"
 
 gem 'jquery-rails'
 gem 'turbolinks'

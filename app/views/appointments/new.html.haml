@@ -5,7 +5,7 @@
       %label.doctor-select-label{for: "doctor"}
         %b Choose Doctor
       %br/
-      = f.collection_select(:doctor_id, @all_doctors, :id, :first_name, { prompt: "Please select a Doctor", required: true }, { class: "form-control" })
+      = f.collection_select(:doctor_id, @all_doctors, :id, :first_name, { class: "form-control" })
       .validation-err-message
         - if @appointment.errors.any?
           = @appointment.errors.messages[:"doctor_id"].join(',') if @appointment.errors.messages[:"doctor_id"].present?
@@ -13,12 +13,21 @@
       %label.date-select-label{for: "date"}
         %b Select Date
       = f.date_field :date, value: (Date.today + 1).strftime('%Y-%m-%d'), min: Date.today + 1.day, max: Date.today + 5.months, class: "form-control"
+      .validation-err-message
+        - if @appointment.errors.any?
+          = @appointment.errors.messages[:"date"].join(',') if @appointment.errors.messages[:"date"].present?
+    .form-group
+      = link_to "Get Slots", { action: :get_slots, controller: :appointments }, id: "get_timeslots", style: 'display: none', remote: true
+      .check-slot
+        .available-slots
+
+
     .form-group
       %h4 Cause:
       = f.fields_for :notes do |note_field|
         = note_field.label :Note
         %br/
-        = note_field.text_area :description, class: "form-control", placeholder: "Leave note here."
+        = note_field.text_area :description, class: "form-control note", placeholder: "Leave note here."
         %br/
       .validation-err-message
         - if @appointment.errors.any?
@@ -34,3 +43,11 @@
       = f.submit :Book, class: 'btn btn-primary'
       = link_to "Back", appointments_path, class: "btn btn-warning"
       %br/
+%script
+  $(document).ready(function() {
+  if(document.URL.indexOf("#")== -1){
+  url = document.URL+"#";
+  location = "#";
+  location.reload(true);
+  }
+  });

@@ -1,2 +1,2 @@
-$("#<%= @appointment.id %>").append("<%= j render '/notes/note', note: @note %>")
+$("#<%= @appointment.id %>").append("<%= j render 'shared/notes/note', note: @note %>")
 $("#note_field_content").val("");

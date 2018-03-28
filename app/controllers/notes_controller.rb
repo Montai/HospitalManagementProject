@@ -19,9 +19,6 @@ class NotesController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def destroy
     @note = @appointment.notes.find(params[:id])
     @note.destroy
@@ -49,12 +46,12 @@ class NotesController < ApplicationController
 
     def find_current_notes_appointment
       @appointment = Appointment.find(params[:appointment_id])
-    end 
+    end
 
     #Method to restrict current user to edit/update other users Note
     def check_user
       @appointment = Appointment.find(params[:appointment_id])
       @note = @appointment.notes.find(params[:id])
-      redirect_to root_path and return if current_user.id != @note.user_id or @appointment.date < Time.now or @appointment.status == "cancelled"
+      redirect_to root_path, notice: "you are unauthorized to do this" and return if current_user.id != @note.user_id or @appointment.status == "cancelled" or @appointment.status == "unvisited"
     end
 end

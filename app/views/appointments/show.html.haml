@@ -30,6 +30,13 @@
       .field
         %div
           %h4
+            %u Appointment Time
+            %h2= @booked_time
+  .row
+    .col-md-6
+      .field
+        %div
+          %h4
             %u Appointment Status
             %h2= @appointment.status
   .row
@@ -44,7 +51,7 @@
   .row
     .col-md-6
       .field
-        - if (@appointment.status != "cancelled") or @appointment.date.strftime("%Y-%m-%d") < Time.now.strftime("%Y-%m-%d")
+        - if can? :update, @appointment
           .cancel-button-field
             = link_to "Cancel Appointment", { action: :cancel_appointment, controller: :appointments}, method: :post, data: { confirm: "Are you sure?" },class: "btn btn-danger"
             = link_to "Back", appointments_path, class: "btn btn-info"

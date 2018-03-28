@@ -1,0 +1,7 @@
+Hospital Management System is a demo project created using Ruby on Rails.
+It has certain feature like : 
+- Login through facebook, twitter and gmail
+- User signup as Patient/Doctor
+- User can Book Appointments on a particular date 
+- User have multiple Notes and Images
+- User can edit, update and delete Appointments and Notes

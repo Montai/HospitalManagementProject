@@ -1,17 +1,24 @@
 class Ability
   include CanCan::Ability
   def initialize(user)
-    user ||= User.new
-    can :read, :all
-    can :update, Appointment if user.patient?
-    can :update, Note, Note.where('user_id = :current_user_id', current_user_id: user.id) do |note|
+    can [:update, :destroy], Note do |note|
         note.user_id == user.id
     end
-    cannot :update, Appointment, Appointment.where('date < :current_date', current_date: Time.now) do |appointment|
-      appointment.date < Time.now
+    if user.patient?
+      can :create, Appointment
+      can [:update, :destroy], Appointment do |appointment|
+        appointment.patient == user && appointment.pending?
+      end
+      can :show, Appointment do |appointment|
+        appointment.patient == user
+      end
+    elsif user.doctor?
+      can :show, Appointment do |appointment|
+        appointment.doctor == user
+      end
+      can :destroy, Appointment do |appointment|
+        appointment.doctor == user && appointment.pending?
+      end
     end
-    cannot :destroy, Appointment, Appointment.where('date < :current_date', current_date: Time.now) do |appointment|
-      appointment.date < Time.now
-    end 
   end
 end
