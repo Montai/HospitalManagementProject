@@ -99,7 +99,6 @@ class AppointmentsController < ApplicationController
   end
 
   private
-
     def appointments_params
       params.require(:appointment).permit(:date, :doctor_id, :patient_id, :image, :slot_id,
         notes_attributes: [:id, :description, :user_id, :_destroy])
