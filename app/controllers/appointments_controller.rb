@@ -37,9 +37,12 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointments_params)
     @appointment.patient_id = current_user.id
     @appointment.notes.first.user_id = current_user.id
-    @appointment.slot_id = TimeSlot.find_by_slot(params[:slot]).id
     @all_doctors = User.get_all_doctors
-
+    if params["slot"].present?
+      @appointment.slot_id = TimeSlot.find_by_slot(params[:slot]).id
+    else
+      render 'new', notice: 'Please select time slot' and return if params["slot"].blank?
+    end
     if @appointment.save
       redirect_to root_path, notice: 'Appointment saved!'
     else
@@ -48,14 +51,14 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    raise CanCan::AccessDenied.new("Not authorized!", :edit, @appointment)
+    authorize! :edit, @appointment
     @all_doctors = User.get_all_doctors
     @slot = params["slot"]
     @action = 'edit'
   end
 
   def update
-    raise CanCan::AccessDenied.new("Not authorized!", :update, @appointment)
+    authorize! :update, @appointment
     @appointment.status = Appointment.get_current_status(@appointment.date)
     @appointment.slot_id = TimeSlot.find_by_slot(params[:slot]).id if params[:slot] != nil
     @all_doctors = User.get_all_doctors
@@ -67,13 +70,11 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    raise CanCan::AccessDenied.new("Not authorized!", :destroy, @appointment)
-    @appointment.destroy
-    redirect_to root_path, notice: 'Appointment Deleted!'
+    redirect_to root_path, notice: 'Appointment Deleted!' if @appointment.destroy
   end
 
   def show
-    @booked_time = TimeSlot.find_by('id = ?', @appointment.slot_id).slot
+    @booked_time = TimeSlot.find_by('id = ?', @appointment.slot_id).slot if @appointment.slot_id.present?
   end
 
   def cancel_appointment

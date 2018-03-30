@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
   end
 
   has_many :notes, dependent: :destroy
-  has_many :images, as: :imagable, dependent: :destroy
 
   #Model Validations
   validates :first_name,
@@ -51,7 +50,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :async, :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :twitter]
   #Get the doctor list
-  scope :get_all_doctors, -> { (select('id, first_name').where('role = :user_role', user_role: User.roles[:doctor])) }      
+  scope :get_all_doctors, -> { (select('id, first_name').where('role = :user_role', user_role: User.roles[:doctor])) }
   #Instance methods
   def future_appointments
     result = patient_appointments.future.includes(:patient) if doctor?

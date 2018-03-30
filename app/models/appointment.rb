@@ -9,7 +9,6 @@ class Appointment < ActiveRecord::Base
               class_name: "User",
               foreign_key: 'doctor_id'
   has_many :notes, dependent: :destroy
-  has_many :images, as: :imagable, dependent: :destroy
   belongs_to :time_slot, foreign_key: 'slot_id'
   #Model Validations
   validates :date, presence: true
@@ -19,7 +18,7 @@ class Appointment < ActiveRecord::Base
             presence: true,
             format: { with: %r{\.(gif|jpg|png)\z}i, message: "" }
   validate :image_size_validation
-  validate :validate_appointment_date
+  # validate :validate_appointment_date
   accepts_nested_attributes_for :notes, allow_destroy: true
 
   def self.get_current_status(date)

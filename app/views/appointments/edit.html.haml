@@ -7,10 +7,17 @@
         %b Choose Doctor
       %br/
       = f.collection_select(:doctor_id, @all_doctors, :id, :first_name, { prompt: "Please select a Doctor", required: true }, { class: "form-control" })
+      .validation-err-message
+        - if @appointment.errors.any?
+          = @appointment.errors.messages[:"doctor_id"].join(',') if @appointment.errors.messages[:"doctor_id"].present?
+
     .form-group
       %label.date-select-label{for: "date"}
         %b Select Date
-      = f.date_field :date, min: Date.today + 1.day, max: Date.today + 5.months, class: "form-control"
+      = f.date_field :date, min: Date.today, max: Date.today + 5.months, class: "form-control"
+      .validation-err-message
+        - if @appointment.errors.any?
+          = @appointment.errors.messages[:"date"].join(',') if @appointment.errors.messages[:"date"].present?
     .form-group
       %h4 Cause:
       = f.fields_for :notes, f.object.notes.first do |note_field|
@@ -45,5 +52,4 @@
   var slot = #{@slot.to_json.html_safe};
   $("#get_timeslots").prop("href", link.split('?')[0] + "?date=" + date + "&doctor=" + doctor + "&ifEdit=true&slot=" + slot);
   $("#get_timeslots").trigger("click");
-  console.log('i am here');
   });

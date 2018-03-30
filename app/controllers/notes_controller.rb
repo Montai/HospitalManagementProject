@@ -1,11 +1,6 @@
 class NotesController < ApplicationController
   #Callbacks
-  before_action :find_current_notes_appointment, except: [:new]
-
-  def new
-    @appointment = Appointment.new
-    @note = @appointment.notes.build
-  end
+  before_action :find_current_notes_appointment
 
   def create
     @note = @appointment.notes.new(notes_params)

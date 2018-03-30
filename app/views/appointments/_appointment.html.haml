@@ -15,7 +15,7 @@
     %span.label.label-success= appointment.status
   .col-sm-2= link_to image_tag("Show.png", class: 'icon'), appointment_path(appointment)
   .col-sm-2
-    - if can? :update, appointment and appointment.status != 'cancelled'
+    - if can? :update, appointment
     = link_to image_tag("Edit.png", class: 'icon'), edit_appointment_path(appointment)
   .col-sm-2
     = link_to appointment_path(appointment), method: :delete, data: {confirm: "Hey, Are you sure?"} do

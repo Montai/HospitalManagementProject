@@ -16,7 +16,7 @@ class Ability
       can :show, Appointment do |appointment|
         appointment.doctor == user
       end
-      can :destroy, Appointment do |appointment|
+      can [:update, :destroy], Appointment do |appointment|
         appointment.doctor == user && appointment.pending?
       end
     end

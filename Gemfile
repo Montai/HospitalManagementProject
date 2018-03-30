@@ -20,7 +20,7 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 #Using Sidekiq for background job processing
 gem 'sidekiq'
 gem 'sinatra', require: false
-gem 'slim'
+gem 'rubocop', require: false
 #Using devise async for sending mails asynchronously
 gem 'devise-async'
 #Using fancy box for better styling
