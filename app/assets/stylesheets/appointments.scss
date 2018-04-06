@@ -15,6 +15,8 @@ h1.well {
 }
 .container.well {
 	width: 50%;
+	border: 2px solid black;
+	margin-top: 10px;
 }
 .form-control.note {
 	height: 100px;
@@ -123,4 +125,8 @@ h2.edit-heading {
 }
 .slide-image {
   width: 100%;
+}
+a.btn.btn-success, a.btn.btn-danger, a.btn.btn-warning,
+	a.btn.btn-info, input.btn.btn-info, input.btn.btn-primary {
+	font-size: 10px;
 }

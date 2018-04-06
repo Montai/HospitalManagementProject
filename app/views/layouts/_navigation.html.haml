@@ -2,8 +2,21 @@
   .container-fluid
     .navbar-header
       %a.navbar-brand{href: "#"}
-        Hi, #{current_user.first_name if user_signed_in?}
+        Hi #{current_user.first_name if user_signed_in?}
     %ul.nav.navbar-nav
+      %button.btn.btn-warning.btn-md{"data-target" => "#myModal", "data-toggle" => "modal", type: "button"} About Us
+      #myModal.modal.fade{role: "dialog"}
+        .modal-dialog
+          .modal-content
+            .modal-header
+              %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
+                %span{"aria-hidden" => "true"}&times
+              %h4.modal-title About Hospital Management System
+            .modal-body
+              %p Some text in the modal.
+            .modal-footer
+              %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+
       - if user_signed_in? && current_user.patient?
         %li= link_to 'HOME', root_path
         %li= link_to 'BOOK APPOINTMENT', new_appointment_path

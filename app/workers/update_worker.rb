@@ -4,6 +4,8 @@ class UpdateWorker
 
   def perform
     all_past_appointments = Appointment.where('date < :current_date OR status = :cancelled', current_date: Time.now, cancelled: Appointment.statuses[:cancelled])
-    all_past_appointments.update_all(status: "unvisited")
+    all_past_appointments.each do |appointment|
+      appointment.update_attribute(:status, :unvisited)
+    end
   end
 end

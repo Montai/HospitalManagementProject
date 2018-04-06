@@ -7,10 +7,48 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
     %link{href: "https://fonts.googleapis.com/css?family=Alegreya Sans SC", rel: "stylesheet"}/
+    %link{href: "https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css", rel: "stylesheet"}/
+    %link{href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", rel: "stylesheet"}/
   %body
     .top-navigation
       = render "layouts/navigation"
     #main_container.main-container
-      %p.notice= notice
-      %p.alert= alert
+      .alert.alert-warning
+        %p.notice= notice
+        %p.alert= alert
+      %header.header-image
+        .headline
+          .container
+            %h1.title-header Hospital Management
       = yield
+
+      %footer
+        .row
+          %section#contact
+            .container
+              .well.well-sm
+                %h3
+                  %strong Contact Us
+              .row
+                .col-md-7
+                  %iframe{allowfullscreen: "", frameborder: "0", height: "315", src: "https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3736489.7218514383!2d90.21589792292741!3d23.857125486636733!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1506502314230", style: "border:0", width: "100%"}
+                .col-md-5
+                  %h4
+                    %strong Get in Touch
+                  %h5
+                    %strong Name
+                  %p Saura Mandal
+                  %h5
+                    %strong Contact No.
+                  %p +91-8583879100
+                  %h5
+                    %strong E-mail
+                  %p sauram@mindfiresolutions.com
+          .row
+            .col-lg-12
+              %a.fa.fa-facebook{href: "https://www.facebook.com/saura.mandal"}
+              %a.fa.fa-twitter{href: "https://twitter.com/montai24"}
+              %a.fa.fa-linkedin{href: "https://www.linkedin.com/in/saura-mandal-1a9504104/"}
+              %a.fa.fa-google{href: "https://plus.google.com/"}
+              %p
+                %b Copyright © Hospital Management System 2018
