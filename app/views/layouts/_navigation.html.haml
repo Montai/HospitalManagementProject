@@ -22,12 +22,11 @@
         %li= link_to 'BOOK APPOINTMENT', new_appointment_path
         %li= link_to 'ARCHIVES', archive_path
       - elsif user_signed_in? && current_user.doctor?
-        %li= link_to 'HOME', root_path
         %li= link_to 'ARCHIVES', archive_path
     %ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
         .dropdown
-          %button.btn.btn-default.btn-xs.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
+          %button.btn.btn-default.btn-md.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
             %span.glyphicon.glyphicon-user
           %ul.dropdown-menu
             %li.patient-logout= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: "Are you sure to log-out?" }

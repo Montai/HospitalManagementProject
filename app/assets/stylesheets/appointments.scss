@@ -10,12 +10,14 @@ h1.well {
 }
 .header-text.well {
   text-align: center;
-  color: green;
+  color: white;
+	font-weight: bold;
   border: 2px solid grey;
 }
 .container.well {
 	width: 50%;
 	border: 2px solid black;
+	font-family: 'Alegreya Sans SC';
 	margin-top: 10px;
 }
 .form-control.note {
@@ -103,11 +105,11 @@ h2.edit-heading {
   animation-duration: 1.5s;
 }
 @-webkit-keyframes fade {
-  from {opacity: .4}
+  from {opacity: 0.4}
   to {opacity: 1}
 }
 @keyframes fade {
-  from {opacity: .4}
+  from {opacity: 0.4}
   to {opacity: 1}
 }
 /* Adjust the top container */

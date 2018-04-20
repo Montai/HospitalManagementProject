@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
-//= require bootstrap.min.js
 //= require fancybox
 //= require jquery.inview.min.js
 //= require jquery_ujs
